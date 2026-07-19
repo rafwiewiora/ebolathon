@@ -12,13 +12,15 @@
         "round": 1,
         "best": -9.1,
         "topk_mean": -8.48,
-        "n_docks": 301
+        "n_docks": 301,
+        "top_bb_score": -8.76
       },
       {
         "round": 2,
         "best": -9.1,
         "topk_mean": -8.835,
-        "n_docks": 397
+        "n_docks": 397,
+        "top_bb_score": -9.02
       }
     ],
     "top_synthons": [
