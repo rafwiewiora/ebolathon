@@ -10,3 +10,7 @@
 [seed 0] druglike filter dropped 14/66 analogs
 [seed 0] 52 analogs (post-filter); decomposes to rxn_a46303e0; docking...
 [muni-oracle] parse fail for job_a49557d1-3276-48d0-8c12-48d0db6398dc: list index out of range
+[muni-oracle] parse fail for job_a2acac16-5eef-424e-a6a4-0979a21f859d: list index out of range
+[seed 1] onepot search: 'Cc1cc(OCCCCc2ccncc2)cc(C)c1NC(=O)c1ccccn1'
+[seed 1] druglike filter dropped 21/80 analogs
+[seed 1] 59 analogs (post-filter); decomposes to rxn_a46303e0; docking...
