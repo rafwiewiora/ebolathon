@@ -1,9 +1,10 @@
 """Export docked poses of the top hits to disk for live inspection in PyMOL.
 
-The screen's oracle only returns *scores* (and the muni backend never produces
-poses at all). To actually LOOK at how the winners bind, we re-dock the top hits
-through the direct Rowan single-``docking`` workflow, pull the best pose geometry
-back, and write:
+The muni backend never produces poses, so for it we re-dock the top hits through
+direct Rowan to get geometry. The direct backend already produced a pose during
+screening, so we REUSE it (via its pose uuid, passed in as ``pose_refs``) — no
+redundant re-dock, and the exported pose is the exact one that was scored/ranked.
+Either way we write:
 
     <out_dir>/receptor.pdb        prepared receptor (once, grey cartoon)
     <out_dir>/rank{N}_{score}.pdb one docked ligand pose per hit (sticks)
@@ -146,7 +147,8 @@ def _dock_one_pose(smiles: str, target: Target, max_poses: int, log=print):
 # Public API
 # --------------------------------------------------------------------------- #
 def export_top_poses(hits, target: Target, out_dir: str, api_key: str,
-                     top_k: int = 10, log=print, cache: dict | None = None) -> dict:
+                     top_k: int = 10, log=print, cache: dict | None = None,
+                     pose_refs: dict | None = None) -> dict:
     """Re-dock the top hits and write receptor + poses + view.pml into `out_dir`.
 
     Parameters
@@ -172,17 +174,33 @@ def export_top_poses(hits, target: Target, out_dir: str, api_key: str,
         _download_receptor(target.protein, receptor_path, log=log)
 
     hits = list(hits)[:top_k]
+    pose_refs = pose_refs or {}
     rows = []          # (rank, smiles, dock_score, mmgbsa, pb_valid, pdb_filename)
     rdkit_mols = []
     for rank, (smi, _incoming) in enumerate(hits, 1):
         pose = cache.get(smi)
         if pose is None:
-            log(f"[poses] docking rank {rank}: {smi[:60]}")
-            try:
-                pose = _dock_one_pose(smi, target, max_poses=4, log=log)
-            except Exception as e:  # noqa: BLE001
-                log(f"[poses] rank {rank} dock failed: {str(e)[:140]}")
-                pose = None
+            # 1) Reuse the screening dock's pose if we have its uuid (direct
+            #    backend): no re-dock, and the exported score == the ranked score.
+            ref = pose_refs.get(smi)
+            if ref and ref.get("pose_uuid"):
+                try:
+                    mols = rowan.retrieve_calculation_molecules(ref["pose_uuid"])
+                    if mols:
+                        pose = (mols[0]["atoms"], float(ref["score"]),
+                                ref.get("mmgbsa"), ref.get("posebusters_valid"))
+                        log(f"[poses] rank {rank}: reused screening pose (no re-dock)")
+                except Exception as e:  # noqa: BLE001
+                    log(f"[poses] rank {rank} pose fetch failed: {str(e)[:120]}")
+                    pose = None
+            # 2) Fall back to a fresh dock (muni backend has no screening pose).
+            if pose is None:
+                log(f"[poses] docking rank {rank}: {smi[:60]}")
+                try:
+                    pose = _dock_one_pose(smi, target, max_poses=4, log=log)
+                except Exception as e:  # noqa: BLE001
+                    log(f"[poses] rank {rank} dock failed: {str(e)[:140]}")
+                    pose = None
             if pose is not None:
                 cache[smi] = pose
         if pose is None:

@@ -109,6 +109,11 @@ class RowanDockingOracle:
         self.do_csearch = do_csearch
         self.name = name
         self.log = log
+        # Screening docks stash their best pose here (keyed by the SMILES passed
+        # to score()) so pose export can reuse THIS dock's geometry instead of
+        # wastefully re-docking — and the pose shown == the pose that was ranked.
+        # {smiles: {pose_uuid, score, mmgbsa, posebusters_valid}}
+        self.pose_cache: dict = {}
         # Resolve the target to a prepared-protein UUID exactly once.
         self.protein_uuid = protein_uuid or prepare_protein_uuid(
             target.protein, api_key=rowan.api_key, max_credits=max_credits, log=log)
@@ -164,13 +169,22 @@ class RowanDockingOracle:
             try:
                 wf.wait_for_result(poll_interval=self.poll)
                 wf.fetch_latest(in_place=True)
-                sc = _best_score(wf.model_dump())
+                rec = _best_pose_record(wf.model_dump())
             except Exception as e:
                 self.log(f"[rowan-oracle] dock failed for {smi[:40]}: "
                          f"{str(e)[:140]}")
-                sc = None
+                rec = None
+            sc = rec["score"] if rec else None
             if sc is not None:
                 out[smi] = sc
+                # Cache the pose from THIS screening dock so pose export reuses it
+                # (no redundant re-dock; exported score == the score that ranked it).
+                if rec.get("pose"):
+                    self.pose_cache[smi] = {
+                        "pose_uuid": rec["pose"], "score": sc,
+                        "mmgbsa": rec.get("mmgbsa_score"),
+                        "posebusters_valid": rec.get("posebusters_valid"),
+                    }
                 self.log(f"[rowan-oracle]   {sc:+.2f}  {smi[:60]}")
             else:
                 self.log(f"[rowan-oracle]   (no score) {smi[:60]}")
@@ -206,3 +220,31 @@ def _best_score(dump: dict):
         if v is not None:
             vals.append(v)
     return min(vals) if vals else None
+
+
+def _best_pose_record(dump: dict):
+    """Best (lowest-score) pose RECORD from a single-``docking`` model_dump — the
+    full dict (``pose`` uuid, ``score``, ``mmgbsa_score``, ``posebusters_valid``),
+    so callers can reuse this exact pose's geometry instead of re-docking. The
+    returned dict's ``score`` is normalised to a float. None if no scored pose."""
+    data = dump.get("data")
+    if not isinstance(data, dict):
+        return None
+    scores = data.get("scores")
+    if not isinstance(scores, list) or not scores:
+        return None
+    best = None
+    for rec in scores:
+        if not isinstance(rec, dict):
+            continue
+        v = None
+        for k in ("score", "docking_score", "affinity", "best_score"):
+            if isinstance(rec.get(k), (int, float)):
+                v = float(rec[k])
+                break
+        if v is None:
+            continue
+        rec = {**rec, "score": v}
+        if best is None or v < best["score"]:
+            best = rec
+    return best

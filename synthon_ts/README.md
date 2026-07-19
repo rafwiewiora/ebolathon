@@ -48,9 +48,11 @@ What happens:
 4. **Screen** — `core.run_loop` (synthon Thompson Sampling), with a **local RDKit
    drug-like filter** dropping off-profile analogs *before* docking.
 5. **Poses for PyMOL** — after **every round** and at the end,
-   `poses.export_top_poses` re-docks the current top-`--top-k` hits through direct
-   Rowan, pulls the best pose geometry, and (re)writes the output dir so PyMOL can
-   refresh live.
+   `poses.export_top_poses` writes the current top-`--top-k` poses so PyMOL can
+   refresh live. On the **direct** backend it **reuses the pose from the screening
+   dock** (via its pose uuid) — no re-dock, so the pose you view is the exact one
+   that was scored/ranked. Only the **muni** backend (batch docking = scores-only,
+   no poses) re-docks the top hits through direct Rowan to get geometry.
 
 ### Seeding without a known binder (`sample_space`)
 Omit `--query` and the loop is seeded from onepot `sample_space` — property-

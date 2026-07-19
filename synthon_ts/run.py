@@ -303,7 +303,8 @@ def main(argv=None):
         if hits:
             print(f"[run] round {rnd}: exporting {len(hits)} live poses ...")
             export_top_poses(hits, pose_target, args.out_dir, rowan_key,
-                             top_k=args.top_k, cache=pose_cache)
+                             top_k=args.top_k, cache=pose_cache,
+                             pose_refs=getattr(oracle, "pose_cache", None))
 
     res = run_loop(oracle, dock_target, cfg, onepot_key=onepot_key,
                    round_callback=round_callback, mol_filter=mol_filter)
@@ -316,7 +317,8 @@ def main(argv=None):
     if final_hits:
         print(f"[run] final: exporting {len(final_hits)} poses ...")
         export_top_poses(final_hits, pose_target, args.out_dir, rowan_key,
-                         top_k=args.top_k, cache=pose_cache)
+                         top_k=args.top_k, cache=pose_cache,
+                         pose_refs=getattr(oracle, "pose_cache", None))
 
     _report(res, cfg, args.out_dir)
 
