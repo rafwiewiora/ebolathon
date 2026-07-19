@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ebola glycoprotein · synthon screen (live)</title>
+<style>
+  :root{
+    --paper:#f4f6f3; --card:#fbfcfa; --ink:#19221f; --muted:#5c6660; --line:#dde2dc;
+    --ours:#b25628; --ours-soft:#f7ece3; --ideal:#4f5fa0; --ideal-soft:#edeef7;
+    --good:#3f7d5c; --shadow:0 1px 2px rgba(20,30,25,.05),0 10px 30px rgba(20,30,25,.06);
+    --serif:ui-serif,"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --paper:#11150f;--card:#1a1f19;--ink:#e7ede7;--muted:#98a29a;--line:#2a322b;
+    --ours:#e28950;--ours-soft:#2e2016;--ideal:#9aa6de;--ideal-soft:#20253a;--good:#71b892;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 34px rgba(0,0,0,.4);}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:clamp(24px,4vw,48px) clamp(16px,4vw,36px) 64px}
+  header{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;justify-content:space-between}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(24px,4vw,36px);margin:0;letter-spacing:-.01em}
+  .status{font-family:var(--mono);font-size:12px;color:var(--muted);display:flex;align-items:center;gap:7px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--good);box-shadow:0 0 0 0 var(--good);animation:pulse 2s infinite}
+  .dot.stale{background:var(--muted);animation:none}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--good) 60%,transparent)}70%{box-shadow:0 0 0 7px transparent}100%{box-shadow:0 0 0 0 transparent}}
+  .sub{color:var(--muted);font-size:14px;margin:6px 0 26px}
+  .sub code{font-family:var(--mono);font-size:12.5px;background:color-mix(in srgb,var(--muted) 13%,transparent);padding:1px 5px;border-radius:5px}
+  h2{font-family:var(--serif);font-weight:600;font-size:18px;margin:30px 0 12px}
+  .tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+  @media(max-width:640px){.tiles{grid-template-columns:repeat(2,1fr)}}
+  .tile{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 12px;text-align:center;box-shadow:var(--shadow)}
+  .tile .n{display:block;font-family:var(--mono);font-size:26px;font-weight:600;font-variant-numeric:tabular-nums}
+  .tile .l{display:block;font-size:11px;color:var(--muted);margin-top:4px}
+  .tile.hl{background:var(--ours-soft);border-color:var(--ours)} .tile.hl .n{color:var(--ours)}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:18px 20px}
+  .cols{display:grid;grid-template-columns:1.1fr 1fr;gap:16px}
+  @media(max-width:760px){.cols{grid-template-columns:1fr}}
+  table{border-collapse:collapse;width:100%;font-size:13.5px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
+  td.sc{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--ours);font-weight:600;white-space:nowrap}
+  td.smi{font-family:var(--mono);font-size:11.5px;word-break:break-all;color:var(--ink)}
+  .syn{font-family:var(--mono);font-size:11.5px;color:var(--ink);padding:6px 0;border-bottom:1px solid var(--line);word-break:break-all}
+  .syn .r{color:var(--good);font-weight:600}
+  .syn .meta{color:var(--muted)}
+  .chart{width:100%;height:180px}
+  .foot{margin-top:34px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .foot a{color:var(--ours)}
+  .empty{color:var(--muted);font-size:14px;padding:20px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Ebola glycoprotein · synthon screen</h1>
+    <span class="status" id="status"><span class="dot" id="dot"></span><span id="statustext">connecting…</span></span>
+  </header>
+  <p class="sub">Live synthon-aware Thompson-Sampling screen over onepot CORE, docked against the T0R (toremifene) site. Auto-refreshes every 30&nbsp;s from <code>runs/dashboard.json</code>. <span id="runname"></span></p>
+
+  <div class="tiles" id="tiles"></div>
+
+  <div class="cols">
+    <div>
+      <h2>Score trajectory</h2>
+      <div class="panel"><svg class="chart" id="chart" viewBox="0 0 520 180" preserveAspectRatio="xMidYMid meet"></svg></div>
+      <h2>Top synthons the bandit surfaced</h2>
+      <div class="panel" id="synthons"></div>
+    </div>
+    <div>
+      <h2>Top 10 molecules</h2>
+      <div class="panel" style="padding:6px 10px"><div id="leaderboard"></div></div>
+    </div>
+  </div>
+
+  <p class="foot">source: <a href="https://github.com/rafwiewiora/ebolathon" target="_blank" rel="noopener">github.com/rafwiewiora/ebolathon</a> · lower score = better (kcal/mol) · oracle: QVina2</p>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+
+function renderTiles(p){
+  const t=[["seeds",p.seeds],["docked",p.docked],["synthons",p.synthons_seen],
+           ["confident · n≥2",p.synthons_confident]];
+  let h=t.map(([l,n])=>`<div class="tile"><span class="n">${n??'—'}</span><span class="l">${l}</span></div>`).join("");
+  h+=`<div class="tile hl"><span class="n">${p.best_score!=null?p.best_score.toFixed(1):'—'}</span><span class="l">best score</span></div>`;
+  $("tiles").innerHTML=h;
+}
+
+function renderChart(traj){
+  const svg=$("chart"); svg.innerHTML="";
+  if(!traj||!traj.length){svg.innerHTML='<text x="20" y="90" fill="currentColor" font-size="13" opacity=".5">waiting for round data…</text>';return;}
+  const W=520,H=180,pad=34;
+  const xs=traj.map(d=>d.round), best=traj.map(d=>d.best), tk=traj.map(d=>d.topk_mean);
+  const vals=best.concat(tk).filter(v=>v!=null);
+  let mn=Math.min(...vals), mx=Math.max(...vals); if(mn===mx){mn-=1;mx+=1;}
+  const xr=Math.max(...xs), xmin=Math.min(...xs);
+  const X=r=>pad+((r-xmin)/Math.max(1,(xr-xmin)))*(W-pad*1.5);
+  const Y=v=>pad/1.5+(1-(v-mn)/(mx-mn))*(H-pad*1.6);   // lower(better)=higher on screen? invert: better(more negative) should be UP
+  const Yb=v=>pad/1.5+((v-mn)/(mx-mn))*(H-pad*1.6);     // more negative -> smaller v -> smaller y -> top = better
+  const ns=document.createElementNS,SV="http://www.w3.org/2000/svg";
+  function line(arr,color,dash){
+    const pts=arr.map((v,i)=>v==null?null:`${X(xs[i]).toFixed(1)},${Yb(v).toFixed(1)}`).filter(Boolean).join(" ");
+    svg.innerHTML+=`<polyline points="${pts}" fill="none" stroke="${color}" stroke-width="2.5" ${dash?'stroke-dasharray="4 4"':''} stroke-linejoin="round" stroke-linecap="round"/>`;
+    arr.forEach((v,i)=>{if(v!=null)svg.innerHTML+=`<circle cx="${X(xs[i]).toFixed(1)}" cy="${Yb(v).toFixed(1)}" r="3" fill="${color}"/>`;});
+  }
+  // axis labels (best/worst)
+  svg.innerHTML+=`<text x="4" y="${Yb(mn)+4}" fill="currentColor" font-size="10" opacity=".55" font-family="ui-monospace,monospace">${mn.toFixed(1)}</text>`;
+  svg.innerHTML+=`<text x="4" y="${Yb(mx)+4}" fill="currentColor" font-size="10" opacity=".55" font-family="ui-monospace,monospace">${mx.toFixed(1)}</text>`;
+  line(best, getVar('--ours'), false);
+  line(tk, getVar('--ideal'), true);
+  svg.innerHTML+=`<text x="${W-150}" y="16" fill="${getVar('--ours')}" font-size="11" font-family="ui-monospace,monospace">— best</text>`;
+  svg.innerHTML+=`<text x="${W-88}" y="16" fill="${getVar('--ideal')}" font-size="11" font-family="ui-monospace,monospace">--- top-k mean</text>`;
+}
+function getVar(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim()||'#b25628';}
+
+function renderSynthons(syn){
+  if(!syn||!syn.length){$("synthons").innerHTML='<div class="empty">no synthons yet</div>';return;}
+  $("synthons").innerHTML=syn.map(s=>
+    `<div class="syn"><span class="r">${(s.reward>=0?'+':'')}${s.reward.toFixed(2)}</span> `+
+    `<span class="meta">n=${s.count} · ${esc(s.rxn)} @pos${s.pos}</span><br>${esc(s.bb)}</div>`).join("");
+}
+
+function renderLeaderboard(top){
+  if(!top||!top.length){$("leaderboard").innerHTML='<div class="empty">no hits yet</div>';return;}
+  let h='<table><thead><tr><th>#</th><th>score</th><th>SMILES</th></tr></thead><tbody>';
+  h+=top.map(r=>`<tr><td>${r.rank}</td><td class="sc">${r.score.toFixed(2)}</td><td class="smi">${esc(r.smiles)}</td></tr>`).join("");
+  $("leaderboard").innerHTML=h+'</tbody></table>';
+}
+
+async function refresh(){
+  try{
+    const res=await fetch('runs/dashboard.json?t='+Date.now(),{cache:'no-store'});
+    if(!res.ok) throw new Error(res.status);
+    const d=await res.json();
+    const p=d.primary;
+    $("dot").classList.remove("stale");
+    const now=new Date().toLocaleTimeString();
+    $("statustext").textContent='live · updated '+now;
+    if(p){
+      $("runname").innerHTML='Featuring run <code>'+esc(p.run)+'</code>.';
+      renderTiles(p); renderChart(p.trajectory); renderSynthons(p.top_synthons);
+    }else{
+      $("tiles").innerHTML='<div class="empty">waiting for the first round to complete…</div>';
+    }
+    renderLeaderboard(d.top10);
+  }catch(e){
+    $("dot").classList.add("stale");
+    $("statustext").textContent='waiting for data…';
+  }
+}
+refresh();
+setInterval(refresh, 30000);
+</script>
+</body>
+</html>
