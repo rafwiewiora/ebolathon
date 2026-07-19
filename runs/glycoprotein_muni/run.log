@@ -1,0 +1,11 @@
+[run] deriving box from ligand 'T0R' in 5JQ7 ...
+[run] box center=[-44.99, 14.94, -8.25] size=[22.45, 28.24, 23.27]
+[run] price filter dropped 9/12 seeds (> $200)
+[run] sample_space kept 3 seed(s) (strategy=diverse, seed=3887647533; replay with --sample-seed 3887647533):
+[run]   seed ($125): CC(C)C1CN(C(=O)c2ccc3cc4ccccc4cc3c2)CCO1
+[run]   seed ($125): Cc1cc(OCCCCc2ccncc2)cc(C)c1NC(=O)c1ccccn1
+[run]   seed ($125): CC(C)N(CC(=O)NCc1cccc(I)c1)S(=O)(=O)c1ccccc1
+[seed] 3 seed(s); max_results=120 each
+[seed 0] onepot search: 'CC(C)C1CN(C(=O)c2ccc3cc4ccccc4cc3c2)CCO1'
+[seed 0] druglike filter dropped 14/66 analogs
+[seed 0] 52 analogs (post-filter); decomposes to rxn_a46303e0; docking...
