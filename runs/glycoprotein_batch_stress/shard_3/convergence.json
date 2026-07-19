@@ -1,0 +1,100 @@
+{
+  "target": "runs/glycoprotein_t0r_trial/glycoprotein.pdb",
+  "query_or_seeds": [
+    "Cc1nc(C(F)(F)F)c(CN2Cc3ccccc3C(C)(C)C2)s1",
+    "S=C(Nc1ccnc(-c2ccncc2)c1)NC1CN2CCC1CC2",
+    "N#Cc1cc(C=O)ccc1NC(=O)c1ccc2c(c1)OCC(=O)N2"
+  ],
+  "backend": "direct",
+  "rounds": [
+    {
+      "round": 1,
+      "n_docks": 58,
+      "best_score": -8.5,
+      "topk_mean": -7.54,
+      "top_k": 10,
+      "scores": [
+        -8.5,
+        -8.1,
+        -8.1,
+        -8.0,
+        -7.5,
+        -7.3,
+        -7.2,
+        -7.0,
+        -6.9,
+        -6.8,
+        -6.8,
+        -6.7,
+        -6.7,
+        -6.7,
+        -6.6,
+        -6.6,
+        -6.6,
+        -6.5,
+        -6.5,
+        -6.5,
+        -6.5,
+        -6.4,
+        -6.4,
+        -6.4,
+        -6.3,
+        -6.3,
+        -6.3,
+        -6.3,
+        -6.2,
+        -6.2,
+        -6.2,
+        -6.2,
+        -6.1,
+        -6.1,
+        -6.0,
+        -5.9,
+        -5.9,
+        -5.6,
+        -5.6,
+        -5.5,
+        -5.5,
+        -5.5,
+        -5.5,
+        -5.4,
+        -5.4,
+        -5.4,
+        -5.4,
+        -5.4,
+        -5.3,
+        -5.2,
+        -5.2,
+        -5.2,
+        -5.2,
+        -5.2,
+        -5.1,
+        -5.0,
+        -4.9,
+        -4.6
+      ],
+      "positions": {
+        "rxn_decac515": {
+          "0": [
+            {
+              "bb": "CC1(C)CNCc2ccccc21",
+              "mean_reward": 6.1793,
+              "count": 58,
+              "std": 0.859
+            }
+          ],
+          "1": [
+            {
+              "bb": "BrCc1sc(C)nc1C(F)(F)F",
+              "mean_reward": 6.1793,
+              "count": 58,
+              "std": 0.859
+            }
+          ]
+        }
+      },
+      "n_synthons_seen": 2,
+      "n_synthons_confident": 2
+    }
+  ]
+}

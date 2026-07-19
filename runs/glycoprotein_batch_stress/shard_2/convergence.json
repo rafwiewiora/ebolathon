@@ -1,0 +1,147 @@
+{
+  "target": "runs/glycoprotein_t0r_trial/glycoprotein.pdb",
+  "query_or_seeds": [
+    "Cc1nnc2c(NC(=S)N3CCC[C@](C)(O)C3)cc(Cl)nn12",
+    "Cc1noc(-c2ccc(CN3CCNC(=O)C3(C)C)cc2)n1",
+    "Cc1c(C(=O)Nc2ccccc2-n2cncn2)oc2c1C(=O)CCC2"
+  ],
+  "backend": "direct",
+  "rounds": [
+    {
+      "round": 1,
+      "n_docks": 37,
+      "best_score": -7.7,
+      "topk_mean": -7.35,
+      "top_k": 10,
+      "scores": [
+        -7.7,
+        -7.5,
+        -7.5,
+        -7.4,
+        -7.3,
+        -7.3,
+        -7.3,
+        -7.2,
+        -7.2,
+        -7.1,
+        -7.1,
+        -7.1,
+        -7.1,
+        -7.1,
+        -7.0,
+        -6.9,
+        -6.8,
+        -6.6,
+        -6.6,
+        -6.5,
+        -6.3,
+        -6.0,
+        -6.0,
+        -6.0,
+        -6.0,
+        -5.9,
+        -5.9,
+        -5.9,
+        -5.9,
+        -5.7,
+        -5.5,
+        -5.3,
+        -5.3,
+        -5.3,
+        -5.2,
+        -5.2,
+        -5.1
+      ],
+      "positions": {
+        "rxn_45d00d3a": {
+          "0": [
+            {
+              "bb": "Cc1nnc2c(N)cc(Cl)nn12",
+              "mean_reward": 6.4541,
+              "count": 37,
+              "std": 0.8023
+            }
+          ],
+          "1": [
+            {
+              "bb": "C[C@]1(O)CCCNC1",
+              "mean_reward": 6.4541,
+              "count": 37,
+              "std": 0.8023
+            }
+          ]
+        }
+      },
+      "n_synthons_seen": 2,
+      "n_synthons_confident": 2
+    },
+    {
+      "round": 2,
+      "n_docks": 37,
+      "best_score": -7.7,
+      "topk_mean": -7.35,
+      "top_k": 10,
+      "scores": [
+        -7.7,
+        -7.5,
+        -7.5,
+        -7.4,
+        -7.3,
+        -7.3,
+        -7.3,
+        -7.2,
+        -7.2,
+        -7.1,
+        -7.1,
+        -7.1,
+        -7.1,
+        -7.1,
+        -7.0,
+        -6.9,
+        -6.8,
+        -6.6,
+        -6.6,
+        -6.5,
+        -6.3,
+        -6.0,
+        -6.0,
+        -6.0,
+        -6.0,
+        -5.9,
+        -5.9,
+        -5.9,
+        -5.9,
+        -5.7,
+        -5.5,
+        -5.3,
+        -5.3,
+        -5.3,
+        -5.2,
+        -5.2,
+        -5.1
+      ],
+      "positions": {
+        "rxn_45d00d3a": {
+          "0": [
+            {
+              "bb": "Cc1nnc2c(N)cc(Cl)nn12",
+              "mean_reward": 6.4541,
+              "count": 37,
+              "std": 0.8023
+            }
+          ],
+          "1": [
+            {
+              "bb": "C[C@]1(O)CCCNC1",
+              "mean_reward": 6.4541,
+              "count": 37,
+              "std": 0.8023
+            }
+          ]
+        }
+      },
+      "n_synthons_seen": 2,
+      "n_synthons_confident": 2
+    }
+  ]
+}

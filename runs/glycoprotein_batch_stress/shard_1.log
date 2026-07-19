@@ -12,3 +12,90 @@
 [seed 0] druglike filter dropped 6/99 analogs
 [seed 0] 93 analogs (post-filter); decomposes to rxn_a46303e0; docking...
 [rowan-batch] wave: 1/1 jobs (93 ligands)
+[rowan-batch]   +88 scored (total 88)
+[seed 1] onepot search: 'O=C(O)[C@@H](NC(=O)N1CCCC2C(=O)N(Cc3ccccc3)C(=O)C21)c1ccccc1'
+[seed 1] druglike filter dropped 16/118 analogs
+[seed 1] 102 analogs (post-filter); decomposes to rxn_47efa9f1; docking...
+[rowan-batch] submit failed (102 ligs): 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[rowan-batch] wave: 0/1 jobs (0 ligands)
+[seed] scored pool=88  docks=195  synthon arms=2
+[round 1] anchor score=-6.00 rxn=rxn_a46303e0 exploit@0 explore@1
+[round 1] druglike filter dropped 5/99 analogs
+[rowan-batch] submit failed (82 ligs): 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[rowan-batch] wave: 0/1 jobs (0 ligands)
+[round 1]   +0 scored (pool=88, docks=277, arms=2)
+[round 1] anchor score=-5.50 rxn=rxn_a46303e0 exploit@0 explore@1
+[round 1] druglike filter dropped 1/54 analogs
+[rowan-batch] submit failed (46 ligs): 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[rowan-batch] wave: 0/1 jobs (0 ligands)
+[round 1]   +0 scored (pool=88, docks=323, arms=2)
+[round 1] anchor score=-7.60 rxn=rxn_a46303e0 exploit@0 explore@1
+[round 1] druglike filter dropped 2/68 analogs
+[rowan-batch] submit failed (32 ligs): 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[rowan-batch] wave: 0/1 jobs (0 ligands)
+[round 1]   +0 scored (pool=88, docks=355, arms=2)
+[round 1] anchor score=-5.90 rxn=rxn_a46303e0 exploit@0 explore@1
+[round 1] druglike filter dropped 3/100 analogs
+[rowan-batch] submit failed (84 ligs): 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[rowan-batch] wave: 0/1 jobs (0 ligands)
+[round 1]   +0 scored (pool=88, docks=439, arms=2)
+[round 1] anchor score=-5.80 rxn=rxn_a46303e0 exploit@0 explore@1
+[round 1] druglike filter dropped 3/100 analogs
+[rowan-batch] submit failed (77 ligs): 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[rowan-batch] wave: 0/1 jobs (0 ligands)
+[round 1]   +0 scored (pool=88, docks=516, arms=2)
+[round 1] anchor score=-6.40 rxn=rxn_a46303e0 exploit@0 explore@1
+[round 1] druglike filter dropped 5/100 analogs
+[rowan-batch] submit failed (47 ligs): 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[rowan-batch] wave: 0/1 jobs (0 ligands)
+[round 1]   +0 scored (pool=88, docks=563, arms=2)
+[run] round 1: exporting 10 live poses ...
+[poses] wrote receptor runs/glycoprotein_batch_stress/shard_1/receptor.pdb
+[poses] docking rank 1: CC(C)(C)C(=O)Nc1ccc(C(=O)N[C@H]2CCc3ccccc32)cc1Br
+[poses] rank 1 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 2: CC(C)(C)C(=O)Nc1ccc(C(=O)N[C@H]2CC[C@@H](O)C2)cc1Br
+[poses] rank 2 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 3: C#CC1CCN(C(=O)c2ccc(NC(=O)C(C)(C)C)c(Br)c2)CC1
+[poses] rank 3 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 4: C[C@H](NC(=O)c1ccc(NC(=O)C(C)(C)C)c(Br)c1)c1ccccn1
+[poses] rank 4 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 5: Cc1ccc(C(=O)O)cc1NC(=O)c1ccccc1
+[poses] rank 5 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 6: Cc1cc(C(=O)NCc2ccccc2)ccc1Br
+[poses] rank 6 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 7: Cc1ccc(C(=O)NC2CCCCC2)cc1F
+[poses] rank 7 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 8: COC(=O)c1ccc(C2CCCCC2)c(Br)c1
+[poses] rank 8 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 9: Cc1ccc(C(=O)O)cc1NC(=O)C1CCCO1
+[poses] rank 9 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 10: CC(C)(C)NC(=O)c1ccc2ccccc2c1
+[poses] rank 10 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] wrote runs/glycoprotein_batch_stress/shard_1/view.pml
+[poses] exported 0 poses -> runs/glycoprotein_batch_stress/shard_1  (open runs/glycoprotein_batch_stress/shard_1/view.pml)
+[round 1] top10 mean score=-8.190 (prev -8.190); fresh=0
+[round 2] anchor score=-5.90 rxn=rxn_a46303e0 exploit@0 explore@1
+[round 2] druglike filter dropped 4/100 analogs
+[rowan-batch] submit failed (51 ligs): 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[rowan-batch] wave: 0/1 jobs (0 ligands)
+[round 2]   +0 scored (pool=88, docks=614, arms=2)
+[round 2] anchor score=-6.00 rxn=rxn_a46303e0 exploit@0 explore@1
+[round 2] druglike filter dropped 8/59 analogs
+[rowan-batch] submit failed (11 ligs): 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[rowan-batch] wave: 0/1 jobs (0 ligands)
+[round 2]   +0 scored (pool=88, docks=625, arms=2)
+[round 2] anchor score=-5.50 rxn=rxn_a46303e0 exploit@0 explore@1
+[rowan-batch] submit failed (93 ligs): 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[rowan-batch] wave: 0/1 jobs (0 ligands)
+[round 2]   +0 scored (pool=88, docks=718, arms=2)
+[round 2] anchor score=-6.00 rxn=rxn_a46303e0 exploit@0 explore@1
+[round 2] druglike filter dropped 10/63 analogs
+[rowan-batch] submit failed (17 ligs): 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[rowan-batch] wave: 0/1 jobs (0 ligands)
+[round 2]   +0 scored (pool=88, docks=735, arms=2)
+[round 2] anchor score=-8.50 rxn=rxn_a46303e0 exploit@0 explore@1
+[round 2] druglike filter dropped 3/68 analogs
+[rowan-batch] submit failed (5 ligs): 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[rowan-batch] wave: 0/1 jobs (0 ligands)
+[round 2]   +0 scored (pool=88, docks=740, arms=2)
+[round 2] anchor score=-5.90 rxn=rxn_a46303e0 exploit@0 explore@1
