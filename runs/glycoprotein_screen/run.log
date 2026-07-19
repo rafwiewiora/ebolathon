@@ -114,3 +114,58 @@
 [poses] rank 4 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
 [poses] docking rank 5: FC(F)(F)c1ccc(-c2ccccc2)nc1
 [poses] rank 5 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 6: NC(Cc1cc(C(F)(F)F)ccc1Cl)C(=O)O
+[poses] rank 6 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 7: C=CC[C@@H](NC(=S)N(C)Cc1ccc(C(F)(F)F)cn1)C(=O)O
+[poses] rank 7 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 8: CCOC(=O)c1cc2cc(C(F)(F)F)cnc2[nH]1
+[poses] rank 8 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 9: O=C(O)C(Cc1ccccc1)NS(=O)(=O)c1cccc(C(F)(F)F)c1
+[poses] rank 9 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 10: C=CCC(C)C(=O)O
+[poses] rank 10 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] wrote runs/glycoprotein_screen/view.pml
+[poses] exported 0 poses -> runs/glycoprotein_screen  (open runs/glycoprotein_screen/view.pml)
+[round 2] top30 mean score=-6.480 (prev -6.480); fresh=0
+[round 2] loop-until-dry: no improvement x2; stop
+[run] final: exporting 10 poses ...
+[poses] docking rank 1: O=C(O)c1ncc(C(F)(F)F)cc1-c1ccccc1
+[poses] rank 1 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 2: O=C(O)C1CCN(c2ccc(C(F)(F)F)cn2)CC1
+[poses] rank 2 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 3: Cc1c(C(=O)O)cnn1-c1ccc(C(F)(F)F)cn1
+[poses] rank 3 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 4: FC(F)(F)c1ccc(-c2ccc(C(F)(F)F)cn2)nc1
+[poses] rank 4 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 5: FC(F)(F)c1ccc(-c2ccccc2)nc1
+[poses] rank 5 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 6: NC(Cc1cc(C(F)(F)F)ccc1Cl)C(=O)O
+[poses] rank 6 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 7: C=CC[C@@H](NC(=S)N(C)Cc1ccc(C(F)(F)F)cn1)C(=O)O
+[poses] rank 7 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 8: CCOC(=O)c1cc2cc(C(F)(F)F)cnc2[nH]1
+[poses] rank 8 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 9: O=C(O)C(Cc1ccccc1)NS(=O)(=O)c1cccc(C(F)(F)F)c1
+[poses] rank 9 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 10: C=CCC(C)C(=O)O
+[poses] rank 10 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] wrote runs/glycoprotein_screen/view.pml
+[poses] exported 0 poses -> runs/glycoprotein_screen  (open runs/glycoprotein_screen/view.pml)
+
+=== synthon-TS done: 500 docks, 52 scored ===
+Top scaffold-diverse hits (lower score = better):
+   -7.60  O=C(O)c1ncc(C(F)(F)F)cc1-c1ccccc1
+   -7.40  O=C(O)C1CCN(c2ccc(C(F)(F)F)cn2)CC1
+   -7.10  Cc1c(C(=O)O)cnn1-c1ccc(C(F)(F)F)cn1
+   -7.10  FC(F)(F)c1ccc(-c2ccc(C(F)(F)F)cn2)nc1
+   -6.90  FC(F)(F)c1ccc(-c2ccccc2)nc1
+   -6.90  NC(Cc1cc(C(F)(F)F)ccc1Cl)C(=O)O
+   -6.60  C=CC[C@@H](NC(=S)N(C)Cc1ccc(C(F)(F)F)cn1)C(=O)O
+   -6.60  CCOC(=O)c1cc2cc(C(F)(F)F)cnc2[nH]1
+   -6.40  O=C(O)C(Cc1ccccc1)NS(=O)(=O)c1cccc(C(F)(F)F)c1
+   -4.40  C=CCC(C)C(=O)O
+
+Wrote hits + poses to runs/glycoprotein_screen
+Open the docked poses in PyMOL:
+    /Users/bb/.local/share/mamba/envs/cadd-pymol/bin/pymol runs/glycoprotein_screen/view.pml
+Live refresh while a run is going: in PyMOL run  @view.pml  (or File > Reload All)
