@@ -36,62 +36,65 @@ class MuniBatchDockingOracle:
         self.log = log
 
     # oracle contract: lower score = better; template unused (box defines site)
+    _TERMINAL = ("completed", "completed_ok", "success", "failed", "error", "cancelled")
+
     def score(self, smiles_list, template_smiles=None) -> dict:
+        chunks = [smiles_list[i:i + self.chunk]
+                  for i in range(0, len(smiles_list), self.chunk)]
+        # 1) submit ALL chunks up front so muni runs them CONCURRENTLY (muni
+        #    parallelises jobs; submitting serially wasted ~1h per chunk).
+        jobs = []  # (chunk, job_id)
+        for ch in chunks:
+            jid = self._submit(ch)
+            if jid:
+                jobs.append((ch, jid))
+        self.log(f"[muni-oracle] submitted {len(jobs)}/{len(chunks)} jobs concurrently "
+                 f"({sum(len(c) for c, _ in jobs)} ligands); polling every {self.poll_interval}s")
+        # 2) poll them all together until each is terminal
+        pending = {jid for _, jid in jobs}
+        deadline = time.time() + self.timeout_s
+        while pending and time.time() < deadline:
+            time.sleep(self.poll_interval)
+            for jid in list(pending):
+                s = subprocess.run([self.muni, "job", "status", jid, "--json"],
+                                   capture_output=True, text=True)
+                try:
+                    status = str(json.loads(s.stdout).get("status", "")).lower()
+                except Exception:
+                    continue
+                if status in self._TERMINAL:
+                    pending.discard(jid)
+            self.log(f"[muni-oracle] {len(jobs) - len(pending)}/{len(jobs)} jobs done")
+        # 3) read scores from every job
         out: dict = {}
-        for i in range(0, len(smiles_list), self.chunk):
-            batch = smiles_list[i:i + self.chunk]
-            out.update(self._dock_batch(batch))
+        for ch, jid in jobs:
+            out.update(self._read_scores(jid, ch))
         return out
 
-    def _dock_batch(self, batch) -> dict:
+    def _submit(self, batch) -> str | None:
+        """Submit one batch-docking job (no --follow); return its job id."""
         params = {
-            "smiles_list": batch,
-            "pocket": self.t.pocket,
+            "smiles_list": batch, "pocket": self.t.pocket,
             "executable": self.t.executable,
             "scoring_function": self.t.scoring_function,
-            "exhaustiveness": self.t.exhaustiveness,
-            "name": self.name,
+            "exhaustiveness": self.t.exhaustiveness, "name": self.name,
         }
-        # thread a prepared protein UUID if given, else pass a PDB id
         if _looks_like_uuid(self.t.protein):
             params["protein_uuid"] = self.t.protein
         else:
             params["protein"] = self.t.protein
-
         with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
             json.dump(params, f)
             pfile = f.name
-
-        # Submit WITHOUT --follow: muni's --follow drops the connection on the
-        # ~1-hour batch jobs (that's what silently lost the earlier run's scores).
-        # Instead grab the job id and poll `muni job status` until it's terminal.
         cmd = [self.muni, "run", "rowan_batch_docking", "--params-file", pfile,
                "--json", "--title", self.name]
         if self.page_id:
             cmd += ["--page-id", self.page_id]
         proc = subprocess.run(cmd, capture_output=True, text=True)
-        job_id = _extract_job_id(proc.stdout) or _extract_job_id(proc.stderr)
-        if not job_id:
-            self.log(f"[muni-oracle] no job_id; stdout tail: {proc.stdout[-300:]}")
-            return {}
-        self.log(f"[muni-oracle] submitted {job_id} ({len(batch)} ligands); polling...")
-        deadline = time.time() + self.timeout_s
-        while time.time() < deadline:
-            time.sleep(self.poll_interval)
-            st = subprocess.run([self.muni, "job", "status", job_id, "--json"],
-                                capture_output=True, text=True)
-            try:
-                status = str(json.loads(st.stdout).get("status", "")).lower()
-            except Exception:
-                continue
-            if status in ("completed", "completed_ok", "success"):
-                break
-            if status in ("failed", "error", "cancelled"):
-                self.log(f"[muni-oracle] job {job_id} {status}")
-                return {}
-        else:
-            self.log(f"[muni-oracle] {job_id} not terminal after {self.timeout_s}s; reading anyway")
-        return self._read_scores(job_id, batch)
+        jid = _extract_job_id(proc.stdout) or _extract_job_id(proc.stderr)
+        if not jid:
+            self.log(f"[muni-oracle] submit failed: {proc.stdout[-200:]}")
+        return jid
 
     def _read_scores(self, job_id: str, batch) -> dict:
         q = subprocess.run([self.muni, "job", "query", job_id, "--json"],
