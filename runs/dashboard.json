@@ -1,0 +1,163 @@
+{
+  "primary": {
+    "run": "glycoprotein_t0r_100",
+    "seeds": 3,
+    "docked": 57,
+    "synthons_seen": 65,
+    "synthons_confident": 14,
+    "best_score": -9.2,
+    "topk_mean": -8.72,
+    "trajectory": [
+      {
+        "round": 1,
+        "best": -8.5,
+        "topk_mean": -8.29,
+        "n_docks": 39
+      },
+      {
+        "round": 2,
+        "best": -9.2,
+        "topk_mean": -8.56,
+        "n_docks": 44
+      },
+      {
+        "round": 3,
+        "best": -9.2,
+        "topk_mean": -8.72,
+        "n_docks": 57
+      }
+    ],
+    "top_synthons": [
+      {
+        "reward": 9.2,
+        "count": 1,
+        "rxn": "rxn_a46303e0",
+        "pos": "0",
+        "bb": "O=C(O)Cc1ccccc1NC(=O)c1cccc(C(=O)c2ccccc2)c1"
+      },
+      {
+        "reward": 9.0,
+        "count": 1,
+        "rxn": "rxn_a46303e0",
+        "pos": "0",
+        "bb": "O=C(O)Cc1ccc(NC(=O)c2cccc(C(=O)c3ccccc3)c2)cc1"
+      },
+      {
+        "reward": 8.8,
+        "count": 1,
+        "rxn": "rxn_a46303e0",
+        "pos": "1",
+        "bb": "CN(C)C(=O)Cc1ccc(N)cc1"
+      },
+      {
+        "reward": 8.7,
+        "count": 1,
+        "rxn": "rxn_a46303e0",
+        "pos": "0",
+        "bb": "O=C(O)c1ccc(NC(=O)c2cccc(C(=O)c3ccccc3)c2)cc1"
+      },
+      {
+        "reward": 8.7,
+        "count": 1,
+        "rxn": "rxn_33cc78ec",
+        "pos": "0",
+        "bb": "Oc1ccc(Cl)c(-c2cccc(NC(=S)NCc3ncc(Cl)cn3)c2)c1"
+      },
+      {
+        "reward": 8.6,
+        "count": 1,
+        "rxn": "rxn_a46303e0",
+        "pos": "0",
+        "bb": "O=C(O)Cc1cccc(NC(=O)c2cccc(C(=O)c3ccccc3)c2)c1"
+      },
+      {
+        "reward": 8.6,
+        "count": 1,
+        "rxn": "rxn_a46303e0",
+        "pos": "1",
+        "bb": "NC(=O)Cc1ccc(N)cc1"
+      },
+      {
+        "reward": 8.6,
+        "count": 1,
+        "rxn": "rxn_a46303e0",
+        "pos": "1",
+        "bb": "CCc1ccc(N)cc1"
+      }
+    ]
+  },
+  "n_unique": 12,
+  "n_runs": 2,
+  "top10": [
+    {
+      "rank": 1,
+      "score": -9.2,
+      "smiles": "CNC(=O)Cc1ccccc1NC(=O)c1cccc(C(=O)c2ccccc2)c1",
+      "run": "glycoprotein_t0r_100",
+      "pb": "True"
+    },
+    {
+      "rank": 2,
+      "score": -8.7,
+      "smiles": "COc1ccc(Cl)c(-c2cccc(NC(=S)NCc3ncc(Cl)cn3)c2)c1",
+      "run": "glycoprotein_t0r_100",
+      "pb": "True"
+    },
+    {
+      "rank": 3,
+      "score": -8.5,
+      "smiles": "Cc1cnc(NC(=O)c2cccc(C(=O)c3ccccc3)c2)s1",
+      "run": "glycoprotein_t0r_100",
+      "pb": "True"
+    },
+    {
+      "rank": 4,
+      "score": -8.4,
+      "smiles": "COc1ccc(Cl)c(-c2cccc(NC(=S)Nc3nc(CC(N)=O)cs3)c2)c1",
+      "run": "glycoprotein_t0r_100",
+      "pb": "True"
+    },
+    {
+      "rank": 5,
+      "score": -8.2,
+      "smiles": "CNC(=O)c1cnc(NCc2ccc(C(=O)c3ccccc3)cc2)s1",
+      "run": "glycoprotein_t0r_100",
+      "pb": "True"
+    },
+    {
+      "rank": 6,
+      "score": -8.1,
+      "smiles": "O=C(Cc1cccc(C(=O)c2ccccc2)c1)NCc1ncccn1",
+      "run": "glycoprotein_t0r_100",
+      "pb": "True"
+    },
+    {
+      "rank": 7,
+      "score": -8.0,
+      "smiles": "CNC(=O)c1cnc(NCc2cccc(C(=O)c3ccccc3)c2)s1",
+      "run": "glycoprotein_t0r_100",
+      "pb": "True"
+    },
+    {
+      "rank": 8,
+      "score": -8.0,
+      "smiles": "Cc1ccc(CNC(=O)Cc2cccc(C(=O)c3ccccc3)c2)s1",
+      "run": "glycoprotein_t0r_100",
+      "pb": "True"
+    },
+    {
+      "rank": 9,
+      "score": -8.0,
+      "smiles": "CC(=O)c1cnc(NC(=S)Nc2cccc(C(=O)c3ccccc3)c2)s1",
+      "run": "glycoprotein_t0r_100",
+      "pb": "True"
+    },
+    {
+      "rank": 10,
+      "score": -7.9,
+      "smiles": "COc1ccc(Cl)c(-c2cccc(NC(=S)NCc3ccccn3)c2)c1",
+      "run": "glycoprotein_t0r_100",
+      "pb": "True"
+    }
+  ]
+}
