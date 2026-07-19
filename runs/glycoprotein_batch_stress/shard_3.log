@@ -1,0 +1,44 @@
+[run] deriving box from ligand 'T0R' in runs/glycoprotein_t0r_trial/glycoprotein.pdb ...
+[run] box center=[-44.99, 14.94, -8.25] size=[22.45, 28.24, 23.27]
+[run] price filter dropped 9/12 seeds (> $200)
+[run] sample_space kept 3 seed(s) (strategy=diverse, seed=3200000003; replay with --sample-seed 3200000003):
+[run]   seed ($125): Cc1nc(C(F)(F)F)c(CN2Cc3ccccc3C(C)(C)C2)s1
+[run]   seed ($125): S=C(Nc1ccnc(-c2ccncc2)c1)NC1CN2CCC1CC2
+[run]   seed ($125): N#Cc1cc(C=O)ccc1NC(=O)c1ccc2c(c1)OCC(=O)N2
+[run] uploading local protein file runs/glycoprotein_t0r_trial/glycoprotein.pdb to Rowan ...
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/bb/repos/hackathons/ebolathon/synthon_ts/run.py", line 382, in <module>
+    main()
+  File "/Users/bb/repos/hackathons/ebolathon/synthon_ts/run.py", line 280, in main
+    rowan_uuid = _resolve_rowan_uuid(args.pdb, rowan_key)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bb/repos/hackathons/ebolathon/synthon_ts/run.py", line 59, in _resolve_rowan_uuid
+    prot = rowan.upload_protein(name=os.path.basename(pdb), file_path=pdb)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bb/.local/share/mamba/envs/researchia/lib/python3.12/site-packages/rowan/protein.py", line 414, in upload_protein
+    final_response = client.post("/protein", json=creation_payload)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bb/.local/share/mamba/envs/researchia/lib/python3.12/site-packages/httpx/_client.py", line 1144, in post
+    return self.request(
+           ^^^^^^^^^^^^^
+  File "/Users/bb/.local/share/mamba/envs/researchia/lib/python3.12/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bb/.local/share/mamba/envs/researchia/lib/python3.12/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bb/.local/share/mamba/envs/researchia/lib/python3.12/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/bb/.local/share/mamba/envs/researchia/lib/python3.12/site-packages/httpx/_client.py", line 999, in _send_handling_redirects
+    raise exc
+  File "/Users/bb/.local/share/mamba/envs/researchia/lib/python3.12/site-packages/httpx/_client.py", line 982, in _send_handling_redirects
+    hook(response)
+  File "/Users/bb/.local/share/mamba/envs/researchia/lib/python3.12/site-packages/rowan/utils.py", line 98, in _raise_for_status
+    response.raise_for_status()
+  File "/Users/bb/.local/share/mamba/envs/researchia/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Server error '503 Service Unavailable' for url 'https://api.rowansci.com/protein'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503
