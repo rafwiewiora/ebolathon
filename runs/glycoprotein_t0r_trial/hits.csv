@@ -1,0 +1,3 @@
+rank,smiles,score,mmgbsa,posebusters_valid,pose_file
+1,COC1CC2CCC(C1)N2C(=O)C1CCCN(Cc2ccccc2)C1,-7.700,,True,rank1_-7.70.pdb
+2,COC1CC2CCC(C1)N2C(=O)C1CCN(Cc2ccccc2)C1,-7.900,,True,rank2_-7.90.pdb

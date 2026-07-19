@@ -1,0 +1,56 @@
+{
+  "target": "/Users/bb/repos/hackathons/ebolathon/runs/glycoprotein_t0r_trial/glycoprotein.pdb",
+  "query_or_seeds": [
+    "CO[C@H]1C[C@H]2CC[C@@H](C1)N2C(=O)C1CCN(Cc2ccccc2)C1"
+  ],
+  "backend": "direct",
+  "rounds": [
+    {
+      "round": 0,
+      "n_docks": 4,
+      "best_score": -7.4,
+      "topk_mean": -7.35,
+      "top_k": 2,
+      "scores": [
+        -7.4,
+        -7.3,
+        -7.2,
+        -7.0
+      ],
+      "positions": {
+        "rxn_a46303e0": {
+          "0": [
+            {
+              "bb": "O=C(O)C1CCCN(Cc2ccccc2)C1",
+              "mean_reward": 7.35,
+              "count": 2,
+              "std": 0.0707
+            },
+            {
+              "bb": "O=C(O)C1CCN(Cc2ccccc2)C1",
+              "mean_reward": 7.1,
+              "count": 2,
+              "std": 0.1414
+            }
+          ],
+          "1": [
+            {
+              "bb": "COC1CC2CCC(C1)N2",
+              "mean_reward": 7.3,
+              "count": 2,
+              "std": 0.1414
+            },
+            {
+              "bb": "CO[C@H]1C[C@H]2CC[C@@H](C1)N2",
+              "mean_reward": 7.15,
+              "count": 2,
+              "std": 0.2121
+            }
+          ]
+        }
+      },
+      "n_synthons_seen": 4,
+      "n_synthons_confident": 4
+    }
+  ]
+}

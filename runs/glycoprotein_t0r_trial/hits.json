@@ -1,0 +1,14 @@
+[
+  {
+    "smiles": "COC1CC2CCC(C1)N2C(=O)C1CCCN(Cc2ccccc2)C1",
+    "score": -7.4,
+    "reaction_class": "rxn_a46303e0",
+    "scaffold": "O=C(C1CCCN(Cc2ccccc2)C1)N1C2CCCC1CC2"
+  },
+  {
+    "smiles": "CO[C@H]1C[C@H]2CC[C@@H](C1)N2C(=O)C1CCCN(Cc2ccccc2)C1",
+    "score": -7.3,
+    "reaction_class": "rxn_a46303e0",
+    "scaffold": "O=C(C1CCCN(Cc2ccccc2)C1)N1C2CCCC1CC2"
+  }
+]
