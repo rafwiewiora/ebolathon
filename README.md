@@ -18,9 +18,9 @@ docking backends, and how it relates to (and differs from) true Thompson Samplin
 # 1. environment
 pip install onepot rowan-python rdkit          # + PyMOL to view poses
 
-# 2. keys (env only — never commit these)
-export ONEPOT_API_KEY=<your-onepot-key>
-export ROWAN_API_KEY=<your-rowan-key>
+# 2. keys — copy the template, fill it in (real .env is gitignored, never commit keys)
+cp .env.example .env                 # then edit .env with your keys
+set -a; source .env; set +a          # load it (or: pip install python-dotenv → auto-loaded)
 
 # 3. run — target PDB + the ligand that defines the pocket + a seed
 python -m synthon_ts.run \

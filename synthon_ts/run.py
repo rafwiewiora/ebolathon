@@ -230,7 +230,19 @@ def _build_parser() -> argparse.ArgumentParser:
     return ap
 
 
+def _load_dotenv():
+    """Optional convenience: load a local .env into os.environ if python-dotenv is
+    installed (`pip install python-dotenv`). No-op otherwise — then export the keys
+    yourself (`set -a; source .env; set +a`). See .env.example."""
+    try:
+        from dotenv import load_dotenv
+        load_dotenv()
+    except Exception:
+        pass
+
+
 def main(argv=None):
+    _load_dotenv()
     args = _build_parser().parse_args(argv)
     os.makedirs(args.out_dir, exist_ok=True)
 
