@@ -1,0 +1,62 @@
+[
+  {
+    "smiles": "CC[C@@]1(O)C(=O)OCc2c1cc1n(c2=O)Cc2cc3ccccc3nc2-1",
+    "score": -8.5,
+    "reaction_class": "rxn_decac515",
+    "scaffold": "O=C1Cc2cc3n(c(=O)c2CO1)Cc1cc2ccccc2nc1-3"
+  },
+  {
+    "smiles": "Cc1nc(C(F)(F)F)c(CN2Cc3ccccc3C(C)(C)C2)s1",
+    "score": -8.1,
+    "reaction_class": "rxn_decac515",
+    "scaffold": "c1ccc2c(c1)CCN(Cc1cncs1)C2"
+  },
+  {
+    "smiles": "[O-][n+]1ccccc1Cc1cc(C(F)(F)F)nc2c(C(F)(F)F)cccc12",
+    "score": -8.1,
+    "reaction_class": "rxn_decac515",
+    "scaffold": "c1ccc(Cc2ccnc3ccccc23)[nH+]c1"
+  },
+  {
+    "smiles": "CCc1c2c(nc3ccccc13)-c1cc3c(c(=O)n1C2)COC(=O)[C@]3(O)CC",
+    "score": -8.0,
+    "reaction_class": "rxn_decac515",
+    "scaffold": "O=C1Cc2cc3n(c(=O)c2CO1)Cc1cc2ccccc2nc1-3"
+  },
+  {
+    "smiles": "Cc1nc(-c2ccccc2)c(-c2ccccc2)s1",
+    "score": -7.5,
+    "reaction_class": "rxn_decac515",
+    "scaffold": "c1ccc(-c2ncsc2-c2ccccc2)cc1"
+  },
+  {
+    "smiles": "C#CC1CCN(C(=O)NCc2sc(C)nc2C(F)(F)F)CC1",
+    "score": -7.3,
+    "reaction_class": "rxn_decac515",
+    "scaffold": "O=C(NCc1cncs1)N1CCCCC1"
+  },
+  {
+    "smiles": "O=[N+]([O-])c1ccc2c(c1)CN(Cc1ccccc1)C2",
+    "score": -7.2,
+    "reaction_class": "rxn_decac515",
+    "scaffold": "c1ccc(CN2Cc3ccccc3C2)cc1"
+  },
+  {
+    "smiles": "Clc1ccc2c(n1)CCN(Cc1ccccc1)C2",
+    "score": -7.0,
+    "reaction_class": "rxn_decac515",
+    "scaffold": "c1ccc(CN2CCc3ncccc3C2)cc1"
+  },
+  {
+    "smiles": "c1ccc(CN2Cc3ccccc3C2)cc1",
+    "score": -6.9,
+    "reaction_class": "rxn_decac515",
+    "scaffold": "c1ccc(CN2Cc3ccccc3C2)cc1"
+  },
+  {
+    "smiles": "Cc1nc2c(ccc3ccccc32)s1",
+    "score": -6.8,
+    "reaction_class": "rxn_decac515",
+    "scaffold": "c1ccc2c(c1)ccc1scnc12"
+  }
+]

@@ -99,3 +99,72 @@
 [rowan-batch] wave: 0/1 jobs (0 ligands)
 [round 2]   +0 scored (pool=88, docks=740, arms=2)
 [round 2] anchor score=-5.90 rxn=rxn_a46303e0 exploit@0 explore@1
+[rowan-batch] submit failed (21 ligs): 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[rowan-batch] wave: 0/1 jobs (0 ligands)
+[round 2]   +0 scored (pool=88, docks=761, arms=2)
+[run] round 2: exporting 10 live poses ...
+[poses] docking rank 1: CC(C)(C)C(=O)Nc1ccc(C(=O)N[C@H]2CCc3ccccc32)cc1Br
+[poses] rank 1 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 2: CC(C)(C)C(=O)Nc1ccc(C(=O)N[C@H]2CC[C@@H](O)C2)cc1Br
+[poses] rank 2 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 3: C#CC1CCN(C(=O)c2ccc(NC(=O)C(C)(C)C)c(Br)c2)CC1
+[poses] rank 3 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 4: C[C@H](NC(=O)c1ccc(NC(=O)C(C)(C)C)c(Br)c1)c1ccccn1
+[poses] rank 4 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 5: Cc1ccc(C(=O)O)cc1NC(=O)c1ccccc1
+[poses] rank 5 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 6: Cc1cc(C(=O)NCc2ccccc2)ccc1Br
+[poses] rank 6 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 7: Cc1ccc(C(=O)NC2CCCCC2)cc1F
+[poses] rank 7 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 8: COC(=O)c1ccc(C2CCCCC2)c(Br)c1
+[poses] rank 8 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 9: Cc1ccc(C(=O)O)cc1NC(=O)C1CCCO1
+[poses] rank 9 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 10: CC(C)(C)NC(=O)c1ccc2ccccc2c1
+[poses] rank 10 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] wrote runs/glycoprotein_batch_stress/shard_1/view.pml
+[poses] exported 0 poses -> runs/glycoprotein_batch_stress/shard_1  (open runs/glycoprotein_batch_stress/shard_1/view.pml)
+[round 2] top10 mean score=-8.190 (prev -8.190); fresh=0
+[round 2] loop-until-dry: no improvement x2; stop
+[run] final: exporting 10 poses ...
+[poses] docking rank 1: CC(C)(C)C(=O)Nc1ccc(C(=O)N[C@H]2CCc3ccccc32)cc1Br
+[poses] rank 1 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 2: CC(C)(C)C(=O)Nc1ccc(C(=O)N[C@H]2CC[C@@H](O)C2)cc1Br
+[poses] rank 2 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 3: C#CC1CCN(C(=O)c2ccc(NC(=O)C(C)(C)C)c(Br)c2)CC1
+[poses] rank 3 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 4: C[C@H](NC(=O)c1ccc(NC(=O)C(C)(C)C)c(Br)c1)c1ccccn1
+[poses] rank 4 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 5: Cc1ccc(C(=O)O)cc1NC(=O)c1ccccc1
+[poses] rank 5 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 6: Cc1cc(C(=O)NCc2ccccc2)ccc1Br
+[poses] rank 6 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 7: Cc1ccc(C(=O)NC2CCCCC2)cc1F
+[poses] rank 7 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 8: COC(=O)c1ccc(C2CCCCC2)c(Br)c1
+[poses] rank 8 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 9: Cc1ccc(C(=O)O)cc1NC(=O)C1CCCO1
+[poses] rank 9 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 10: CC(C)(C)NC(=O)c1ccc2ccccc2c1
+[poses] rank 10 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] wrote runs/glycoprotein_batch_stress/shard_1/view.pml
+[poses] exported 0 poses -> runs/glycoprotein_batch_stress/shard_1  (open runs/glycoprotein_batch_stress/shard_1/view.pml)
+
+=== synthon-TS done: 761 docks, 88 scored ===
+Top scaffold-diverse hits (lower score = better):
+   -9.00  CC(C)(C)C(=O)Nc1ccc(C(=O)N[C@H]2CCc3ccccc32)cc1Br
+   -7.90  CC(C)(C)C(=O)Nc1ccc(C(=O)N[C@H]2CC[C@@H](O)C2)cc1Br
+   -7.70  C#CC1CCN(C(=O)c2ccc(NC(=O)C(C)(C)C)c(Br)c2)CC1
+   -7.60  C[C@H](NC(=O)c1ccc(NC(=O)C(C)(C)C)c(Br)c1)c1ccccn1
+   -7.50  Cc1ccc(C(=O)O)cc1NC(=O)c1ccccc1
+   -7.30  Cc1cc(C(=O)NCc2ccccc2)ccc1Br
+   -6.90  Cc1ccc(C(=O)NC2CCCCC2)cc1F
+   -6.90  COC(=O)c1ccc(C2CCCCC2)c(Br)c1
+   -6.80  Cc1ccc(C(=O)O)cc1NC(=O)C1CCCO1
+   -6.80  CC(C)(C)NC(=O)c1ccc2ccccc2c1
+
+Wrote hits + poses to runs/glycoprotein_batch_stress/shard_1
+Open the docked poses in PyMOL:
+    /Users/bb/.local/share/mamba/envs/cadd-pymol/bin/pymol runs/glycoprotein_batch_stress/shard_1/view.pml
+Live refresh while a run is going: in PyMOL run  @view.pml  (or File > Reload All)

@@ -1,0 +1,116 @@
+[run] deriving box from ligand 'T0R' in runs/glycoprotein_t0r_trial/glycoprotein.pdb ...
+[run] box center=[-44.99, 14.94, -8.25] size=[22.45, 28.24, 23.27]
+[run] price filter dropped 5/12 seeds (> $200)
+[run] sample_space kept 3 seed(s) (strategy=diverse, seed=3231648947; replay with --sample-seed 3231648947):
+[run]   seed ($125): C=CCC(NC(=S)N(C)Cc1ccc(C(F)(F)F)cn1)C(=O)O
+[run]   seed ($125): COC(=O)CC(O)c1ccc(OC)c(-c2cccc(CCO)c2)c1
+[run]   seed ($125): Cc1ccc(CCNC(=O)Cc2cc(F)ccc2F)c(C)c1
+[run] uploading local protein file runs/glycoprotein_t0r_trial/glycoprotein.pdb to Rowan ...
+[run] prepared uploaded protein -> 23a202e7-9b1e-4a16-84b0-f521fc88a5a7
+[run] direct BATCH docking (scores-only; poses re-dock top-K); chunk=200, 4 jobs concurrent
+[seed] 3 seed(s); max_results=150 each
+[seed 0] onepot search: 'C=CCC(NC(=S)N(C)Cc1ccc(C(F)(F)F)cn1)C(=O)O'
+[seed 0] druglike filter dropped 2/56 analogs
+[seed 0] 54 analogs (post-filter); decomposes to rxn_45d00d3a; docking...
+[rowan-batch] wave: 1/1 jobs (54 ligands)
+[rowan-batch]   +52 scored (total 52)
+[attrib] decomposed 52 analogs (onepot credits_used=52)
+[attrib] 21/52 analogs attributed to their own synthons
+[seed 1] onepot search: 'COC(=O)CC(O)c1ccc(OC)c(-c2cccc(CCO)c2)c1'
+[seed 1] druglike filter dropped 10/96 analogs
+[seed 1] 86 analogs (post-filter); decomposes to rxn_d222a18d; docking...
+[rowan-batch] submit failed (86 ligs): 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[rowan-batch] wave: 0/1 jobs (0 ligands)
+[seed 2] onepot search: 'Cc1ccc(CCNC(=O)Cc2cc(F)ccc2F)c(C)c1'
+[seed 2] druglike filter dropped 4/79 analogs
+[seed 2] 75 analogs (post-filter); decomposes to rxn_a46303e0; docking...
+[rowan-batch] submit failed (75 ligs): 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[rowan-batch] wave: 0/1 jobs (0 ligands)
+[seed] scored pool=52  docks=215  synthon arms=31
+[round 1] anchor score=-7.10 rxn=rxn_d222a18d exploit@1 explore@0
+[round 1] druglike filter dropped 4/75 analogs
+[rowan-batch] submit failed (47 ligs): 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[rowan-batch] wave: 0/1 jobs (0 ligands)
+[round 1]   +0 scored (pool=52, docks=262, arms=31)
+[round 1] anchor score=-6.90 rxn=rxn_d222a18d exploit@1 explore@0
+[round 1] druglike filter dropped 4/69 analogs
+[rowan-batch] submit failed (25 ligs): 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[rowan-batch] wave: 0/1 jobs (0 ligands)
+[round 1]   +0 scored (pool=52, docks=287, arms=31)
+[round 1] anchor score=-7.60 rxn=rxn_d222a18d exploit@0 explore@1
+[round 1] druglike filter dropped 4/56 analogs
+[rowan-batch] submit failed (42 ligs): 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[rowan-batch] wave: 0/1 jobs (0 ligands)
+[round 1]   +0 scored (pool=52, docks=329, arms=31)
+[round 1] anchor score=-6.30 rxn=rxn_decac515 exploit@0 explore@1
+[round 1] druglike filter dropped 1/51 analogs
+[rowan-batch] submit failed (44 ligs): 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[rowan-batch] wave: 0/1 jobs (0 ligands)
+[round 1]   +0 scored (pool=52, docks=373, arms=31)
+[round 1] anchor score=-6.60 rxn=rxn_45d00d3a exploit@0 explore@1
+[round 1]   +0 scored (pool=52, docks=373, arms=31)
+[round 1] anchor score=-7.10 rxn=rxn_933507b5 exploit@1 explore@0
+[round 1] druglike filter dropped 4/55 analogs
+[rowan-batch] submit failed (35 ligs): 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[rowan-batch] wave: 0/1 jobs (0 ligands)
+[round 1]   +0 scored (pool=52, docks=408, arms=31)
+[run] round 1: exporting 10 live poses ...
+[poses] wrote receptor runs/glycoprotein_screen/receptor.pdb
+[poses] docking rank 1: O=C(O)c1ncc(C(F)(F)F)cc1-c1ccccc1
+[poses] rank 1 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 2: O=C(O)C1CCN(c2ccc(C(F)(F)F)cn2)CC1
+[poses] rank 2 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 3: Cc1c(C(=O)O)cnn1-c1ccc(C(F)(F)F)cn1
+[poses] rank 3 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 4: FC(F)(F)c1ccc(-c2ccc(C(F)(F)F)cn2)nc1
+[poses] rank 4 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 5: FC(F)(F)c1ccc(-c2ccccc2)nc1
+[poses] rank 5 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 6: NC(Cc1cc(C(F)(F)F)ccc1Cl)C(=O)O
+[poses] rank 6 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 7: C=CC[C@@H](NC(=S)N(C)Cc1ccc(C(F)(F)F)cn1)C(=O)O
+[poses] rank 7 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 8: CCOC(=O)c1cc2cc(C(F)(F)F)cnc2[nH]1
+[poses] rank 8 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 9: O=C(O)C(Cc1ccccc1)NS(=O)(=O)c1cccc(C(F)(F)F)c1
+[poses] rank 9 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 10: C=CCC(C)C(=O)O
+[poses] rank 10 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] wrote runs/glycoprotein_screen/view.pml
+[poses] exported 0 poses -> runs/glycoprotein_screen  (open runs/glycoprotein_screen/view.pml)
+[round 1] top30 mean score=-6.480 (prev -6.480); fresh=0
+[round 2] anchor score=-6.50 rxn=rxn_a46303e0 exploit@0 explore@1
+[round 2] druglike filter dropped 9/100 analogs
+[rowan-batch] submit failed (81 ligs): 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[rowan-batch] wave: 0/1 jobs (0 ligands)
+[round 2]   +0 scored (pool=52, docks=489, arms=31)
+[round 2] anchor score=-7.10 rxn=rxn_d222a18d exploit@1 explore@0
+[round 2] druglike filter dropped 4/75 analogs
+[rowan-batch] submit failed (3 ligs): 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[rowan-batch] wave: 0/1 jobs (0 ligands)
+[round 2]   +0 scored (pool=52, docks=492, arms=31)
+[round 2] anchor score=-7.60 rxn=rxn_d222a18d exploit@0 explore@1
+[round 2] druglike filter dropped 4/55 analogs
+[round 2]   +0 scored (pool=52, docks=492, arms=31)
+[round 2] anchor score=-6.90 rxn=rxn_d222a18d exploit@1 explore@0
+[round 2] druglike filter dropped 4/69 analogs
+[round 2]   +0 scored (pool=52, docks=492, arms=31)
+[round 2] anchor score=-6.50 rxn=rxn_45d00d3a exploit@0 explore@1
+[round 2] druglike filter dropped 2/39 analogs
+[rowan-batch] submit failed (8 ligs): 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[rowan-batch] wave: 0/1 jobs (0 ligands)
+[round 2]   +0 scored (pool=52, docks=500, arms=31)
+[round 2] anchor score=-7.10 rxn=rxn_933507b5 exploit@1 explore@0
+[round 2] druglike filter dropped 4/55 analogs
+[round 2]   +0 scored (pool=52, docks=500, arms=31)
+[run] round 2: exporting 10 live poses ...
+[poses] docking rank 1: O=C(O)c1ncc(C(F)(F)F)cc1-c1ccccc1
+[poses] rank 1 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 2: O=C(O)C1CCN(c2ccc(C(F)(F)F)cn2)CC1
+[poses] rank 2 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 3: Cc1c(C(=O)O)cnn1-c1ccc(C(F)(F)F)cn1
+[poses] rank 3 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 4: FC(F)(F)c1ccc(-c2ccc(C(F)(F)F)cn2)nc1
+[poses] rank 4 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
+[poses] docking rank 5: FC(F)(F)c1ccc(-c2ccccc2)nc1
+[poses] rank 5 dock failed: 400 Storage limit exceeded! Your limit is 1000000000 bytes. You have used 1126872083 bytes.
