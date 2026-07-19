@@ -47,6 +47,10 @@
   .syn .r{color:var(--good);font-weight:600}
   .syn .meta{color:var(--muted)}
   .chart{width:100%;height:180px}
+  .chartlegend{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:8px;font-family:var(--mono);font-size:11px}
+  .lg{display:inline-flex;align-items:center;gap:6px;color:var(--muted)}
+  .lg::before{content:"";width:16px;border-top:2px solid;display:inline-block}
+  .lg-best::before{border-color:var(--ours)} .lg-tk::before{border-color:var(--ideal);border-top-style:dashed} .lg-bb::before{border-color:var(--good)}
   .foot{margin-top:34px;font-family:var(--mono);font-size:12px;color:var(--muted)}
   .foot a{color:var(--ours)}
   .empty{color:var(--muted);font-size:14px;padding:20px 0}
@@ -87,7 +91,14 @@
   <div class="cols">
     <div>
       <h2>Score trajectory</h2>
-      <div class="panel"><svg class="chart" id="chart" viewBox="0 0 520 180" preserveAspectRatio="xMidYMid meet"></svg></div>
+      <div class="panel">
+        <div class="chartlegend">
+          <span class="lg lg-best">best molecule</span>
+          <span class="lg lg-tk">top-k mean</span>
+          <span class="lg lg-bb">top synthons (BB)</span>
+        </div>
+        <svg class="chart" id="chart" viewBox="0 0 520 180" preserveAspectRatio="xMidYMid meet"></svg>
+      </div>
     </div>
     <div>
       <h2>Top synthons — structure &amp; which position they fill</h2>
@@ -117,8 +128,8 @@ function renderChart(traj){
   const svg=$("chart"); svg.innerHTML="";
   if(!traj||!traj.length){svg.innerHTML='<text x="20" y="90" fill="currentColor" font-size="13" opacity=".5">waiting for round data…</text>';return;}
   const W=520,H=180,pad=34;
-  const xs=traj.map(d=>d.round), best=traj.map(d=>d.best), tk=traj.map(d=>d.topk_mean);
-  const vals=best.concat(tk).filter(v=>v!=null);
+  const xs=traj.map(d=>d.round), best=traj.map(d=>d.best), tk=traj.map(d=>d.topk_mean), bb=traj.map(d=>d.top_bb_score);
+  const vals=best.concat(tk).concat(bb).filter(v=>v!=null);
   let mn=Math.min(...vals), mx=Math.max(...vals); if(mn===mx){mn-=1;mx+=1;}
   const xr=Math.max(...xs), xmin=Math.min(...xs);
   const X=r=>pad+((r-xmin)/Math.max(1,(xr-xmin)))*(W-pad*1.5);
@@ -133,10 +144,9 @@ function renderChart(traj){
   // axis labels (best/worst)
   svg.innerHTML+=`<text x="4" y="${Yb(mn)+4}" fill="currentColor" font-size="10" opacity=".55" font-family="ui-monospace,monospace">${mn.toFixed(1)}</text>`;
   svg.innerHTML+=`<text x="4" y="${Yb(mx)+4}" fill="currentColor" font-size="10" opacity=".55" font-family="ui-monospace,monospace">${mx.toFixed(1)}</text>`;
-  line(best, getVar('--ours'), false);
-  line(tk, getVar('--ideal'), true);
-  svg.innerHTML+=`<text x="${W-150}" y="16" fill="${getVar('--ours')}" font-size="11" font-family="ui-monospace,monospace">— best</text>`;
-  svg.innerHTML+=`<text x="${W-88}" y="16" fill="${getVar('--ideal')}" font-size="11" font-family="ui-monospace,monospace">--- top-k mean</text>`;
+  line(best, getVar('--ours'), false);      // best molecule score
+  line(tk, getVar('--ideal'), true);        // top-k mean molecule score
+  line(bb, getVar('--good'), false);        // top synthon (BB) reward, in score space
 }
 function getVar(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim()||'#b25628';}
 

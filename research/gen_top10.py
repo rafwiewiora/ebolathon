@@ -82,6 +82,20 @@ def _top10(rows):
     return sorted(best.values(), key=lambda x: x["score"])[:10], len(best)
 
 
+def _top_bb_score(rnd, k=5):
+    """Per-round synthon (BB) 'score' for the trajectory: the mean reward of the
+    top-k synthon arms this round, negated into score space (lower = better) so it
+    plots on the same axis as the molecule scores."""
+    rews = []
+    for _rxn, pos in rnd.get("positions", {}).items():
+        for _idx, arr in pos.items():
+            for s in arr:
+                rews.append(s["mean_reward"])
+    rews.sort(reverse=True)
+    top = rews[:k]
+    return round(-sum(top) / len(top), 2) if top else None
+
+
 def _primary_run():
     """Pick the run to feature: prefer a live 'screen'/'batch' run that has data,
     else the run with the most docked molecules."""
@@ -124,7 +138,8 @@ def _primary_run():
         "best_score": last.get("best_score"),
         "topk_mean": last.get("topk_mean"),
         "trajectory": [{"round": r.get("round"), "best": r.get("best_score"),
-                        "topk_mean": r.get("topk_mean"), "n_docks": r.get("n_docks")}
+                        "topk_mean": r.get("topk_mean"), "n_docks": r.get("n_docks"),
+                        "top_bb_score": _top_bb_score(r)}
                        for r in rounds],
         "top_synthons": syn[:8],
     }
