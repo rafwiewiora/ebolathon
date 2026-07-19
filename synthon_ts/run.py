@@ -209,6 +209,12 @@ def _build_parser() -> argparse.ArgumentParser:
     ap.add_argument("--scoring", default="vina", choices=["vina", "vinardo"])
     ap.add_argument("--executable", default="qvina2", choices=["qvina2", "qvina-w", "vina"])
     ap.add_argument("--exhaustiveness", type=int, default=8)
+    ap.add_argument("--dock-mode", choices=["single", "batch"], default="single",
+                    help="direct backend only: 'single' returns poses (~1.5-2 cr/lig, "
+                         "8 concurrent, slow); 'batch' is scores-only but ~15-20x "
+                         "cheaper/faster — use it to screen THOUSANDS (poses re-dock top-K)")
+    ap.add_argument("--batch-chunk", type=int, default=60, help="ligands per batch_docking job")
+    ap.add_argument("--max-inflight", type=int, default=8, help="concurrent docking jobs/waves")
     ap.add_argument("--page-id", default=None, help="muni page id (muni backend only)")
     # budget
     ap.add_argument("--max-docks", type=int, default=120)
@@ -259,12 +265,20 @@ def main(argv=None):
 
     # 3) protein prep + docking oracle ------------------------------------
     if args.backend == "direct":
-        from .oracle_rowan import RowanDockingOracle
         rowan_uuid = _resolve_rowan_uuid(args.pdb, rowan_key)
         dock_target = Target(protein=rowan_uuid, pocket=box, executable=args.executable,
                              scoring_function=args.scoring, exhaustiveness=args.exhaustiveness)
-        oracle = RowanDockingOracle(dock_target, api_key=rowan_key,
-                                    protein_uuid=rowan_uuid, name="synthon-TS dock")
+        if args.dock_mode == "batch":
+            from .oracle_rowan_batch import RowanBatchDockingOracle
+            oracle = RowanBatchDockingOracle(dock_target, api_key=rowan_key,
+                                             protein_uuid=rowan_uuid, chunk=args.batch_chunk,
+                                             max_inflight=args.max_inflight, name="synthon-TS dock")
+            print(f"[run] direct BATCH docking (scores-only; poses re-dock top-K); "
+                  f"chunk={args.batch_chunk}, {args.max_inflight} jobs concurrent")
+        else:
+            from .oracle_rowan import RowanDockingOracle
+            oracle = RowanDockingOracle(dock_target, api_key=rowan_key, protein_uuid=rowan_uuid,
+                                        max_inflight=args.max_inflight, name="synthon-TS dock")
         pose_target = dock_target  # same prepared receptor
     else:
         from .oracle_muni import MuniBatchDockingOracle

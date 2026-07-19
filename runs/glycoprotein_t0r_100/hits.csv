@@ -1,0 +1,11 @@
+rank,smiles,score,mmgbsa,posebusters_valid,pose_file
+1,CNC(=O)Cc1ccccc1NC(=O)c1cccc(C(=O)c2ccccc2)c1,-9.200,,True,rank1_-9.20.pdb
+2,COc1ccc(Cl)c(-c2cccc(NC(=S)NCc3ncc(Cl)cn3)c2)c1,-8.700,,True,rank2_-8.70.pdb
+3,Cc1cnc(NC(=O)c2cccc(C(=O)c3ccccc3)c2)s1,-8.500,,True,rank3_-8.50.pdb
+4,COc1ccc(Cl)c(-c2cccc(NC(=S)Nc3nc(CC(N)=O)cs3)c2)c1,-8.400,,True,rank4_-8.40.pdb
+5,CNC(=O)c1cnc(NCc2ccc(C(=O)c3ccccc3)cc2)s1,-8.200,,True,rank5_-8.20.pdb
+6,O=C(Cc1cccc(C(=O)c2ccccc2)c1)NCc1ncccn1,-8.100,,True,rank6_-8.10.pdb
+7,CNC(=O)c1cnc(NCc2cccc(C(=O)c3ccccc3)c2)s1,-8.000,,True,rank7_-8.00.pdb
+8,Cc1ccc(CNC(=O)Cc2cccc(C(=O)c3ccccc3)c2)s1,-8.000,,True,rank8_-8.00.pdb
+9,CC(=O)c1cnc(NC(=S)Nc2cccc(C(=O)c3ccccc3)c2)s1,-8.000,,True,rank9_-8.00.pdb
+10,COc1ccc(Cl)c(-c2cccc(NC(=S)NCc3ccccn3)c2)c1,-7.900,,True,rank10_-7.90.pdb
