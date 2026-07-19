@@ -135,6 +135,108 @@ subscription — `400 You do not have access to this feature` even with credits
 `analogue_docking` needs a bound template pose (fails on arbitrary anchors), so
 version B uses box-based single `docking`, which mirrors the muni batch semantics.
 
+## Backend C — your own SLURM cluster (`--backend slurm`)
+
+For an HPC with lots of CPU + GPU nodes, dock **locally at massive parallelism**
+instead of the cloud backends (Rowan/muni), which are storage/queue-limited. Each
+`oracle.score()` call (one per screen round) becomes **one SLURM array job**: one
+array task per `--array-chunk` ligands, fanned out across every node you have. No
+Rowan or muni credits, no cloud queue — and **no `ROWAN_API_KEY`** (poses come
+from the engine itself, written as one gzipped SDF).
+
+Code: `oracle_slurm.py` (`SlurmDockingOracle`), `slurm/install.sh`, and the three
+`slurm/*.sbatch` templates the oracle renders.
+
+### The CPU→GPU engine funnel (`--engine`)
+All four engines are **free** and honour the same box + oracle contract (lower
+score = better, Vina/Vinardo kcal/mol). Pick per stage of a funnel:
+
+| engine | tier | notes |
+|---|---|---|
+| `qvina2` | **CPU / cheap bulk** | Vina; **matches the CDK2/1HCK calibration** — the default. |
+| `smina`  | CPU | Vina/Vinardo (`--scoring vinardo` when `--scoring vinardo`); same PDBQT prep as qvina2. |
+| `unidock`| **GPU / throughput** | Uni-Dock: GPU Vina/Vinardo, **thousands of ligands/GPU** (one batched task/GPU). |
+| `gnina`  | **GPU / accuracy** | GNINA 1.3: Vina + CNN rescoring; SDF ligands; ranked on `minimizedAffinity`. |
+
+**Recommendation:** bulk-screen on **CPU `qvina2`** (cheap, calibrated), then
+re-score the survivors on **GPU `unidock`** (throughput) and finally the very top
+on **GPU `gnina`** (Vina + CNN accuracy). Same box, same contract, so you can swap
+`--engine` between rounds/runs.
+
+### Install the engines (micromamba only — never conda/mamba)
+```bash
+# edit MICROMAMBA path + ENV_NAME at the top first
+bash synthon_ts/slurm/install.sh
+```
+Creates a micromamba env with the engines + prep tools from conda-forge/bioconda:
+`qvina` `smina` (CPU) · `unidock` `gnina` (GPU, CUDA/Linux) · `meeko` `openbabel`
+(prep) · `rdkit` `numpy`. GPU engines are Linux/CUDA-only; on non-GPU nodes install
+just the CPU engines (comment out the GPU lines) — see the header notes.
+
+### Cluster config
+Everything cluster-specific is a flag (all marked `# TODO: set for your cluster`
+in the templates):
+
+- `--partition` — CPU partition (qvina2/smina).
+- `--gpu-partition` — GPU partition (unidock/gnina); the oracle also adds
+  `#SBATCH --gres=gpu:1` for GPU engines.
+- `--slurm-time` — `#SBATCH --time` per array task (default `02:00:00`).
+- `--array-chunk` — ligands per array task (default `200`; go bigger for GPU
+  Uni-Dock, which batches a whole chunk onto one GPU).
+- `--env-activate` — a shell snippet prepended to **every** job for module/conda
+  activation, e.g.
+  `'eval "$(/path/micromamba shell hook -s bash)" && micromamba activate synthon-dock'`
+  or `'module load cuda/12.2 && micromamba activate synthon-dock'`.
+- `--slurm-workdir` — a **shared-filesystem** scratch dir (default `slurm_work`);
+  the login node writes ligand/sbatch files there and reads pose/score files back,
+  so it must be visible to the compute nodes.
+- `--slurm-poll` — seconds between `squeue` polls (default `30`).
+
+**Receptor prep** happens once per run and is cached (`slurm_work/receptor.pdbqt`):
+the `--pdb` id is downloaded from RCSB (or a local `.pdb`/`.cif`/`.pdbqt` path is
+used), HETATM/waters are stripped, and it's converted to PDBQT via Meeko
+`mk_prepare_receptor.py` if on PATH, else Open Babel. If your pocket needs a
+retained metal/cofactor, prepare the receptor PDBQT yourself and pass its path as
+`--pdb`.
+
+**Ligand prep** is RDKit `EmbedMolecule` + ETKDGv3 — **embed only, no force-field
+optimization** — then Meeko/obabel → PDBQT (qvina2/smina/unidock) or RDKit → SDF
+(gnina).
+
+### Example commands
+```bash
+export ONEPOT_API_KEY=...        # retrieval only — no ROWAN key needed for slurm
+
+# CPU bulk screen (qvina2), 200 ligands/task
+python -m synthon_ts.run \
+  --pdb 1HCK --pocket-ligand ATP \
+  --query "CCC(CO)Nc1nc(NCc2ccccc2)c2ncn(C(C)C)c2n1" \
+  --backend slurm --engine qvina2 \
+  --partition cpu --array-chunk 200 --slurm-time 02:00:00 \
+  --env-activate 'eval "$(/opt/micromamba/bin/micromamba shell hook -s bash)" && micromamba activate synthon-dock' \
+  --out-dir runs/cdk2_slurm
+
+# GPU throughput screen (Uni-Dock), 500 ligands/GPU task
+python -m synthon_ts.run --pdb 1HCK --pocket-ligand ATP --query "<seed>" \
+  --backend slurm --engine unidock \
+  --gpu-partition gpu --array-chunk 500 --slurm-time 04:00:00 \
+  --env-activate 'module load cuda/12.2 && micromamba activate synthon-dock' \
+  --out-dir runs/cdk2_unidock
+
+# GPU accuracy re-score (GNINA, Vina + CNN)
+python -m synthon_ts.run --pdb 1HCK --pocket-ligand ATP --query "<seed>" \
+  --backend slurm --engine gnina --gpu-partition gpu \
+  --env-activate 'module load cuda/12.2 && micromamba activate synthon-dock' \
+  --out-dir runs/cdk2_gnina
+```
+
+### Pose output (lean)
+SLURM engines produce poses. Instead of dozens of loose PDBs (GitHub bloat), the
+run writes **one gzipped multi-molecule SDF** `top_hits.sdf.gz` (with `Score`,
+`SMILES`, `Rank` as SDF properties) from the engines' own best poses — no re-dock,
+no Rowan. `--no-poses` skips it (scores + `convergence.json` + `hits.csv` only).
+`runs/**/rank*.pdb` and `slurm_work/` are git-ignored.
+
 ## Setup
 
 ```bash

@@ -19,5 +19,8 @@ __pycache__/
 
 # Run outputs / scratch
 runs/
+runs/**/rank*.pdb          # loose per-pose PDBs — keep the repo lean (use top_hits.sdf.gz)
+slurm_work/                # SLURM oracle scratch (ligands, sbatch, poses, scores)
+synthon_ts/slurm_work/
 *.pse
 synthon_ts_*_hits.json

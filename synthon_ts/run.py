@@ -205,10 +205,26 @@ def _build_parser() -> argparse.ArgumentParser:
                     choices=["low", "medium", "high"],
                     help="max supplier risk for analogs (native onepot search filter)")
     # backend / docking
-    ap.add_argument("--backend", choices=["direct", "muni"], default="direct")
+    ap.add_argument("--backend", choices=["direct", "muni", "slurm"], default="direct")
     ap.add_argument("--scoring", default="vina", choices=["vina", "vinardo"])
     ap.add_argument("--executable", default="qvina2", choices=["qvina2", "qvina-w", "vina"])
     ap.add_argument("--exhaustiveness", type=int, default=8)
+    # SLURM backend (your own HPC — massive CPU/GPU parallelism, no cloud queue)
+    ap.add_argument("--engine", default="qvina2",
+                    choices=["qvina2", "smina", "unidock", "gnina"],
+                    help="SLURM engine: CPU->GPU funnel (qvina2/smina CPU; unidock GPU throughput; gnina GPU+CNN)")
+    ap.add_argument("--partition", default=None,
+                    help="SLURM partition for CPU engines (qvina2/smina). TODO: set for your cluster")
+    ap.add_argument("--gpu-partition", default=None,
+                    help="SLURM partition for GPU engines (unidock/gnina). TODO: set for your cluster")
+    ap.add_argument("--slurm-time", default="02:00:00", help="SLURM #SBATCH --time per array task")
+    ap.add_argument("--array-chunk", type=int, default=200, help="ligands per SLURM array task")
+    ap.add_argument("--slurm-poll", type=int, default=30, help="seconds between squeue polls")
+    ap.add_argument("--slurm-workdir", default="slurm_work",
+                    help="shared-filesystem scratch dir for SLURM ligands/poses/scores")
+    ap.add_argument("--env-activate", default=None,
+                    help="shell snippet prepended to each SLURM job (module load / micromamba activate). "
+                         "TODO: set for your cluster")
     ap.add_argument("--dock-mode", choices=["single", "batch"], default="single",
                     help="direct backend only: 'single' returns poses (~1.5-2 cr/lig, "
                          "8 concurrent, slow); 'batch' is scores-only but ~15-20x "
@@ -226,6 +242,9 @@ def _build_parser() -> argparse.ArgumentParser:
     # output
     ap.add_argument("--out-dir", required=True)
     ap.add_argument("--top-k", type=int, default=10, help="# top hits to export as poses")
+    ap.add_argument("--no-poses", action="store_true",
+                    help="skip pose export entirely (scores + convergence + hits.csv only). "
+                         "Use with --backend muni, or when Rowan pose storage is unavailable.")
     ap.add_argument("--pymol", action="store_true", help="auto-launch PyMOL on the output")
     return ap
 
@@ -247,10 +266,14 @@ def main(argv=None):
     os.makedirs(args.out_dir, exist_ok=True)
 
     onepot_key = os.environ["ONEPOT_API_KEY"]
-    # Pose export ALWAYS needs a Rowan key (muni batch docking has no poses).
+    # Rowan is needed for the `direct` docking backend and for Rowan-based pose
+    # export (direct + muni). The `slurm` backend docks AND poses locally on your
+    # cluster, so it needs NO Rowan key.
     rowan_key = os.environ.get("ROWAN_API_KEY")
-    if not rowan_key:
-        sys.exit("ROWAN_API_KEY is required (pose export docks through direct Rowan).")
+    need_rowan = (args.backend == "direct"
+                  or (args.backend == "muni" and not args.no_poses))
+    if need_rowan and not rowan_key:
+        sys.exit("ROWAN_API_KEY is required for the direct backend and Rowan pose export.")
 
     limits = DrugLikeLimits(mw_max=args.mw_max, logp_min=args.logp_min,
                             logp_max=args.logp_max, hbd_max=args.hbd_max,
@@ -292,17 +315,34 @@ def main(argv=None):
             oracle = RowanDockingOracle(dock_target, api_key=rowan_key, protein_uuid=rowan_uuid,
                                         max_inflight=args.max_inflight, name="synthon-TS dock")
         pose_target = dock_target  # same prepared receptor
+    elif args.backend == "slurm":
+        from .oracle_slurm import SlurmDockingOracle
+        dock_target = Target(protein=args.pdb, pocket=box, executable=args.engine,
+                             scoring_function=args.scoring, exhaustiveness=args.exhaustiveness)
+        oracle = SlurmDockingOracle(
+            dock_target, engine=args.engine, partition=args.partition,
+            gpu_partition=args.gpu_partition, time_limit=args.slurm_time,
+            array_chunk=args.array_chunk, poll_interval=args.slurm_poll,
+            workdir=args.slurm_workdir, env_activate=args.env_activate)
+        print(f"[run] SLURM backend: engine={args.engine}, array-chunk={args.array_chunk}, "
+              f"partition={args.gpu_partition if args.engine in ('unidock','gnina') else args.partition}")
+        # SLURM produces poses locally (gzipped SDF) — no Rowan receptor needed.
+        pose_target = None
     else:
         from .oracle_muni import MuniBatchDockingOracle
         dock_target = Target(protein=args.pdb, pocket=box, executable=args.executable,
                              scoring_function=args.scoring, exhaustiveness=args.exhaustiveness)
         oracle = MuniBatchDockingOracle(dock_target, page_id=args.page_id,
                                         name="synthon-TS dock")
-        # muni produces no poses -> prepare a separate Rowan receptor for export
-        print("[run] muni backend: preparing a Rowan receptor for pose export ...")
-        rowan_uuid = _resolve_rowan_uuid(args.pdb, rowan_key)
-        pose_target = Target(protein=rowan_uuid, pocket=box, executable=args.executable,
-                             scoring_function=args.scoring, exhaustiveness=args.exhaustiveness)
+        # muni produces no poses -> prepare a separate Rowan receptor for export,
+        # UNLESS --no-poses (e.g. the Rowan account can't store poses right now).
+        if args.no_poses:
+            pose_target = None
+        else:
+            print("[run] muni backend: preparing a Rowan receptor for pose export ...")
+            rowan_uuid = _resolve_rowan_uuid(args.pdb, rowan_key)
+            pose_target = Target(protein=rowan_uuid, pocket=box, executable=args.executable,
+                                 scoring_function=args.scoring, exhaustiveness=args.exhaustiveness)
 
     # 4) loop config ------------------------------------------------------
     cfg = LoopConfig(query_smiles=seed_smiles[0], seed_smiles=seed_smiles,
@@ -326,7 +366,9 @@ def main(argv=None):
         _write_convergence(conv_path, conv_meta, conv_history)
         # live poses
         hits = [(p.smiles, p.score) for p in diverse_top(ranked, args.top_k)]
-        if hits:
+        if args.no_poses or pose_target is None:
+            _write_hits_csv(os.path.join(args.out_dir, "hits.csv"), hits)   # scores only
+        elif hits:
             print(f"[run] round {rnd}: exporting {len(hits)} live poses ...")
             export_top_poses(hits, pose_target, args.out_dir, rowan_key,
                              top_k=args.top_k, cache=pose_cache,
@@ -340,16 +382,38 @@ def main(argv=None):
         conv_history.append(_convergence_round(res["ranked"], 0, args.top_k))
         _write_convergence(conv_path, conv_meta, conv_history)
     final_hits = [(p.smiles, p.score) for p in diverse_top(res["ranked"], args.top_k)]
-    if final_hits:
+    if args.no_poses or pose_target is None:
+        _write_hits_csv(os.path.join(args.out_dir, "hits.csv"), final_hits)
+    elif final_hits:
         print(f"[run] final: exporting {len(final_hits)} poses ...")
         export_top_poses(final_hits, pose_target, args.out_dir, rowan_key,
                          top_k=args.top_k, cache=pose_cache,
                          pose_refs=getattr(oracle, "pose_cache", None))
 
+    # SLURM backend: lean pose output — ONE gzipped multi-mol SDF from the
+    # engine's own poses (no Rowan). Skipped with --no-poses.
+    if args.backend == "slurm" and not args.no_poses and final_hits:
+        from .oracle_slurm import write_top_hits_sdf_gz
+        print(f"[run] final: exporting {len(final_hits)} SLURM poses -> top_hits.sdf.gz ...")
+        write_top_hits_sdf_gz(final_hits, oracle,
+                              os.path.join(args.out_dir, "top_hits.sdf.gz"))
+
     _report(res, cfg, args.out_dir)
 
     if args.pymol:
         _launch_pymol(args.out_dir)
+
+
+def _write_hits_csv(path, hits):
+    """Minimal scores-only hits.csv (no poses) — same columns the dashboard/gen_top10
+    expect, with empty pose fields — so muni / --no-poses runs still populate the
+    leaderboard."""
+    import csv
+    with open(path, "w", newline="") as fh:
+        w = csv.writer(fh)
+        w.writerow(["rank", "smiles", "score", "mmgbsa", "posebusters_valid", "pose_file"])
+        for i, (smi, score) in enumerate(hits, 1):
+            w.writerow([i, smi, f"{score:.3f}", "", "", ""])
 
 
 def _report(res, cfg, out_dir):
