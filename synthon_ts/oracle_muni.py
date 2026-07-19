@@ -15,6 +15,7 @@ import os
 import re
 import subprocess
 import tempfile
+import time
 
 from .core import Target
 
@@ -23,13 +24,14 @@ _JOB_RE = re.compile(r"(job_[0-9a-f-]{8,})")
 
 class MuniBatchDockingOracle:
     def __init__(self, target: Target, muni_bin: str | None = None,
-                 timeout_s: int = 570, chunk: int = 50, page_id: str | None = None,
-                 name: str = "synthon-TS dock", log=print):
+                 timeout_s: int = 7200, chunk: int = 50, page_id: str | None = None,
+                 poll_interval: int = 30, name: str = "synthon-TS dock", log=print):
         self.t = target
         self.muni = muni_bin or os.environ.get("MUNI_BIN", "muni")
-        self.timeout_s = timeout_s
+        self.timeout_s = timeout_s      # muni batch docks take ~1h; wait long enough
         self.chunk = chunk
         self.page_id = page_id
+        self.poll_interval = poll_interval
         self.name = name
         self.log = log
 
@@ -60,9 +62,11 @@ class MuniBatchDockingOracle:
             json.dump(params, f)
             pfile = f.name
 
+        # Submit WITHOUT --follow: muni's --follow drops the connection on the
+        # ~1-hour batch jobs (that's what silently lost the earlier run's scores).
+        # Instead grab the job id and poll `muni job status` until it's terminal.
         cmd = [self.muni, "run", "rowan_batch_docking", "--params-file", pfile,
-               "--follow", "--timeout", str(self.timeout_s), "--json",
-               "--title", self.name]
+               "--json", "--title", self.name]
         if self.page_id:
             cmd += ["--page-id", self.page_id]
         proc = subprocess.run(cmd, capture_output=True, text=True)
@@ -70,6 +74,23 @@ class MuniBatchDockingOracle:
         if not job_id:
             self.log(f"[muni-oracle] no job_id; stdout tail: {proc.stdout[-300:]}")
             return {}
+        self.log(f"[muni-oracle] submitted {job_id} ({len(batch)} ligands); polling...")
+        deadline = time.time() + self.timeout_s
+        while time.time() < deadline:
+            time.sleep(self.poll_interval)
+            st = subprocess.run([self.muni, "job", "status", job_id, "--json"],
+                                capture_output=True, text=True)
+            try:
+                status = str(json.loads(st.stdout).get("status", "")).lower()
+            except Exception:
+                continue
+            if status in ("completed", "completed_ok", "success"):
+                break
+            if status in ("failed", "error", "cancelled"):
+                self.log(f"[muni-oracle] job {job_id} {status}")
+                return {}
+        else:
+            self.log(f"[muni-oracle] {job_id} not terminal after {self.timeout_s}s; reading anyway")
         return self._read_scores(job_id, batch)
 
     def _read_scores(self, job_id: str, batch) -> dict:
