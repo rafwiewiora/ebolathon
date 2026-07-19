@@ -50,6 +50,28 @@
   .foot{margin-top:34px;font-family:var(--mono);font-size:12px;color:var(--muted)}
   .foot a{color:var(--ours)}
   .empty{color:var(--muted);font-size:14px;padding:20px 0}
+  /* 2D structures */
+  .mol{background:#fff;border-radius:8px;padding:4px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .mol svg{width:100%;height:auto;max-height:150px;display:block}
+  .hitgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  @media(min-width:560px){.hitgrid{grid-template-columns:repeat(3,1fr)}}
+  @media(min-width:840px){.hitgrid{grid-template-columns:repeat(5,1fr)}}
+  .hitcard{background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+  .hitcard .hmeta{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;gap:8px}
+  .hitcard .rank{font-family:var(--mono);font-size:11px;color:var(--muted)}
+  .hitcard .sc{font-family:var(--mono);font-weight:600;color:var(--ours);font-variant-numeric:tabular-nums}
+  .hitcard .smiline{font-family:var(--mono);font-size:9px;color:var(--muted);padding:0 10px 8px;word-break:break-all;line-height:1.3}
+  .syncard{display:flex;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}
+  .syncard:last-child{border-bottom:0}
+  .syncard .mol{flex:0 0 118px;width:118px;height:88px}
+  .syncard .mol svg{max-height:82px}
+  .syninfo{min-width:0;flex:1}
+  .syninfo .r{font-family:var(--mono);color:var(--good);font-weight:600}
+  .syninfo .meta{font-family:var(--mono);font-size:11px;color:var(--muted)}
+  .slots{display:inline-flex;gap:3px;margin-top:6px}
+  .slot{width:26px;height:15px;border-radius:3px;border:1px solid var(--line);background:transparent;font-family:var(--mono);font-size:8.5px;display:flex;align-items:center;justify-content:center;color:var(--muted)}
+  .slot.on{background:var(--ours);border-color:var(--ours);color:#fff}
+  .slotlab{font-family:var(--mono);font-size:10px;color:var(--muted);margin-left:8px;vertical-align:middle}
 </style>
 </head>
 <body>
@@ -66,14 +88,15 @@
     <div>
       <h2>Score trajectory</h2>
       <div class="panel"><svg class="chart" id="chart" viewBox="0 0 520 180" preserveAspectRatio="xMidYMid meet"></svg></div>
-      <h2>Top synthons the bandit surfaced</h2>
-      <div class="panel" id="synthons"></div>
     </div>
     <div>
-      <h2>Top 10 molecules</h2>
-      <div class="panel" style="padding:6px 10px"><div id="leaderboard"></div></div>
+      <h2>Top synthons — structure &amp; which position they fill</h2>
+      <div class="panel" id="synthons"></div>
     </div>
   </div>
+
+  <h2>Top 10 molecules</h2>
+  <div id="leaderboard"></div>
 
   <p class="foot">source: <a href="https://github.com/rafwiewiora/ebolathon" target="_blank" rel="noopener">github.com/rafwiewiora/ebolathon</a> · lower score = better (kcal/mol) · oracle: QVina2</p>
 </div>
@@ -119,16 +142,22 @@ function getVar(n){return getComputedStyle(document.documentElement).getProperty
 
 function renderSynthons(syn){
   if(!syn||!syn.length){$("synthons").innerHTML='<div class="empty">no synthons yet</div>';return;}
-  $("synthons").innerHTML=syn.map(s=>
-    `<div class="syn"><span class="r">${(s.reward>=0?'+':'')}${s.reward.toFixed(2)}</span> `+
-    `<span class="meta">n=${s.count} · ${esc(s.rxn)} @pos${s.pos}</span><br>${esc(s.bb)}</div>`).join("");
+  $("synthons").innerHTML=syn.slice(0,6).map(s=>{
+    const np=s.n_pos||2; let slots='';
+    for(let i=0;i<np;i++) slots+=`<span class="slot${i===s.pos?' on':''}">${i}</span>`;
+    return `<div class="syncard"><div class="mol">${s.svg||''}</div>`+
+      `<div class="syninfo"><span class="r">${(s.reward>=0?'+':'')}${s.reward.toFixed(2)}</span> `+
+      `<span class="meta">mean reward · n=${s.count}</span><br>`+
+      `<span class="slots">${slots}</span><span class="slotlab">fills position ${s.pos} of ${np} · ${esc(s.rxn)}</span></div></div>`;
+  }).join("");
 }
 
 function renderLeaderboard(top){
   if(!top||!top.length){$("leaderboard").innerHTML='<div class="empty">no hits yet</div>';return;}
-  let h='<table><thead><tr><th>#</th><th>score</th><th>SMILES</th></tr></thead><tbody>';
-  h+=top.map(r=>`<tr><td>${r.rank}</td><td class="sc">${r.score.toFixed(2)}</td><td class="smi">${esc(r.smiles)}</td></tr>`).join("");
-  $("leaderboard").innerHTML=h+'</tbody></table>';
+  $("leaderboard").innerHTML='<div class="hitgrid">'+top.map(r=>
+    `<div class="hitcard"><div class="mol">${r.svg||''}</div>`+
+    `<div class="hmeta"><span class="rank">#${r.rank}</span><span class="sc">${r.score.toFixed(2)}</span></div>`+
+    `<div class="smiline">${esc(r.smiles)}</div></div>`).join("")+'</div>';
 }
 
 async function refresh(){

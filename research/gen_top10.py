@@ -28,6 +28,32 @@ def _canon(smi: str) -> str:
     return Chem.MolToSmiles(m) if m else smi
 
 
+def _svg(smi: str, w: int = 220, h: int = 150) -> str:
+    """Compact transparent-background 2D depiction (RDKit) for inline embedding.
+    Black atoms/bonds — the dashboard wraps these in a white card so they read in
+    both light and dark themes. Returns '' if RDKit is missing or parse fails."""
+    if Chem is None or not smi:
+        return ""
+    try:
+        from rdkit.Chem.Draw import rdMolDraw2D
+        m = Chem.MolFromSmiles(smi)
+        if m is None:
+            return ""
+        d = rdMolDraw2D.MolDraw2DSVG(w, h)
+        o = d.drawOptions()
+        o.clearBackground = False          # transparent — card supplies the white
+        o.bondLineWidth = 1
+        o.padding = 0.08
+        rdMolDraw2D.PrepareAndDrawMolecule(d, m)
+        d.FinishDrawing()
+        svg = d.GetDrawingText()
+        # strip the XML/doctype header so it drops straight into HTML
+        i = svg.find("<svg")
+        return svg[i:].strip() if i >= 0 else ""
+    except Exception:
+        return ""
+
+
 def _load_hits():
     rows = []
     for f in sorted(glob.glob("runs/*/hits.csv")):
@@ -77,12 +103,17 @@ def _primary_run():
     cands.sort(key=lambda c: (c[0], c[1]), reverse=True)  # live first, then most docked
     _, _, run, d, rounds = cands[0]
     last = rounds[-1]
+    positions = last.get("positions", {})
+    # positions per reaction (for the "which slot" indicator) = max bb_index + 1
+    rxn_npos = {rxn: max((int(k) for k in posd), default=0) + 1
+                for rxn, posd in positions.items()}
     syn = []
-    for rxn, pos in last.get("positions", {}).items():
+    for rxn, pos in positions.items():
         for idx, arr in pos.items():
             for s in arr:
                 syn.append({"reward": s["mean_reward"], "count": s["count"],
-                            "rxn": rxn, "pos": idx, "bb": s["bb"]})
+                            "rxn": rxn, "pos": int(idx), "n_pos": rxn_npos.get(rxn, 2),
+                            "bb": s["bb"], "svg": _svg(s["bb"])})
     syn.sort(key=lambda x: x["reward"], reverse=True)
     return {
         "run": run,
@@ -127,7 +158,8 @@ def main():
         "n_unique": n_unique,
         "n_runs": n_runs,
         "top10": [{"rank": i, "score": round(r["score"], 2), "smiles": r["smiles"],
-                   "run": r["run"], "pb": r["pb"]} for i, r in enumerate(top, 1)],
+                   "run": r["run"], "pb": r["pb"], "svg": _svg(r["smiles"])}
+                  for i, r in enumerate(top, 1)],
     }
     with open("runs/dashboard.json", "w") as fh:
         json.dump(dash, fh, indent=2)
