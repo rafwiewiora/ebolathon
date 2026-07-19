@@ -1,0 +1,13 @@
+[run] deriving box from ligand 'T0R' in runs/glycoprotein_t0r_trial/glycoprotein.pdb ...
+[run] box center=[-44.99, 14.94, -8.25] size=[22.45, 28.24, 23.27]
+[run] price filter dropped 6/12 seeds (> $200)
+[run] sample_space kept 3 seed(s) (strategy=diverse, seed=3100000008; replay with --sample-seed 3100000008):
+[run]   seed ($125): COC(=O)c1nc(C(F)(F)F)ccc1-c1ccc(OC)c(OC2CCCC2)c1
+[run]   seed ($125): COc1c(F)c(F)cc(C(=O)Nc2ccc(CO)cc2)c1F
+[run]   seed ($125): Cc1cccc(-c2ccc(C(=O)OCc3ccccc3)cn2)c1F
+[run] uploading local protein file runs/glycoprotein_t0r_trial/glycoprotein.pdb to Rowan ...
+[run] prepared uploaded protein -> 84409e6b-c4b8-435a-b84a-9ddf9ed6bbab
+[seed] 3 seed(s); max_results=100 each
+[seed 0] onepot search: 'COC(=O)c1nc(C(F)(F)F)ccc1-c1ccc(OC)c(OC2CCCC2)c1'
+[seed 0] druglike filter dropped 7/71 analogs
+[seed 0] 64 analogs (post-filter); decomposes to rxn_d222a18d; docking...

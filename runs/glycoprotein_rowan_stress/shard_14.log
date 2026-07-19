@@ -1,0 +1,15 @@
+[run] deriving box from ligand 'T0R' in runs/glycoprotein_t0r_trial/glycoprotein.pdb ...
+[run] box center=[-44.99, 14.94, -8.25] size=[22.45, 28.24, 23.27]
+[run] price filter dropped 7/12 seeds (> $200)
+[run] sample_space kept 3 seed(s) (strategy=diverse, seed=3100000014; replay with --sample-seed 3100000014):
+[run]   seed ($125): Cc1cc(C#N)cc(C(=O)N2CCO[C@H](Cc3ccccc3)C2)c1
+[run]   seed ($125): NC(=O)[C@H](C[C@@H]1CCNC1=O)NC(=O)Cc1cccc(-c2ccccc2)c1
+[run]   seed ($125): C[C@H](NC(=O)NCC1CCN(CC(F)(F)F)CC1)c1ccccc1
+[run] uploading local protein file runs/glycoprotein_t0r_trial/glycoprotein.pdb to Rowan ...
+[run] prepared uploaded protein -> c3e481e6-d98b-424c-aff5-910823996973
+[seed] 3 seed(s); max_results=100 each
+[seed 0] onepot search: 'Cc1cc(C#N)cc(C(=O)N2CCO[C@H](Cc3ccccc3)C2)c1'
+[seed 0] druglike filter dropped 9/58 analogs
+[seed 0] 49 analogs (post-filter); decomposes to rxn_a46303e0; docking...
+[rowan-oracle] wave submitted: 49/49 ligands
+[rowan-oracle]   -8.00  Cc1cc(C#N)cc(C(=O)N2CCO[C@H](Cc3ccccc3)C2)c1
