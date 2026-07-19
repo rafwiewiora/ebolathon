@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="2680" viewBox="0 0 1120 2680" role="img" aria-labelledby="plot-title plot-desc">
+<title id="plot-title">Building-block similarity clusters</title>
+<desc id="plot-desc">Morgan fingerprint Tanimoto distance projected into two dimensions. Centroid medoids are shown as labeled diamonds.</desc>
+<style>
+.background{fill:#FFFFFF}
+text{font-family:sans-serif;fill:#1F2937}
+.panel-title{font-size:17px;font-weight:500}.sub{font-size:12px;fill:#4B5563}
+.axis{stroke:#9CA3AF;stroke-width:1}.axis-label{font-size:11px;fill:#4B5563}
+.cluster-label{font-size:11px;font-weight:500}.legend{font-size:12px}
+.centroid{stroke:#1F2937}.member-point{stroke:#FFFFFF}
+@media(prefers-color-scheme:dark){.background{fill:#111827}text{fill:#F3F4F6}.sub,.axis-label{fill:#D1D5DB}.axis{stroke:#6B7280}.centroid{stroke:#F3F4F6}.member-point{stroke:#111827}}
+</style>
+<rect width="100%" height="100%" class="background"/>
+<g transform="translate(0,20)">
+<text x="32" y="26" class="panel-title">rxn_33cc78ec · building block 0</text>
+<text x="32" y="47" class="sub">3 unique building blocks · 2 clusters · similarity threshold 0.60</text>
+<line x1="72" y1="396" x2="722" y2="396" class="axis"/>
+<line x1="72" y1="66" x2="72" y2="396" class="axis"/>
+<text x="397.0" y="426" text-anchor="middle" class="axis-label">MDS 1 · Tanimoto distance</text>
+<text x="20" y="231.0" text-anchor="middle" transform="rotate(-90 20 231.0)" class="axis-label">MDS 2 · Tanimoto distance</text>
+<circle cx="163.2" cy="84.0" r="3.5" fill="#0072B2" fill-opacity="0.72" class="member-point" stroke-width="1"><title>C1 | Oc1ccc(Cl)c(-c2cccc(NC(=S)NCc3ccccn3)c2)c1 | occurrences 1 | best score -7.900</title></circle>
+<polygon points="90.0,370.0 98.0,378.0 90.0,386.0 82.0,378.0" fill="#0072B2" class="centroid" stroke-width="1.5"><title>C1 | Oc1ccc(Cl)c(-c2cccc(NC(=S)NCc3ncc(Cl)cn3)c2)c1 | occurrences 1 | best score -8.700 | centroid</title></polygon>
+<text x="100.0" y="370.0" class="cluster-label">C1</text>
+<polygon points="704.0,251.0 712.0,259.0 704.0,267.0 696.0,259.0" fill="#D55E00" class="centroid" stroke-width="1.5"><title>C2 | NC(=O)Cc1csc(NC(=S)Nc2cccc(-c3cc(O)ccc3Cl)c2)n1 | occurrences 1 | best score -8.400 | centroid</title></polygon>
+<text x="714.0" y="251.0" class="cluster-label">C2</text>
+<text x="760" y="48" class="sub">Centroids (diamond)</text>
+<polygon points="760,68 766,74 760,80 754,74" fill="#0072B2" class="centroid" stroke-width="1"/>
+<text x="774" y="78" class="legend">C1 · n=2 · Oc1ccc(Cl)c(-c2cccc(NC(=S)NCc3ncc(Cl)cn3)c2)c1<title>Oc1ccc(Cl)c(-c2cccc(NC(=S)NCc3ncc(Cl)cn3)c2)c1</title></text>
+<polygon points="760,91 766,97 760,103 754,97" fill="#D55E00" class="centroid" stroke-width="1"/>
+<text x="774" y="101" class="legend">C2 · n=1 · NC(=O)Cc1csc(NC(=S)Nc2cccc(-c3cc(O)ccc3Cl)c2)n1<title>NC(=O)Cc1csc(NC(=S)Nc2cccc(-c3cc(O)ccc3Cl)c2)n1</title></text>
+<text x="72" y="448" class="sub">Point size reflects recurrence; distance is approximate after 2D projection.</text>
+</g>
+<g transform="translate(0,460)">
+<text x="32" y="26" class="panel-title">rxn_33cc78ec · building block 1</text>
+<text x="32" y="47" class="sub">1 unique building blocks · 1 clusters · similarity threshold 0.60</text>
+<line x1="72" y1="396" x2="722" y2="396" class="axis"/>
+<line x1="72" y1="66" x2="72" y2="396" class="axis"/>
+<text x="397.0" y="426" text-anchor="middle" class="axis-label">MDS 1 · Tanimoto distance</text>
+<text x="20" y="231.0" text-anchor="middle" transform="rotate(-90 20 231.0)" class="axis-label">MDS 2 · Tanimoto distance</text>
+<polygon points="397.0,223.0 405.0,231.0 397.0,239.0 389.0,231.0" fill="#0072B2" class="centroid" stroke-width="1.5"><title>C1 | CBr | occurrences 3 | best score -8.700 | centroid</title></polygon>
+<text x="407.0" y="223.0" class="cluster-label">C1</text>
+<text x="760" y="48" class="sub">Centroids (diamond)</text>
+<polygon points="760,68 766,74 760,80 754,74" fill="#0072B2" class="centroid" stroke-width="1"/>
+<text x="774" y="78" class="legend">C1 · n=1 · CBr<title>CBr</title></text>
+<text x="72" y="448" class="sub">Point size reflects recurrence; distance is approximate after 2D projection.</text>
+</g>
+<g transform="translate(0,900)">
+<text x="32" y="26" class="panel-title">rxn_45d00d3a · building block 0</text>
+<text x="32" y="47" class="sub">1 unique building blocks · 1 clusters · similarity threshold 0.60</text>
+<line x1="72" y1="396" x2="722" y2="396" class="axis"/>
+<line x1="72" y1="66" x2="72" y2="396" class="axis"/>
+<text x="397.0" y="426" text-anchor="middle" class="axis-label">MDS 1 · Tanimoto distance</text>
+<text x="20" y="231.0" text-anchor="middle" transform="rotate(-90 20 231.0)" class="axis-label">MDS 2 · Tanimoto distance</text>
+<polygon points="397.0,223.0 405.0,231.0 397.0,239.0 389.0,231.0" fill="#0072B2" class="centroid" stroke-width="1.5"><title>C1 | CC(=O)c1cnc(N)s1 | occurrences 1 | best score -8.000 | centroid</title></polygon>
+<text x="407.0" y="223.0" class="cluster-label">C1</text>
+<text x="760" y="48" class="sub">Centroids (diamond)</text>
+<polygon points="760,68 766,74 760,80 754,74" fill="#0072B2" class="centroid" stroke-width="1"/>
+<text x="774" y="78" class="legend">C1 · n=1 · CC(=O)c1cnc(N)s1<title>CC(=O)c1cnc(N)s1</title></text>
+<text x="72" y="448" class="sub">Point size reflects recurrence; distance is approximate after 2D projection.</text>
+</g>
+<g transform="translate(0,1340)">
+<text x="32" y="26" class="panel-title">rxn_45d00d3a · building block 1</text>
+<text x="32" y="47" class="sub">1 unique building blocks · 1 clusters · similarity threshold 0.60</text>
+<line x1="72" y1="396" x2="722" y2="396" class="axis"/>
+<line x1="72" y1="66" x2="72" y2="396" class="axis"/>
+<text x="397.0" y="426" text-anchor="middle" class="axis-label">MDS 1 · Tanimoto distance</text>
+<text x="20" y="231.0" text-anchor="middle" transform="rotate(-90 20 231.0)" class="axis-label">MDS 2 · Tanimoto distance</text>
+<polygon points="397.0,223.0 405.0,231.0 397.0,239.0 389.0,231.0" fill="#0072B2" class="centroid" stroke-width="1.5"><title>C1 | Nc1cccc(C(=O)c2ccccc2)c1 | occurrences 1 | best score -8.000 | centroid</title></polygon>
+<text x="407.0" y="223.0" class="cluster-label">C1</text>
+<text x="760" y="48" class="sub">Centroids (diamond)</text>
+<polygon points="760,68 766,74 760,80 754,74" fill="#0072B2" class="centroid" stroke-width="1"/>
+<text x="774" y="78" class="legend">C1 · n=1 · Nc1cccc(C(=O)c2ccccc2)c1<title>Nc1cccc(C(=O)c2ccccc2)c1</title></text>
+<text x="72" y="448" class="sub">Point size reflects recurrence; distance is approximate after 2D projection.</text>
+</g>
+<g transform="translate(0,1780)">
+<text x="32" y="26" class="panel-title">rxn_a46303e0 · building block 0</text>
+<text x="32" y="47" class="sub">5 unique building blocks · 4 clusters · similarity threshold 0.60</text>
+<line x1="72" y1="396" x2="722" y2="396" class="axis"/>
+<line x1="72" y1="66" x2="72" y2="396" class="axis"/>
+<text x="397.0" y="426" text-anchor="middle" class="axis-label">MDS 1 · Tanimoto distance</text>
+<text x="20" y="231.0" text-anchor="middle" transform="rotate(-90 20 231.0)" class="axis-label">MDS 2 · Tanimoto distance</text>
+<polygon points="704.0,204.9 712.0,212.9 704.0,220.9 696.0,212.9" fill="#0072B2" class="centroid" stroke-width="1.5"><title>C1 | O=C(c1ccccc1)c1ccc(CNc2ncc(C(=O)O)s2)cc1 | occurrences 1 | best score -8.200 | centroid</title></polygon>
+<text x="714.0" y="204.9" class="cluster-label">C1</text>
+<circle cx="624.0" cy="244.2" r="3.5" fill="#0072B2" fill-opacity="0.72" class="member-point" stroke-width="1"><title>C1 | O=C(c1ccccc1)c1cccc(CNc2ncc(C(=O)O)s2)c1 | occurrences 1 | best score -8.000</title></circle>
+<polygon points="176.8,282.5 184.8,290.5 176.8,298.5 168.8,290.5" fill="#D55E00" class="centroid" stroke-width="1.5"><title>C2 | O=C(O)Cc1cccc(C(=O)c2ccccc2)c1 | occurrences 2 | best score -8.100 | centroid</title></polygon>
+<text x="186.8" y="282.5" class="cluster-label">C2</text>
+<polygon points="90.0,76.0 98.0,84.0 90.0,92.0 82.0,84.0" fill="#009E73" class="centroid" stroke-width="1.5"><title>C3 | O=C(O)Cc1ccccc1NC(=O)c1cccc(C(=O)c2ccccc2)c1 | occurrences 1 | best score -9.200 | centroid</title></polygon>
+<text x="100.0" y="76.0" class="cluster-label">C3</text>
+<polygon points="181.1,370.0 189.1,378.0 181.1,386.0 173.1,378.0" fill="#CC79A7" class="centroid" stroke-width="1.5"><title>C4 | O=C(O)c1cccc(C(=O)c2ccccc2)c1 | occurrences 1 | best score -8.500 | centroid</title></polygon>
+<text x="191.1" y="370.0" class="cluster-label">C4</text>
+<text x="760" y="48" class="sub">Centroids (diamond)</text>
+<polygon points="760,68 766,74 760,80 754,74" fill="#0072B2" class="centroid" stroke-width="1"/>
+<text x="774" y="78" class="legend">C1 · n=2 · O=C(c1ccccc1)c1ccc(CNc2ncc(C(=O)O)s2)cc1<title>O=C(c1ccccc1)c1ccc(CNc2ncc(C(=O)O)s2)cc1</title></text>
+<polygon points="760,91 766,97 760,103 754,97" fill="#D55E00" class="centroid" stroke-width="1"/>
+<text x="774" y="101" class="legend">C2 · n=1 · O=C(O)Cc1cccc(C(=O)c2ccccc2)c1<title>O=C(O)Cc1cccc(C(=O)c2ccccc2)c1</title></text>
+<polygon points="760,114 766,120 760,126 754,120" fill="#009E73" class="centroid" stroke-width="1"/>
+<text x="774" y="124" class="legend">C3 · n=1 · O=C(O)Cc1ccccc1NC(=O)c1cccc(C(=O)c2ccccc2)c1<title>O=C(O)Cc1ccccc1NC(=O)c1cccc(C(=O)c2ccccc2)c1</title></text>
+<polygon points="760,137 766,143 760,149 754,143" fill="#CC79A7" class="centroid" stroke-width="1"/>
+<text x="774" y="147" class="legend">C4 · n=1 · O=C(O)c1cccc(C(=O)c2ccccc2)c1<title>O=C(O)c1cccc(C(=O)c2ccccc2)c1</title></text>
+<text x="72" y="448" class="sub">Point size reflects recurrence; distance is approximate after 2D projection.</text>
+</g>
+<g transform="translate(0,2220)">
+<text x="32" y="26" class="panel-title">rxn_a46303e0 · building block 1</text>
+<text x="32" y="47" class="sub">4 unique building blocks · 4 clusters · similarity threshold 0.60</text>
+<line x1="72" y1="396" x2="722" y2="396" class="axis"/>
+<line x1="72" y1="66" x2="72" y2="396" class="axis"/>
+<text x="397.0" y="426" text-anchor="middle" class="axis-label">MDS 1 · Tanimoto distance</text>
+<text x="20" y="231.0" text-anchor="middle" transform="rotate(-90 20 231.0)" class="axis-label">MDS 2 · Tanimoto distance</text>
+<polygon points="704.0,222.0 712.0,230.0 704.0,238.0 696.0,230.0" fill="#0072B2" class="centroid" stroke-width="1.5"><title>C1 | CN | occurrences 3 | best score -9.200 | centroid</title></polygon>
+<text x="714.0" y="222.0" class="cluster-label">C1</text>
+<polygon points="176.0,370.0 184.0,378.0 176.0,386.0 168.0,378.0" fill="#D55E00" class="centroid" stroke-width="1.5"><title>C2 | Cc1cnc(N)s1 | occurrences 1 | best score -8.500 | centroid</title></polygon>
+<text x="186.0" y="370.0" class="cluster-label">C2</text>
+<polygon points="90.0,76.0 98.0,84.0 90.0,92.0 82.0,84.0" fill="#009E73" class="centroid" stroke-width="1.5"><title>C3 | NCc1ncccn1 | occurrences 1 | best score -8.100 | centroid</title></polygon>
+<text x="100.0" y="76.0" class="cluster-label">C3</text>
+<polygon points="141.2,312.5 149.2,320.5 141.2,328.5 133.2,320.5" fill="#CC79A7" class="centroid" stroke-width="1.5"><title>C4 | Cc1ccc(CN)s1 | occurrences 1 | best score -8.000 | centroid</title></polygon>
+<text x="151.2" y="312.5" class="cluster-label">C4</text>
+<text x="760" y="48" class="sub">Centroids (diamond)</text>
+<polygon points="760,68 766,74 760,80 754,74" fill="#0072B2" class="centroid" stroke-width="1"/>
+<text x="774" y="78" class="legend">C1 · n=1 · CN<title>CN</title></text>
+<polygon points="760,91 766,97 760,103 754,97" fill="#D55E00" class="centroid" stroke-width="1"/>
+<text x="774" y="101" class="legend">C2 · n=1 · Cc1cnc(N)s1<title>Cc1cnc(N)s1</title></text>
+<polygon points="760,114 766,120 760,126 754,120" fill="#009E73" class="centroid" stroke-width="1"/>
+<text x="774" y="124" class="legend">C3 · n=1 · NCc1ncccn1<title>NCc1ncccn1</title></text>
+<polygon points="760,137 766,143 760,149 754,143" fill="#CC79A7" class="centroid" stroke-width="1"/>
+<text x="774" y="147" class="legend">C4 · n=1 · Cc1ccc(CN)s1<title>Cc1ccc(CN)s1</title></text>
+<text x="72" y="448" class="sub">Point size reflects recurrence; distance is approximate after 2D projection.</text>
+</g>
+</svg>

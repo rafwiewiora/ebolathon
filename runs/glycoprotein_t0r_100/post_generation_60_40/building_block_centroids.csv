@@ -1,0 +1,14 @@
+reaction_class,bb_index,cluster_id,centroid_smiles,centroid_mean_similarity,unique_building_blocks,occurrences,supporting_compounds,best_score,mean_score
+rxn_33cc78ec,0,1,Oc1ccc(Cl)c(-c2cccc(NC(=S)NCc3ncc(Cl)cn3)c2)c1,0.8482142857142857,2,2,2,-8.7,-8.3
+rxn_33cc78ec,0,2,NC(=O)Cc1csc(NC(=S)Nc2cccc(-c3cc(O)ccc3Cl)c2)n1,1.0,1,1,1,-8.4,-8.4
+rxn_33cc78ec,1,1,CBr,1.0,1,3,3,-8.7,-8.333333333333334
+rxn_45d00d3a,0,1,CC(=O)c1cnc(N)s1,1.0,1,1,1,-8.0,-8.0
+rxn_45d00d3a,1,1,Nc1cccc(C(=O)c2ccccc2)c1,1.0,1,1,1,-8.0,-8.0
+rxn_a46303e0,0,1,O=C(c1ccccc1)c1ccc(CNc2ncc(C(=O)O)s2)cc1,0.8977272727272727,2,2,2,-8.2,-8.1
+rxn_a46303e0,0,2,O=C(O)Cc1cccc(C(=O)c2ccccc2)c1,1.0,1,2,2,-8.1,-8.05
+rxn_a46303e0,0,3,O=C(O)Cc1ccccc1NC(=O)c1cccc(C(=O)c2ccccc2)c1,1.0,1,1,1,-9.2,-9.2
+rxn_a46303e0,0,4,O=C(O)c1cccc(C(=O)c2ccccc2)c1,1.0,1,1,1,-8.5,-8.5
+rxn_a46303e0,1,1,CN,1.0,1,3,3,-9.2,-8.466666666666667
+rxn_a46303e0,1,2,Cc1cnc(N)s1,1.0,1,1,1,-8.5,-8.5
+rxn_a46303e0,1,3,NCc1ncccn1,1.0,1,1,1,-8.1,-8.1
+rxn_a46303e0,1,4,Cc1ccc(CN)s1,1.0,1,1,1,-8.0,-8.0

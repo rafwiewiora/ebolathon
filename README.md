@@ -55,6 +55,14 @@ onepot `sample_space` (property-filtered makeable CORE molecules).
 - `receptor.pdb`, `rank{N}_{score}.pdb` docked poses, `top_hits.sdf`, `hits.csv`
 - `view.pml` — open live with `pymol runs/trial1/view.pml`
 - `convergence.json` — per-round score trajectory + per-position synthon leaderboards (the space pruning to the best building blocks)
+- `building_block_clusters.json`, `building_block_centroids.csv`,
+  `building_block_clusters.svg` — Morgan/Tanimoto clusters, centroid building
+  blocks, and a 2D similarity map from the final top 100 compounds, generated
+  after all screening rounds complete
+- `hits.json`, `hits.csv`, and the final exported poses are full molecules chosen
+  only after generation finishes by a cluster-aware score: 60% building-block
+  cluster-signature diversity and 40% normalized docking affinity. Clustering
+  does not influence OnePot generation or round-to-round anchor selection.
 
 ## Notes for an agent running this
 

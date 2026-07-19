@@ -35,6 +35,12 @@ from collections import defaultdict
 
 from onepot import Client
 
+from .clustering import (
+    cluster_aware_mmr_top,
+    cluster_building_blocks,
+    write_building_block_cluster_plot,
+    write_building_block_clusters,
+)
 from .core import LoopConfig, Target, diverse_top, run_loop
 from .filters import DrugLikeLimits, make_filter
 from .pocket import box_from_ligand
@@ -226,6 +232,10 @@ def _build_parser() -> argparse.ArgumentParser:
     # output
     ap.add_argument("--out-dir", required=True)
     ap.add_argument("--top-k", type=int, default=10, help="# top hits to export as poses")
+    ap.add_argument("--cluster-top-n", type=int, default=100,
+                    help="# best-scoring compounds whose building blocks are clustered; 0 disables")
+    ap.add_argument("--bb-cluster-similarity", type=float, default=0.60,
+                    help="Morgan/Tanimoto threshold for post-generation BB clusters")
     ap.add_argument("--pymol", action="store_true", help="auto-launch PyMOL on the output")
     return ap
 
@@ -244,6 +254,10 @@ def _load_dotenv():
 def main(argv=None):
     _load_dotenv()
     args = _build_parser().parse_args(argv)
+    if args.cluster_top_n < 0:
+        sys.exit("--cluster-top-n must be non-negative (use 0 to disable).")
+    if not 0.0 <= args.bb_cluster_similarity <= 1.0:
+        sys.exit("--bb-cluster-similarity must be between 0 and 1.")
     os.makedirs(args.out_dir, exist_ok=True)
 
     onepot_key = os.environ["ONEPOT_API_KEY"]
@@ -324,7 +338,8 @@ def main(argv=None):
         # convergence metrics (data-only, overwrite each round)
         conv_history.append(_convergence_round(ranked, rnd, args.top_k))
         _write_convergence(conv_path, conv_meta, conv_history)
-        # live poses
+        # Live poses are display-only. Cluster-aware 60/40 ranking is deferred
+        # until run_loop has completed every generation round.
         hits = [(p.smiles, p.score) for p in diverse_top(ranked, args.top_k)]
         if hits:
             print(f"[run] round {rnd}: exporting {len(hits)} live poses ...")
@@ -339,26 +354,107 @@ def main(argv=None):
     if not conv_history:  # seed-only run (no elaboration rounds fired)
         conv_history.append(_convergence_round(res["ranked"], 0, args.top_k))
         _write_convergence(conv_path, conv_meta, conv_history)
-    final_hits = [(p.smiles, p.score) for p in diverse_top(res["ranked"], args.top_k)]
+    selection_metadata = None
+    if args.cluster_top_n:
+        try:
+            selected_products, selection_metadata = cluster_aware_mmr_top(
+                res["ranked"],
+                args.top_k,
+                candidate_limit=args.cluster_top_n,
+                similarity_threshold=args.bb_cluster_similarity,
+                diversity_weight=0.60,
+                affinity_weight=0.40,
+            )
+        except Exception as selection_error:
+            # Preserve an otherwise successful, expensive screen if optional
+            # post-generation analysis cannot run.
+            print(f"[run] cluster-aware final ranking skipped: "
+                  f"{str(selection_error)[:200]}")
+            selected_products = diverse_top(res["ranked"], args.top_k)
+    else:
+        selected_products = diverse_top(res["ranked"], args.top_k)
+    final_hits = [(p.smiles, p.score) for p in selected_products]
     if final_hits:
         print(f"[run] final: exporting {len(final_hits)} poses ...")
         export_top_poses(final_hits, pose_target, args.out_dir, rowan_key,
                          top_k=args.top_k, cache=pose_cache,
                          pose_refs=getattr(oracle, "pose_cache", None))
 
-    _report(res, cfg, args.out_dir)
+    # Cluster only after the loop has completed (including an early terminal
+    # condition such as patience or budget exhaustion), so top N is drawn from
+    # the final accumulated ranked pool rather than an intermediate round.
+    if args.cluster_top_n:
+        try:
+            bb_report = (
+                selection_metadata["cluster_report"]
+                if selection_metadata and selection_metadata.get("cluster_report")
+                else cluster_building_blocks(
+                    res["ranked"],
+                    top_n=args.cluster_top_n,
+                    similarity_threshold=args.bb_cluster_similarity,
+                )
+            )
+            bb_report["analysis_stage"] = "after all screening rounds completed"
+            bb_report["building_block_source"] = (
+                "per-compound decomposition" if not args.coarse
+                else "coarse anchor attribution")
+            bb_json = os.path.join(args.out_dir, "building_block_clusters.json")
+            bb_csv = os.path.join(args.out_dir, "building_block_centroids.csv")
+            bb_plot = os.path.join(args.out_dir, "building_block_clusters.svg")
+            write_building_block_clusters(bb_report, bb_json, bb_csv)
+            n_clusters = sum(p["cluster_count"] for p in bb_report["positions"])
+            try:
+                write_building_block_cluster_plot(bb_report, bb_plot)
+            except Exception as plot_error:
+                print(f"[run] cluster plot skipped: {str(plot_error)[:200]}")
+                print(f"[run] final population: clustered "
+                      f"{bb_report['unique_building_blocks']} unique building blocks into "
+                      f"{n_clusters} clusters; centroids -> {bb_csv}")
+            else:
+                print(f"[run] final population: clustered "
+                      f"{bb_report['unique_building_blocks']} unique building blocks into "
+                      f"{n_clusters} clusters; centroids -> {bb_csv}; plot -> {bb_plot}")
+        except Exception as e:
+            # Reporting must never discard an otherwise successful, expensive
+            # screen. The ranked hits and poses are still available.
+            print(f"[run] building-block clustering skipped: {str(e)[:200]}")
+
+    _report(res, cfg, args.out_dir, selected_products, selection_metadata)
 
     if args.pymol:
         _launch_pymol(args.out_dir)
 
 
-def _report(res, cfg, out_dir):
+def _report(res, cfg, out_dir, selected_products=None, selection_metadata=None):
     ranked = res["ranked"]
     print(f"\n=== synthon-TS done: {res['n_docks']} docks, {len(res['pool'])} scored ===")
-    print("Top scaffold-diverse hits (lower score = better):")
-    for p in diverse_top(ranked, cfg.top_k):
+    selected_products = selected_products or diverse_top(ranked, cfg.top_k)
+    if selection_metadata:
+        print("Post-generation top full molecules "
+              "(60% BB-cluster diversity / 40% affinity):")
+    else:
+        print("Top full molecules (post-generation cluster ranking disabled/unavailable):")
+    rows = []
+    for rank, p in enumerate(selected_products, start=1):
+        detail = (selection_metadata or {}).get("selected", {}).get(p.smiles, {})
         print(f"  {p.score:+6.2f}  {p.smiles}")
-    json.dump(res["top"], open(os.path.join(out_dir, "hits.json"), "w"), indent=2)
+        rows.append({
+            "rank": rank,
+            "smiles": p.smiles,
+            "score": p.score,
+            "reaction_class": p.reaction_class,
+            "building_blocks": [
+                {"bb_index": index, "smiles": smiles}
+                for index, smiles in (p.bbs or [])
+            ],
+            "cluster_signature": detail.get("cluster_signature"),
+            "diversity_score": detail.get("diversity_score"),
+            "affinity_score": detail.get("affinity_score"),
+            "selection_score": detail.get("selection_score"),
+            "fallback": detail.get("fallback", selection_metadata is None),
+        })
+    with open(os.path.join(out_dir, "hits.json"), "w") as fh:
+        json.dump(rows, fh, indent=2)
     view = os.path.join(out_dir, "view.pml")
     print(f"\nWrote hits + poses to {out_dir}")
     print(f"Open the docked poses in PyMOL:\n    {PYMOL_BIN} {view}")

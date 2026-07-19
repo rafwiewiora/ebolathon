@@ -1,0 +1,894 @@
+{
+  "method": "Butina clustering over Morgan-fingerprint Tanimoto distance",
+  "centroid_definition": "cluster member with maximum occurrence-weighted mean Tanimoto similarity",
+  "top_n_requested": 30,
+  "compounds_analyzed": 30,
+  "top_compounds": [
+    {
+      "rank": 1,
+      "smiles": "O=C(O)c1ncc(C(F)(F)F)cc1-c1ccccc1",
+      "score": -7.6
+    },
+    {
+      "rank": 2,
+      "smiles": "O=C(O)C1CCN(c2ccc(C(F)(F)F)cn2)CC1",
+      "score": -7.4
+    },
+    {
+      "rank": 3,
+      "smiles": "Cc1c(C(=O)O)cnn1-c1ccc(C(F)(F)F)cn1",
+      "score": -7.1
+    },
+    {
+      "rank": 4,
+      "smiles": "FC(F)(F)c1ccc(-c2ccc(C(F)(F)F)cn2)nc1",
+      "score": -7.1
+    },
+    {
+      "rank": 5,
+      "smiles": "FC(F)(F)c1ccc(-c2ccccc2)nc1",
+      "score": -6.9
+    },
+    {
+      "rank": 6,
+      "smiles": "NC(Cc1cc(C(F)(F)F)ccc1Cl)C(=O)O",
+      "score": -6.9
+    },
+    {
+      "rank": 7,
+      "smiles": "CC(=O)CC(=O)Nc1ccc(C(F)(F)F)cc1",
+      "score": -6.7
+    },
+    {
+      "rank": 8,
+      "smiles": "CC(C)C(=O)c1cccc(C(F)(F)F)c1",
+      "score": -6.7
+    },
+    {
+      "rank": 9,
+      "smiles": "C=CC[C@@H](NC(=S)N(C)Cc1ccc(C(F)(F)F)cn1)C(=O)O",
+      "score": -6.6
+    },
+    {
+      "rank": 10,
+      "smiles": "CCOC(=O)c1cc2cc(C(F)(F)F)cnc2[nH]1",
+      "score": -6.6
+    },
+    {
+      "rank": 11,
+      "smiles": "C=CCC[C@H](NC(=S)N(C)Cc1ccc(C(F)(F)F)cn1)C(=O)O",
+      "score": -6.5
+    },
+    {
+      "rank": 12,
+      "smiles": "CC(Cc1ccc(C(F)(F)F)cc1)C(=O)O",
+      "score": -6.5
+    },
+    {
+      "rank": 13,
+      "smiles": "CC(Oc1ccc(C(F)(F)F)cc1)C(=O)O",
+      "score": -6.5
+    },
+    {
+      "rank": 14,
+      "smiles": "CN(C)C(=O)c1ccc(C(F)(F)F)cc1",
+      "score": -6.5
+    },
+    {
+      "rank": 15,
+      "smiles": "O=C(O)CCCC(=O)Nc1cc(C(F)(F)F)ccc1Cl",
+      "score": -6.5
+    },
+    {
+      "rank": 16,
+      "smiles": "CC(=O)Oc1cc(C(F)(F)F)ccc1C(=O)O",
+      "score": -6.4
+    },
+    {
+      "rank": 17,
+      "smiles": "O=C(O)C(Cc1ccccc1)NS(=O)(=O)c1cccc(C(F)(F)F)c1",
+      "score": -6.4
+    },
+    {
+      "rank": 18,
+      "smiles": "C=CCC(NC(=S)N(C)Cc1ccc(C(F)(F)F)cn1)C(=O)O",
+      "score": -6.3
+    },
+    {
+      "rank": 19,
+      "smiles": "CC(C)C(Nc1ccc(C(F)(F)F)cc1Cl)C(=O)O",
+      "score": -6.3
+    },
+    {
+      "rank": 20,
+      "smiles": "O=C(O)c1c[nH]c2ncc(C(F)(F)F)cc12",
+      "score": -6.2
+    },
+    {
+      "rank": 21,
+      "smiles": "N[C@H](CC(=O)O)c1ccc(C(F)(F)F)cc1",
+      "score": -6.2
+    },
+    {
+      "rank": 22,
+      "smiles": "CC(C)(C)c1ccc(C(=O)O)nc1",
+      "score": -6.2
+    },
+    {
+      "rank": 23,
+      "smiles": "CC(C)[C@H](Nc1ccc(C(F)(F)F)cn1)C(=O)O",
+      "score": -6.1
+    },
+    {
+      "rank": 24,
+      "smiles": "COC(=O)C(C(=O)OC)c1ncc(C(F)(F)F)cc1Cl",
+      "score": -6.1
+    },
+    {
+      "rank": 25,
+      "smiles": "CN(CC(=O)O)c1ccc(C(F)(F)F)cc1C=O",
+      "score": -6.1
+    },
+    {
+      "rank": 26,
+      "smiles": "N[C@@H](CC(=O)O)c1ccc(C(F)(F)F)cc1",
+      "score": -6.1
+    },
+    {
+      "rank": 27,
+      "smiles": "NC(CC(=O)O)c1ccc(C(F)(F)F)cc1",
+      "score": -6.1
+    },
+    {
+      "rank": 28,
+      "smiles": "CN(C)C(=O)c1ccc(C(F)(F)F)cn1",
+      "score": -6.0
+    },
+    {
+      "rank": 29,
+      "smiles": "C=CC[C@H](NC(=S)N(C)Cc1ccc(C(F)(F)F)cn1)C(=O)O",
+      "score": -5.9
+    },
+    {
+      "rank": 30,
+      "smiles": "CC(C)(Oc1ccc(C(F)(F)F)cn1)C(=O)O",
+      "score": -5.9
+    }
+  ],
+  "compounds_with_attributed_building_blocks": 15,
+  "similarity_threshold": 0.6,
+  "morgan_radius": 2,
+  "fingerprint_bits": 2048,
+  "position_count": 12,
+  "unique_building_blocks": 25,
+  "invalid_building_blocks": [],
+  "positions": [
+    {
+      "reaction_class": "rxn_33cc78ec",
+      "bb_index": 0,
+      "unique_building_blocks": 1,
+      "occurrences": 1,
+      "supporting_compounds": 1,
+      "cluster_count": 1,
+      "clusters": [
+        {
+          "centroid_smiles": "Oc1ccc(C(F)(F)F)cc1",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 1,
+          "supporting_compounds": 1,
+          "supporting_compound_smiles": [
+            "CC(Oc1ccc(C(F)(F)F)cc1)C(=O)O"
+          ],
+          "best_score": -6.5,
+          "mean_score": -6.5,
+          "members": [
+            {
+              "smiles": "Oc1ccc(C(F)(F)F)cc1",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "CC(Oc1ccc(C(F)(F)F)cc1)C(=O)O"
+              ],
+              "best_score": -6.5,
+              "mean_score": -6.5
+            }
+          ],
+          "cluster_id": 1
+        }
+      ]
+    },
+    {
+      "reaction_class": "rxn_33cc78ec",
+      "bb_index": 1,
+      "unique_building_blocks": 1,
+      "occurrences": 1,
+      "supporting_compounds": 1,
+      "cluster_count": 1,
+      "clusters": [
+        {
+          "centroid_smiles": "CC(Br)C(=O)O",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 1,
+          "supporting_compounds": 1,
+          "supporting_compound_smiles": [
+            "CC(Oc1ccc(C(F)(F)F)cc1)C(=O)O"
+          ],
+          "best_score": -6.5,
+          "mean_score": -6.5,
+          "members": [
+            {
+              "smiles": "CC(Br)C(=O)O",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "CC(Oc1ccc(C(F)(F)F)cc1)C(=O)O"
+              ],
+              "best_score": -6.5,
+              "mean_score": -6.5
+            }
+          ],
+          "cluster_id": 1
+        }
+      ]
+    },
+    {
+      "reaction_class": "rxn_45d00d3a",
+      "bb_index": 0,
+      "unique_building_blocks": 4,
+      "occurrences": 4,
+      "supporting_compounds": 4,
+      "cluster_count": 1,
+      "clusters": [
+        {
+          "centroid_smiles": "C=CC[C@@H](N)C(=O)O",
+          "centroid_mean_similarity": 0.9,
+          "unique_building_blocks": 4,
+          "occurrences": 4,
+          "supporting_compounds": 4,
+          "supporting_compound_smiles": [
+            "C=CCC(NC(=S)N(C)Cc1ccc(C(F)(F)F)cn1)C(=O)O",
+            "C=CCC[C@H](NC(=S)N(C)Cc1ccc(C(F)(F)F)cn1)C(=O)O",
+            "C=CC[C@@H](NC(=S)N(C)Cc1ccc(C(F)(F)F)cn1)C(=O)O",
+            "C=CC[C@H](NC(=S)N(C)Cc1ccc(C(F)(F)F)cn1)C(=O)O"
+          ],
+          "best_score": -6.6,
+          "mean_score": -6.325,
+          "members": [
+            {
+              "smiles": "C=CCC(N)C(=O)O",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "C=CCC(NC(=S)N(C)Cc1ccc(C(F)(F)F)cn1)C(=O)O"
+              ],
+              "best_score": -6.3,
+              "mean_score": -6.3
+            },
+            {
+              "smiles": "C=CC[C@@H](N)C(=O)O",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "C=CC[C@@H](NC(=S)N(C)Cc1ccc(C(F)(F)F)cn1)C(=O)O"
+              ],
+              "best_score": -6.6,
+              "mean_score": -6.6
+            },
+            {
+              "smiles": "C=CC[C@H](N)C(=O)O",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "C=CC[C@H](NC(=S)N(C)Cc1ccc(C(F)(F)F)cn1)C(=O)O"
+              ],
+              "best_score": -5.9,
+              "mean_score": -5.9
+            },
+            {
+              "smiles": "C=CCC[C@H](N)C(=O)O",
+              "similarity_to_centroid": 0.6,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "C=CCC[C@H](NC(=S)N(C)Cc1ccc(C(F)(F)F)cn1)C(=O)O"
+              ],
+              "best_score": -6.5,
+              "mean_score": -6.5
+            }
+          ],
+          "cluster_id": 1
+        }
+      ]
+    },
+    {
+      "reaction_class": "rxn_45d00d3a",
+      "bb_index": 1,
+      "unique_building_blocks": 1,
+      "occurrences": 4,
+      "supporting_compounds": 4,
+      "cluster_count": 1,
+      "clusters": [
+        {
+          "centroid_smiles": "CNCc1ccc(C(F)(F)F)cn1",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 4,
+          "supporting_compounds": 4,
+          "supporting_compound_smiles": [
+            "C=CCC(NC(=S)N(C)Cc1ccc(C(F)(F)F)cn1)C(=O)O",
+            "C=CCC[C@H](NC(=S)N(C)Cc1ccc(C(F)(F)F)cn1)C(=O)O",
+            "C=CC[C@@H](NC(=S)N(C)Cc1ccc(C(F)(F)F)cn1)C(=O)O",
+            "C=CC[C@H](NC(=S)N(C)Cc1ccc(C(F)(F)F)cn1)C(=O)O"
+          ],
+          "best_score": -6.6,
+          "mean_score": -6.325,
+          "members": [
+            {
+              "smiles": "CNCc1ccc(C(F)(F)F)cn1",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 4,
+              "supporting_compounds": 4,
+              "supporting_compound_smiles": [
+                "C=CCC(NC(=S)N(C)Cc1ccc(C(F)(F)F)cn1)C(=O)O",
+                "C=CCC[C@H](NC(=S)N(C)Cc1ccc(C(F)(F)F)cn1)C(=O)O",
+                "C=CC[C@@H](NC(=S)N(C)Cc1ccc(C(F)(F)F)cn1)C(=O)O",
+                "C=CC[C@H](NC(=S)N(C)Cc1ccc(C(F)(F)F)cn1)C(=O)O"
+              ],
+              "best_score": -6.6,
+              "mean_score": -6.325
+            }
+          ],
+          "cluster_id": 1
+        }
+      ]
+    },
+    {
+      "reaction_class": "rxn_933507b5",
+      "bb_index": 0,
+      "unique_building_blocks": 1,
+      "occurrences": 1,
+      "supporting_compounds": 1,
+      "cluster_count": 1,
+      "clusters": [
+        {
+          "centroid_smiles": "FC(F)(F)c1ccc(Br)nc1",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 1,
+          "supporting_compounds": 1,
+          "supporting_compound_smiles": [
+            "Cc1c(C(=O)O)cnn1-c1ccc(C(F)(F)F)cn1"
+          ],
+          "best_score": -7.1,
+          "mean_score": -7.1,
+          "members": [
+            {
+              "smiles": "FC(F)(F)c1ccc(Br)nc1",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "Cc1c(C(=O)O)cnn1-c1ccc(C(F)(F)F)cn1"
+              ],
+              "best_score": -7.1,
+              "mean_score": -7.1
+            }
+          ],
+          "cluster_id": 1
+        }
+      ]
+    },
+    {
+      "reaction_class": "rxn_933507b5",
+      "bb_index": 1,
+      "unique_building_blocks": 1,
+      "occurrences": 1,
+      "supporting_compounds": 1,
+      "cluster_count": 1,
+      "clusters": [
+        {
+          "centroid_smiles": "Cc1[nH]ncc1C(=O)O",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 1,
+          "supporting_compounds": 1,
+          "supporting_compound_smiles": [
+            "Cc1c(C(=O)O)cnn1-c1ccc(C(F)(F)F)cn1"
+          ],
+          "best_score": -7.1,
+          "mean_score": -7.1,
+          "members": [
+            {
+              "smiles": "Cc1[nH]ncc1C(=O)O",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "Cc1c(C(=O)O)cnn1-c1ccc(C(F)(F)F)cn1"
+              ],
+              "best_score": -7.1,
+              "mean_score": -7.1
+            }
+          ],
+          "cluster_id": 1
+        }
+      ]
+    },
+    {
+      "reaction_class": "rxn_a46303e0",
+      "bb_index": 0,
+      "unique_building_blocks": 3,
+      "occurrences": 3,
+      "supporting_compounds": 3,
+      "cluster_count": 3,
+      "clusters": [
+        {
+          "centroid_smiles": "CC(=O)CC(=O)O",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 1,
+          "supporting_compounds": 1,
+          "supporting_compound_smiles": [
+            "CC(=O)CC(=O)Nc1ccc(C(F)(F)F)cc1"
+          ],
+          "best_score": -6.7,
+          "mean_score": -6.7,
+          "members": [
+            {
+              "smiles": "CC(=O)CC(=O)O",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "CC(=O)CC(=O)Nc1ccc(C(F)(F)F)cc1"
+              ],
+              "best_score": -6.7,
+              "mean_score": -6.7
+            }
+          ],
+          "cluster_id": 1
+        },
+        {
+          "centroid_smiles": "O=C(O)c1ccc(C(F)(F)F)cc1",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 1,
+          "supporting_compounds": 1,
+          "supporting_compound_smiles": [
+            "CN(C)C(=O)c1ccc(C(F)(F)F)cc1"
+          ],
+          "best_score": -6.5,
+          "mean_score": -6.5,
+          "members": [
+            {
+              "smiles": "O=C(O)c1ccc(C(F)(F)F)cc1",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "CN(C)C(=O)c1ccc(C(F)(F)F)cc1"
+              ],
+              "best_score": -6.5,
+              "mean_score": -6.5
+            }
+          ],
+          "cluster_id": 2
+        },
+        {
+          "centroid_smiles": "O=C(O)c1ccc(C(F)(F)F)cn1",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 1,
+          "supporting_compounds": 1,
+          "supporting_compound_smiles": [
+            "CN(C)C(=O)c1ccc(C(F)(F)F)cn1"
+          ],
+          "best_score": -6.0,
+          "mean_score": -6.0,
+          "members": [
+            {
+              "smiles": "O=C(O)c1ccc(C(F)(F)F)cn1",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "CN(C)C(=O)c1ccc(C(F)(F)F)cn1"
+              ],
+              "best_score": -6.0,
+              "mean_score": -6.0
+            }
+          ],
+          "cluster_id": 3
+        }
+      ]
+    },
+    {
+      "reaction_class": "rxn_a46303e0",
+      "bb_index": 1,
+      "unique_building_blocks": 2,
+      "occurrences": 3,
+      "supporting_compounds": 3,
+      "cluster_count": 2,
+      "clusters": [
+        {
+          "centroid_smiles": "CNC",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 2,
+          "supporting_compounds": 2,
+          "supporting_compound_smiles": [
+            "CN(C)C(=O)c1ccc(C(F)(F)F)cc1",
+            "CN(C)C(=O)c1ccc(C(F)(F)F)cn1"
+          ],
+          "best_score": -6.5,
+          "mean_score": -6.25,
+          "members": [
+            {
+              "smiles": "CNC",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 2,
+              "supporting_compounds": 2,
+              "supporting_compound_smiles": [
+                "CN(C)C(=O)c1ccc(C(F)(F)F)cc1",
+                "CN(C)C(=O)c1ccc(C(F)(F)F)cn1"
+              ],
+              "best_score": -6.5,
+              "mean_score": -6.25
+            }
+          ],
+          "cluster_id": 1
+        },
+        {
+          "centroid_smiles": "Nc1ccc(C(F)(F)F)cc1",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 1,
+          "supporting_compounds": 1,
+          "supporting_compound_smiles": [
+            "CC(=O)CC(=O)Nc1ccc(C(F)(F)F)cc1"
+          ],
+          "best_score": -6.7,
+          "mean_score": -6.7,
+          "members": [
+            {
+              "smiles": "Nc1ccc(C(F)(F)F)cc1",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "CC(=O)CC(=O)Nc1ccc(C(F)(F)F)cc1"
+              ],
+              "best_score": -6.7,
+              "mean_score": -6.7
+            }
+          ],
+          "cluster_id": 2
+        }
+      ]
+    },
+    {
+      "reaction_class": "rxn_d222a18d",
+      "bb_index": 0,
+      "unique_building_blocks": 2,
+      "occurrences": 3,
+      "supporting_compounds": 3,
+      "cluster_count": 2,
+      "clusters": [
+        {
+          "centroid_smiles": "FC(F)(F)c1ccc(Br)nc1",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 2,
+          "supporting_compounds": 2,
+          "supporting_compound_smiles": [
+            "FC(F)(F)c1ccc(-c2ccc(C(F)(F)F)cn2)nc1",
+            "FC(F)(F)c1ccc(-c2ccccc2)nc1"
+          ],
+          "best_score": -7.1,
+          "mean_score": -7.0,
+          "members": [
+            {
+              "smiles": "FC(F)(F)c1ccc(Br)nc1",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 2,
+              "supporting_compounds": 2,
+              "supporting_compound_smiles": [
+                "FC(F)(F)c1ccc(-c2ccc(C(F)(F)F)cn2)nc1",
+                "FC(F)(F)c1ccc(-c2ccccc2)nc1"
+              ],
+              "best_score": -7.1,
+              "mean_score": -7.0
+            }
+          ],
+          "cluster_id": 1
+        },
+        {
+          "centroid_smiles": "O=C(O)c1ncc(C(F)(F)F)cc1Br",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 1,
+          "supporting_compounds": 1,
+          "supporting_compound_smiles": [
+            "O=C(O)c1ncc(C(F)(F)F)cc1-c1ccccc1"
+          ],
+          "best_score": -7.6,
+          "mean_score": -7.6,
+          "members": [
+            {
+              "smiles": "O=C(O)c1ncc(C(F)(F)F)cc1Br",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "O=C(O)c1ncc(C(F)(F)F)cc1-c1ccccc1"
+              ],
+              "best_score": -7.6,
+              "mean_score": -7.6
+            }
+          ],
+          "cluster_id": 2
+        }
+      ]
+    },
+    {
+      "reaction_class": "rxn_d222a18d",
+      "bb_index": 1,
+      "unique_building_blocks": 3,
+      "occurrences": 3,
+      "supporting_compounds": 3,
+      "cluster_count": 3,
+      "clusters": [
+        {
+          "centroid_smiles": "CC1(C)OB(c2ccccc2)OC1(C)C",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 1,
+          "supporting_compounds": 1,
+          "supporting_compound_smiles": [
+            "O=C(O)c1ncc(C(F)(F)F)cc1-c1ccccc1"
+          ],
+          "best_score": -7.6,
+          "mean_score": -7.6,
+          "members": [
+            {
+              "smiles": "CC1(C)OB(c2ccccc2)OC1(C)C",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "O=C(O)c1ncc(C(F)(F)F)cc1-c1ccccc1"
+              ],
+              "best_score": -7.6,
+              "mean_score": -7.6
+            }
+          ],
+          "cluster_id": 1
+        },
+        {
+          "centroid_smiles": "CC1(C)COB(c2ccc(C(F)(F)F)cn2)OC1",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 1,
+          "supporting_compounds": 1,
+          "supporting_compound_smiles": [
+            "FC(F)(F)c1ccc(-c2ccc(C(F)(F)F)cn2)nc1"
+          ],
+          "best_score": -7.1,
+          "mean_score": -7.1,
+          "members": [
+            {
+              "smiles": "CC1(C)COB(c2ccc(C(F)(F)F)cn2)OC1",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "FC(F)(F)c1ccc(-c2ccc(C(F)(F)F)cn2)nc1"
+              ],
+              "best_score": -7.1,
+              "mean_score": -7.1
+            }
+          ],
+          "cluster_id": 2
+        },
+        {
+          "centroid_smiles": "CC1(C)COB(c2ccccc2)OC1",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 1,
+          "supporting_compounds": 1,
+          "supporting_compound_smiles": [
+            "FC(F)(F)c1ccc(-c2ccccc2)nc1"
+          ],
+          "best_score": -6.9,
+          "mean_score": -6.9,
+          "members": [
+            {
+              "smiles": "CC1(C)COB(c2ccccc2)OC1",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "FC(F)(F)c1ccc(-c2ccccc2)nc1"
+              ],
+              "best_score": -6.9,
+              "mean_score": -6.9
+            }
+          ],
+          "cluster_id": 3
+        }
+      ]
+    },
+    {
+      "reaction_class": "rxn_decac515",
+      "bb_index": 0,
+      "unique_building_blocks": 3,
+      "occurrences": 3,
+      "supporting_compounds": 3,
+      "cluster_count": 3,
+      "clusters": [
+        {
+          "centroid_smiles": "Nc1ccc(C(F)(F)F)cc1Cl",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 1,
+          "supporting_compounds": 1,
+          "supporting_compound_smiles": [
+            "CC(C)C(Nc1ccc(C(F)(F)F)cc1Cl)C(=O)O"
+          ],
+          "best_score": -6.3,
+          "mean_score": -6.3,
+          "members": [
+            {
+              "smiles": "Nc1ccc(C(F)(F)F)cc1Cl",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "CC(C)C(Nc1ccc(C(F)(F)F)cc1Cl)C(=O)O"
+              ],
+              "best_score": -6.3,
+              "mean_score": -6.3
+            }
+          ],
+          "cluster_id": 1
+        },
+        {
+          "centroid_smiles": "Nc1ccc(C(F)(F)F)cn1",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 1,
+          "supporting_compounds": 1,
+          "supporting_compound_smiles": [
+            "CC(C)[C@H](Nc1ccc(C(F)(F)F)cn1)C(=O)O"
+          ],
+          "best_score": -6.1,
+          "mean_score": -6.1,
+          "members": [
+            {
+              "smiles": "Nc1ccc(C(F)(F)F)cn1",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "CC(C)[C@H](Nc1ccc(C(F)(F)F)cn1)C(=O)O"
+              ],
+              "best_score": -6.1,
+              "mean_score": -6.1
+            }
+          ],
+          "cluster_id": 2
+        },
+        {
+          "centroid_smiles": "O=Cc1cc(C(F)(F)F)ccc1NCC(=O)O",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 1,
+          "supporting_compounds": 1,
+          "supporting_compound_smiles": [
+            "CN(CC(=O)O)c1ccc(C(F)(F)F)cc1C=O"
+          ],
+          "best_score": -6.1,
+          "mean_score": -6.1,
+          "members": [
+            {
+              "smiles": "O=Cc1cc(C(F)(F)F)ccc1NCC(=O)O",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "CN(CC(=O)O)c1ccc(C(F)(F)F)cc1C=O"
+              ],
+              "best_score": -6.1,
+              "mean_score": -6.1
+            }
+          ],
+          "cluster_id": 3
+        }
+      ]
+    },
+    {
+      "reaction_class": "rxn_decac515",
+      "bb_index": 1,
+      "unique_building_blocks": 3,
+      "occurrences": 3,
+      "supporting_compounds": 3,
+      "cluster_count": 2,
+      "clusters": [
+        {
+          "centroid_smiles": "CC(C)C(Br)C(=O)O",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 2,
+          "occurrences": 2,
+          "supporting_compounds": 2,
+          "supporting_compound_smiles": [
+            "CC(C)C(Nc1ccc(C(F)(F)F)cc1Cl)C(=O)O",
+            "CC(C)[C@H](Nc1ccc(C(F)(F)F)cn1)C(=O)O"
+          ],
+          "best_score": -6.3,
+          "mean_score": -6.199999999999999,
+          "members": [
+            {
+              "smiles": "CC(C)C(Br)C(=O)O",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "CC(C)C(Nc1ccc(C(F)(F)F)cc1Cl)C(=O)O"
+              ],
+              "best_score": -6.3,
+              "mean_score": -6.3
+            },
+            {
+              "smiles": "CC(C)[C@H](Br)C(=O)O",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "CC(C)[C@H](Nc1ccc(C(F)(F)F)cn1)C(=O)O"
+              ],
+              "best_score": -6.1,
+              "mean_score": -6.1
+            }
+          ],
+          "cluster_id": 1
+        },
+        {
+          "centroid_smiles": "CBr",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 1,
+          "supporting_compounds": 1,
+          "supporting_compound_smiles": [
+            "CN(CC(=O)O)c1ccc(C(F)(F)F)cc1C=O"
+          ],
+          "best_score": -6.1,
+          "mean_score": -6.1,
+          "members": [
+            {
+              "smiles": "CBr",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "CN(CC(=O)O)c1ccc(C(F)(F)F)cc1C=O"
+              ],
+              "best_score": -6.1,
+              "mean_score": -6.1
+            }
+          ],
+          "cluster_id": 2
+        }
+      ]
+    }
+  ],
+  "analysis_stage": "post-generation reranking of retained full molecules",
+  "source_file": "runs/glycoprotein_screen/hits.json",
+  "source_pool_limitation": "The completed screen retained 30 of its 52 scored full molecules. This reranking uses all 30 retained molecules with their original screening scores."
+}

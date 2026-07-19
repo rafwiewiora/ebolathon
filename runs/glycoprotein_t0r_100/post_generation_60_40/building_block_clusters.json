@@ -1,0 +1,502 @@
+{
+  "method": "Butina clustering over Morgan-fingerprint Tanimoto distance",
+  "centroid_definition": "cluster member with maximum occurrence-weighted mean Tanimoto similarity",
+  "top_n_requested": 10,
+  "compounds_analyzed": 10,
+  "top_compounds": [
+    {
+      "rank": 1,
+      "smiles": "CNC(=O)Cc1ccccc1NC(=O)c1cccc(C(=O)c2ccccc2)c1",
+      "score": -9.2
+    },
+    {
+      "rank": 2,
+      "smiles": "COc1ccc(Cl)c(-c2cccc(NC(=S)NCc3ncc(Cl)cn3)c2)c1",
+      "score": -8.7
+    },
+    {
+      "rank": 3,
+      "smiles": "Cc1cnc(NC(=O)c2cccc(C(=O)c3ccccc3)c2)s1",
+      "score": -8.5
+    },
+    {
+      "rank": 4,
+      "smiles": "COc1ccc(Cl)c(-c2cccc(NC(=S)Nc3nc(CC(N)=O)cs3)c2)c1",
+      "score": -8.4
+    },
+    {
+      "rank": 5,
+      "smiles": "CNC(=O)c1cnc(NCc2ccc(C(=O)c3ccccc3)cc2)s1",
+      "score": -8.2
+    },
+    {
+      "rank": 6,
+      "smiles": "O=C(Cc1cccc(C(=O)c2ccccc2)c1)NCc1ncccn1",
+      "score": -8.1
+    },
+    {
+      "rank": 7,
+      "smiles": "CNC(=O)c1cnc(NCc2cccc(C(=O)c3ccccc3)c2)s1",
+      "score": -8.0
+    },
+    {
+      "rank": 8,
+      "smiles": "Cc1ccc(CNC(=O)Cc2cccc(C(=O)c3ccccc3)c2)s1",
+      "score": -8.0
+    },
+    {
+      "rank": 9,
+      "smiles": "CC(=O)c1cnc(NC(=S)Nc2cccc(C(=O)c3ccccc3)c2)s1",
+      "score": -8.0
+    },
+    {
+      "rank": 10,
+      "smiles": "COc1ccc(Cl)c(-c2cccc(NC(=S)NCc3ccccn3)c2)c1",
+      "score": -7.9
+    }
+  ],
+  "compounds_with_attributed_building_blocks": 10,
+  "similarity_threshold": 0.6,
+  "morgan_radius": 2,
+  "fingerprint_bits": 2048,
+  "position_count": 6,
+  "unique_building_blocks": 15,
+  "invalid_building_blocks": [],
+  "positions": [
+    {
+      "reaction_class": "rxn_33cc78ec",
+      "bb_index": 0,
+      "unique_building_blocks": 3,
+      "occurrences": 3,
+      "supporting_compounds": 3,
+      "cluster_count": 2,
+      "clusters": [
+        {
+          "centroid_smiles": "Oc1ccc(Cl)c(-c2cccc(NC(=S)NCc3ncc(Cl)cn3)c2)c1",
+          "centroid_mean_similarity": 0.8482142857142857,
+          "unique_building_blocks": 2,
+          "occurrences": 2,
+          "supporting_compounds": 2,
+          "supporting_compound_smiles": [
+            "COc1ccc(Cl)c(-c2cccc(NC(=S)NCc3ccccn3)c2)c1",
+            "COc1ccc(Cl)c(-c2cccc(NC(=S)NCc3ncc(Cl)cn3)c2)c1"
+          ],
+          "best_score": -8.7,
+          "mean_score": -8.3,
+          "members": [
+            {
+              "smiles": "Oc1ccc(Cl)c(-c2cccc(NC(=S)NCc3ncc(Cl)cn3)c2)c1",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "COc1ccc(Cl)c(-c2cccc(NC(=S)NCc3ncc(Cl)cn3)c2)c1"
+              ],
+              "best_score": -8.7,
+              "mean_score": -8.7
+            },
+            {
+              "smiles": "Oc1ccc(Cl)c(-c2cccc(NC(=S)NCc3ccccn3)c2)c1",
+              "similarity_to_centroid": 0.6964285714285714,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "COc1ccc(Cl)c(-c2cccc(NC(=S)NCc3ccccn3)c2)c1"
+              ],
+              "best_score": -7.9,
+              "mean_score": -7.9
+            }
+          ],
+          "cluster_id": 1
+        },
+        {
+          "centroid_smiles": "NC(=O)Cc1csc(NC(=S)Nc2cccc(-c3cc(O)ccc3Cl)c2)n1",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 1,
+          "supporting_compounds": 1,
+          "supporting_compound_smiles": [
+            "COc1ccc(Cl)c(-c2cccc(NC(=S)Nc3nc(CC(N)=O)cs3)c2)c1"
+          ],
+          "best_score": -8.4,
+          "mean_score": -8.4,
+          "members": [
+            {
+              "smiles": "NC(=O)Cc1csc(NC(=S)Nc2cccc(-c3cc(O)ccc3Cl)c2)n1",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "COc1ccc(Cl)c(-c2cccc(NC(=S)Nc3nc(CC(N)=O)cs3)c2)c1"
+              ],
+              "best_score": -8.4,
+              "mean_score": -8.4
+            }
+          ],
+          "cluster_id": 2
+        }
+      ]
+    },
+    {
+      "reaction_class": "rxn_33cc78ec",
+      "bb_index": 1,
+      "unique_building_blocks": 1,
+      "occurrences": 3,
+      "supporting_compounds": 3,
+      "cluster_count": 1,
+      "clusters": [
+        {
+          "centroid_smiles": "CBr",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 3,
+          "supporting_compounds": 3,
+          "supporting_compound_smiles": [
+            "COc1ccc(Cl)c(-c2cccc(NC(=S)NCc3ccccn3)c2)c1",
+            "COc1ccc(Cl)c(-c2cccc(NC(=S)NCc3ncc(Cl)cn3)c2)c1",
+            "COc1ccc(Cl)c(-c2cccc(NC(=S)Nc3nc(CC(N)=O)cs3)c2)c1"
+          ],
+          "best_score": -8.7,
+          "mean_score": -8.333333333333334,
+          "members": [
+            {
+              "smiles": "CBr",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 3,
+              "supporting_compounds": 3,
+              "supporting_compound_smiles": [
+                "COc1ccc(Cl)c(-c2cccc(NC(=S)NCc3ccccn3)c2)c1",
+                "COc1ccc(Cl)c(-c2cccc(NC(=S)NCc3ncc(Cl)cn3)c2)c1",
+                "COc1ccc(Cl)c(-c2cccc(NC(=S)Nc3nc(CC(N)=O)cs3)c2)c1"
+              ],
+              "best_score": -8.7,
+              "mean_score": -8.333333333333334
+            }
+          ],
+          "cluster_id": 1
+        }
+      ]
+    },
+    {
+      "reaction_class": "rxn_45d00d3a",
+      "bb_index": 0,
+      "unique_building_blocks": 1,
+      "occurrences": 1,
+      "supporting_compounds": 1,
+      "cluster_count": 1,
+      "clusters": [
+        {
+          "centroid_smiles": "CC(=O)c1cnc(N)s1",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 1,
+          "supporting_compounds": 1,
+          "supporting_compound_smiles": [
+            "CC(=O)c1cnc(NC(=S)Nc2cccc(C(=O)c3ccccc3)c2)s1"
+          ],
+          "best_score": -8.0,
+          "mean_score": -8.0,
+          "members": [
+            {
+              "smiles": "CC(=O)c1cnc(N)s1",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "CC(=O)c1cnc(NC(=S)Nc2cccc(C(=O)c3ccccc3)c2)s1"
+              ],
+              "best_score": -8.0,
+              "mean_score": -8.0
+            }
+          ],
+          "cluster_id": 1
+        }
+      ]
+    },
+    {
+      "reaction_class": "rxn_45d00d3a",
+      "bb_index": 1,
+      "unique_building_blocks": 1,
+      "occurrences": 1,
+      "supporting_compounds": 1,
+      "cluster_count": 1,
+      "clusters": [
+        {
+          "centroid_smiles": "Nc1cccc(C(=O)c2ccccc2)c1",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 1,
+          "supporting_compounds": 1,
+          "supporting_compound_smiles": [
+            "CC(=O)c1cnc(NC(=S)Nc2cccc(C(=O)c3ccccc3)c2)s1"
+          ],
+          "best_score": -8.0,
+          "mean_score": -8.0,
+          "members": [
+            {
+              "smiles": "Nc1cccc(C(=O)c2ccccc2)c1",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "CC(=O)c1cnc(NC(=S)Nc2cccc(C(=O)c3ccccc3)c2)s1"
+              ],
+              "best_score": -8.0,
+              "mean_score": -8.0
+            }
+          ],
+          "cluster_id": 1
+        }
+      ]
+    },
+    {
+      "reaction_class": "rxn_a46303e0",
+      "bb_index": 0,
+      "unique_building_blocks": 5,
+      "occurrences": 6,
+      "supporting_compounds": 6,
+      "cluster_count": 4,
+      "clusters": [
+        {
+          "centroid_smiles": "O=C(c1ccccc1)c1ccc(CNc2ncc(C(=O)O)s2)cc1",
+          "centroid_mean_similarity": 0.8977272727272727,
+          "unique_building_blocks": 2,
+          "occurrences": 2,
+          "supporting_compounds": 2,
+          "supporting_compound_smiles": [
+            "CNC(=O)c1cnc(NCc2ccc(C(=O)c3ccccc3)cc2)s1",
+            "CNC(=O)c1cnc(NCc2cccc(C(=O)c3ccccc3)c2)s1"
+          ],
+          "best_score": -8.2,
+          "mean_score": -8.1,
+          "members": [
+            {
+              "smiles": "O=C(c1ccccc1)c1ccc(CNc2ncc(C(=O)O)s2)cc1",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "CNC(=O)c1cnc(NCc2ccc(C(=O)c3ccccc3)cc2)s1"
+              ],
+              "best_score": -8.2,
+              "mean_score": -8.2
+            },
+            {
+              "smiles": "O=C(c1ccccc1)c1cccc(CNc2ncc(C(=O)O)s2)c1",
+              "similarity_to_centroid": 0.7954545454545454,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "CNC(=O)c1cnc(NCc2cccc(C(=O)c3ccccc3)c2)s1"
+              ],
+              "best_score": -8.0,
+              "mean_score": -8.0
+            }
+          ],
+          "cluster_id": 1
+        },
+        {
+          "centroid_smiles": "O=C(O)Cc1cccc(C(=O)c2ccccc2)c1",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 2,
+          "supporting_compounds": 2,
+          "supporting_compound_smiles": [
+            "Cc1ccc(CNC(=O)Cc2cccc(C(=O)c3ccccc3)c2)s1",
+            "O=C(Cc1cccc(C(=O)c2ccccc2)c1)NCc1ncccn1"
+          ],
+          "best_score": -8.1,
+          "mean_score": -8.05,
+          "members": [
+            {
+              "smiles": "O=C(O)Cc1cccc(C(=O)c2ccccc2)c1",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 2,
+              "supporting_compounds": 2,
+              "supporting_compound_smiles": [
+                "Cc1ccc(CNC(=O)Cc2cccc(C(=O)c3ccccc3)c2)s1",
+                "O=C(Cc1cccc(C(=O)c2ccccc2)c1)NCc1ncccn1"
+              ],
+              "best_score": -8.1,
+              "mean_score": -8.05
+            }
+          ],
+          "cluster_id": 2
+        },
+        {
+          "centroid_smiles": "O=C(O)Cc1ccccc1NC(=O)c1cccc(C(=O)c2ccccc2)c1",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 1,
+          "supporting_compounds": 1,
+          "supporting_compound_smiles": [
+            "CNC(=O)Cc1ccccc1NC(=O)c1cccc(C(=O)c2ccccc2)c1"
+          ],
+          "best_score": -9.2,
+          "mean_score": -9.2,
+          "members": [
+            {
+              "smiles": "O=C(O)Cc1ccccc1NC(=O)c1cccc(C(=O)c2ccccc2)c1",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "CNC(=O)Cc1ccccc1NC(=O)c1cccc(C(=O)c2ccccc2)c1"
+              ],
+              "best_score": -9.2,
+              "mean_score": -9.2
+            }
+          ],
+          "cluster_id": 3
+        },
+        {
+          "centroid_smiles": "O=C(O)c1cccc(C(=O)c2ccccc2)c1",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 1,
+          "supporting_compounds": 1,
+          "supporting_compound_smiles": [
+            "Cc1cnc(NC(=O)c2cccc(C(=O)c3ccccc3)c2)s1"
+          ],
+          "best_score": -8.5,
+          "mean_score": -8.5,
+          "members": [
+            {
+              "smiles": "O=C(O)c1cccc(C(=O)c2ccccc2)c1",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "Cc1cnc(NC(=O)c2cccc(C(=O)c3ccccc3)c2)s1"
+              ],
+              "best_score": -8.5,
+              "mean_score": -8.5
+            }
+          ],
+          "cluster_id": 4
+        }
+      ]
+    },
+    {
+      "reaction_class": "rxn_a46303e0",
+      "bb_index": 1,
+      "unique_building_blocks": 4,
+      "occurrences": 6,
+      "supporting_compounds": 6,
+      "cluster_count": 4,
+      "clusters": [
+        {
+          "centroid_smiles": "CN",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 3,
+          "supporting_compounds": 3,
+          "supporting_compound_smiles": [
+            "CNC(=O)Cc1ccccc1NC(=O)c1cccc(C(=O)c2ccccc2)c1",
+            "CNC(=O)c1cnc(NCc2ccc(C(=O)c3ccccc3)cc2)s1",
+            "CNC(=O)c1cnc(NCc2cccc(C(=O)c3ccccc3)c2)s1"
+          ],
+          "best_score": -9.2,
+          "mean_score": -8.466666666666667,
+          "members": [
+            {
+              "smiles": "CN",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 3,
+              "supporting_compounds": 3,
+              "supporting_compound_smiles": [
+                "CNC(=O)Cc1ccccc1NC(=O)c1cccc(C(=O)c2ccccc2)c1",
+                "CNC(=O)c1cnc(NCc2ccc(C(=O)c3ccccc3)cc2)s1",
+                "CNC(=O)c1cnc(NCc2cccc(C(=O)c3ccccc3)c2)s1"
+              ],
+              "best_score": -9.2,
+              "mean_score": -8.466666666666667
+            }
+          ],
+          "cluster_id": 1
+        },
+        {
+          "centroid_smiles": "Cc1cnc(N)s1",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 1,
+          "supporting_compounds": 1,
+          "supporting_compound_smiles": [
+            "Cc1cnc(NC(=O)c2cccc(C(=O)c3ccccc3)c2)s1"
+          ],
+          "best_score": -8.5,
+          "mean_score": -8.5,
+          "members": [
+            {
+              "smiles": "Cc1cnc(N)s1",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "Cc1cnc(NC(=O)c2cccc(C(=O)c3ccccc3)c2)s1"
+              ],
+              "best_score": -8.5,
+              "mean_score": -8.5
+            }
+          ],
+          "cluster_id": 2
+        },
+        {
+          "centroid_smiles": "NCc1ncccn1",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 1,
+          "supporting_compounds": 1,
+          "supporting_compound_smiles": [
+            "O=C(Cc1cccc(C(=O)c2ccccc2)c1)NCc1ncccn1"
+          ],
+          "best_score": -8.1,
+          "mean_score": -8.1,
+          "members": [
+            {
+              "smiles": "NCc1ncccn1",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "O=C(Cc1cccc(C(=O)c2ccccc2)c1)NCc1ncccn1"
+              ],
+              "best_score": -8.1,
+              "mean_score": -8.1
+            }
+          ],
+          "cluster_id": 3
+        },
+        {
+          "centroid_smiles": "Cc1ccc(CN)s1",
+          "centroid_mean_similarity": 1.0,
+          "unique_building_blocks": 1,
+          "occurrences": 1,
+          "supporting_compounds": 1,
+          "supporting_compound_smiles": [
+            "Cc1ccc(CNC(=O)Cc2cccc(C(=O)c3ccccc3)c2)s1"
+          ],
+          "best_score": -8.0,
+          "mean_score": -8.0,
+          "members": [
+            {
+              "smiles": "Cc1ccc(CN)s1",
+              "similarity_to_centroid": 1.0,
+              "occurrences": 1,
+              "supporting_compounds": 1,
+              "supporting_compound_smiles": [
+                "Cc1ccc(CNC(=O)Cc2cccc(C(=O)c3ccccc3)c2)s1"
+              ],
+              "best_score": -8.0,
+              "mean_score": -8.0
+            }
+          ],
+          "cluster_id": 4
+        }
+      ]
+    }
+  ],
+  "analysis_stage": "post-generation reranking of retained full molecules",
+  "source_file": "runs/glycoprotein_t0r_100/hits.csv",
+  "source_pool_limitation": "The historical run retained only its ten final full molecules; its other scored products cannot be reranked because their identities and per-compound decompositions were not persisted."
+}

@@ -98,6 +98,62 @@ reward = −score, with count + std), and the pruning funnel `n_synthons_seen` /
 `n_synthons_confident` (confident = seen ≥ 2×). It is a serialization of the
 bandit state — no extra docking.
 
+### Building-block clusters and centroids
+
+After **all screening rounds have completed**, the best `--cluster-top-n`
+compounds from the final accumulated docking-score ranking (default **100**) are
+analyzed using their attributed building blocks. Those building blocks are
+clustered separately per
+`(reaction_class, bb_index)` using Butina clustering over radius-2, 2048-bit
+Morgan-fingerprint Tanimoto similarity. The default minimum similarity is 0.60;
+change it with `--bb-cluster-similarity` or set `--cluster-top-n 0` to disable
+the analysis.
+
+`building_block_clusters.json` contains every cluster and member. Because a
+binary fingerprint has no molecule-valued arithmetic centroid, each reported
+centroid is a **medoid**: the observed building block with the highest
+occurrence-weighted mean Tanimoto similarity to its cluster. A compact list of
+those representatives is also written to `building_block_centroids.csv`, with
+cluster size, compound support, and docking-score summaries. Precise attribution
+(the default) analyzes each hit's own decomposition; `--coarse` can only report
+the anchor building blocks used by its approximate attribution.
+
+`building_block_clusters.svg` plots each reaction position separately. Unique
+building blocks are projected into two dimensions by classical MDS over their
+Morgan/Tanimoto distance matrix, colored by cluster, sized by recurrence, and
+shown with the centroid medoids as labeled diamonds.
+
+### Full-molecule top hits with building-block diversity
+
+The final `--top-k` output contains complete product molecules, not isolated
+building blocks. This ranking runs **only after `run_loop` has finished every
+generation round**; it does not affect OnePot generation, Thompson-sampling
+anchors, pruning, or live per-round pose displays.
+
+The post-generation ranking takes the best `--cluster-top-n` scored products
+(default 100), maps each product to its reaction-aware building-block cluster
+signature, and retains the strongest-affinity full molecule for each exact
+signature. It then greedily selects full molecules using:
+
+```text
+selection score = 0.60 × minimum signature diversity
+                + 0.40 × normalized docking affinity
+```
+
+Signature diversity is the fraction of building-block positions assigned to a
+different cluster from the nearest already selected molecule. Different
+reaction classes are treated as maximally different because their building-block
+positions are not interchangeable. The first selection is the best-affinity
+signature representative. If fewer than `--top-k` unique signatures exist, the
+remaining slots are filled by affinity and explicitly marked as fallbacks.
+Set `--cluster-top-n 0` to disable both this post-generation ranking and its
+cluster artifacts; the existing scaffold-diverse affinity ranking is then used.
+
+`hits.json` records each selected full molecule, its reaction class, building
+blocks, cluster signature, diversity component, affinity component, combined
+selection score, and fallback status. `hits.csv`, `top_hits.sdf`, and the rank
+PDB files contain the same selected full molecules.
+
 ### Viewing the poses in PyMOL
 The out-dir gets: `receptor.pdb` (grey cartoon), `rank{N}_{score}.pdb` (one docked
 ligand per hit, green-carbon sticks), `top_hits.sdf` (best-effort combined SDF),

@@ -1,0 +1,364 @@
+{
+  "method": "post-generation cluster-signature MMR",
+  "diversity_weight": 0.6,
+  "affinity_weight": 0.4,
+  "bb_cluster_similarity_threshold": 0.6,
+  "source_file": "runs/glycoprotein_screen/hits.json",
+  "source_scored_count": 52,
+  "source_pool_size": 30,
+  "source_pool_limitation": "The completed screen retained 30 of its 52 scored full molecules. This reranking uses all 30 retained molecules with their original screening scores.",
+  "onepot_credits_used": 30,
+  "attributed_candidate_count": 15,
+  "unattributed_molecules": [
+    "O=C(O)C1CCN(c2ccc(C(F)(F)F)cn2)CC1",
+    "NC(Cc1cc(C(F)(F)F)ccc1Cl)C(=O)O",
+    "CC(C)C(=O)c1cccc(C(F)(F)F)c1",
+    "CCOC(=O)c1cc2cc(C(F)(F)F)cnc2[nH]1",
+    "CC(Cc1ccc(C(F)(F)F)cc1)C(=O)O",
+    "O=C(O)CCCC(=O)Nc1cc(C(F)(F)F)ccc1Cl",
+    "CC(=O)Oc1cc(C(F)(F)F)ccc1C(=O)O",
+    "O=C(O)C(Cc1ccccc1)NS(=O)(=O)c1cccc(C(F)(F)F)c1",
+    "O=C(O)c1c[nH]c2ncc(C(F)(F)F)cc12",
+    "N[C@H](CC(=O)O)c1ccc(C(F)(F)F)cc1",
+    "CC(C)(C)c1ccc(C(=O)O)nc1",
+    "COC(=O)C(C(=O)OC)c1ncc(C(F)(F)F)cc1Cl",
+    "N[C@@H](CC(=O)O)c1ccc(C(F)(F)F)cc1",
+    "NC(CC(=O)O)c1ccc(C(F)(F)F)cc1",
+    "CC(C)(Oc1ccc(C(F)(F)F)cn1)C(=O)O"
+  ],
+  "unique_signature_count": 12,
+  "unique_building_blocks": 25,
+  "cluster_count": 21,
+  "selected": [
+    {
+      "rank": 1,
+      "smiles": "O=C(O)c1ncc(C(F)(F)F)cc1-c1ccccc1",
+      "score": -7.6,
+      "reaction_class": "rxn_d222a18d",
+      "building_blocks": [
+        {
+          "bb_index": 0,
+          "smiles": "Brc1cc(C(F)(F)F)cnc1C(=O)O"
+        },
+        {
+          "bb_index": 1,
+          "smiles": "CC1(C)OB(c2ccccc2)OC1(C)C"
+        }
+      ],
+      "cluster_signature": {
+        "reaction_class": "rxn_d222a18d",
+        "positions": [
+          {
+            "bb_index": 0,
+            "cluster_id": 2
+          },
+          {
+            "bb_index": 1,
+            "cluster_id": 1
+          }
+        ]
+      },
+      "diversity_score": 1.0,
+      "affinity_score": 1.0,
+      "selection_score": 1.0,
+      "fallback": false
+    },
+    {
+      "rank": 2,
+      "smiles": "Cc1c(C(=O)O)cnn1-c1ccc(C(F)(F)F)cn1",
+      "score": -7.1,
+      "reaction_class": "rxn_933507b5",
+      "building_blocks": [
+        {
+          "bb_index": 0,
+          "smiles": "Brc1ccc(C(F)(F)F)cn1"
+        },
+        {
+          "bb_index": 1,
+          "smiles": "Cc1[nH]ncc1C(=O)O"
+        }
+      ],
+      "cluster_signature": {
+        "reaction_class": "rxn_933507b5",
+        "positions": [
+          {
+            "bb_index": 0,
+            "cluster_id": 1
+          },
+          {
+            "bb_index": 1,
+            "cluster_id": 1
+          }
+        ]
+      },
+      "diversity_score": 1.0,
+      "affinity_score": 0.6875,
+      "selection_score": 0.875,
+      "fallback": false
+    },
+    {
+      "rank": 3,
+      "smiles": "FC(F)(F)c1ccc(-c2ccc(C(F)(F)F)cn2)nc1",
+      "score": -7.1,
+      "reaction_class": "rxn_d222a18d",
+      "building_blocks": [
+        {
+          "bb_index": 0,
+          "smiles": "Brc1ccc(C(F)(F)F)cn1"
+        },
+        {
+          "bb_index": 1,
+          "smiles": "CC1(C)COB(c2ccc(C(F)(F)F)cn2)OC1"
+        }
+      ],
+      "cluster_signature": {
+        "reaction_class": "rxn_d222a18d",
+        "positions": [
+          {
+            "bb_index": 0,
+            "cluster_id": 1
+          },
+          {
+            "bb_index": 1,
+            "cluster_id": 2
+          }
+        ]
+      },
+      "diversity_score": 1.0,
+      "affinity_score": 0.6875,
+      "selection_score": 0.875,
+      "fallback": false
+    },
+    {
+      "rank": 4,
+      "smiles": "CC(=O)CC(=O)Nc1ccc(C(F)(F)F)cc1",
+      "score": -6.7,
+      "reaction_class": "rxn_a46303e0",
+      "building_blocks": [
+        {
+          "bb_index": 0,
+          "smiles": "CC(=O)CC(=O)O"
+        },
+        {
+          "bb_index": 1,
+          "smiles": "Nc1ccc(C(F)(F)F)cc1"
+        }
+      ],
+      "cluster_signature": {
+        "reaction_class": "rxn_a46303e0",
+        "positions": [
+          {
+            "bb_index": 0,
+            "cluster_id": 1
+          },
+          {
+            "bb_index": 1,
+            "cluster_id": 2
+          }
+        ]
+      },
+      "diversity_score": 1.0,
+      "affinity_score": 0.4375,
+      "selection_score": 0.775,
+      "fallback": false
+    },
+    {
+      "rank": 5,
+      "smiles": "C=CC[C@@H](NC(=S)N(C)Cc1ccc(C(F)(F)F)cn1)C(=O)O",
+      "score": -6.6,
+      "reaction_class": "rxn_45d00d3a",
+      "building_blocks": [
+        {
+          "bb_index": 0,
+          "smiles": "C=CC[C@@H](N)C(=O)O"
+        },
+        {
+          "bb_index": 1,
+          "smiles": "CNCc1ccc(C(F)(F)F)cn1"
+        }
+      ],
+      "cluster_signature": {
+        "reaction_class": "rxn_45d00d3a",
+        "positions": [
+          {
+            "bb_index": 0,
+            "cluster_id": 1
+          },
+          {
+            "bb_index": 1,
+            "cluster_id": 1
+          }
+        ]
+      },
+      "diversity_score": 1.0,
+      "affinity_score": 0.375,
+      "selection_score": 0.75,
+      "fallback": false
+    },
+    {
+      "rank": 6,
+      "smiles": "CC(Oc1ccc(C(F)(F)F)cc1)C(=O)O",
+      "score": -6.5,
+      "reaction_class": "rxn_33cc78ec",
+      "building_blocks": [
+        {
+          "bb_index": 0,
+          "smiles": "Oc1ccc(C(F)(F)F)cc1"
+        },
+        {
+          "bb_index": 1,
+          "smiles": "BrC(C)C(=O)O"
+        }
+      ],
+      "cluster_signature": {
+        "reaction_class": "rxn_33cc78ec",
+        "positions": [
+          {
+            "bb_index": 0,
+            "cluster_id": 1
+          },
+          {
+            "bb_index": 1,
+            "cluster_id": 1
+          }
+        ]
+      },
+      "diversity_score": 1.0,
+      "affinity_score": 0.3125,
+      "selection_score": 0.725,
+      "fallback": false
+    },
+    {
+      "rank": 7,
+      "smiles": "CN(C)C(=O)c1ccc(C(F)(F)F)cc1",
+      "score": -6.5,
+      "reaction_class": "rxn_a46303e0",
+      "building_blocks": [
+        {
+          "bb_index": 0,
+          "smiles": "O=C(O)c1ccc(C(F)(F)F)cc1"
+        },
+        {
+          "bb_index": 1,
+          "smiles": "CNC"
+        }
+      ],
+      "cluster_signature": {
+        "reaction_class": "rxn_a46303e0",
+        "positions": [
+          {
+            "bb_index": 0,
+            "cluster_id": 2
+          },
+          {
+            "bb_index": 1,
+            "cluster_id": 1
+          }
+        ]
+      },
+      "diversity_score": 1.0,
+      "affinity_score": 0.3125,
+      "selection_score": 0.725,
+      "fallback": false
+    },
+    {
+      "rank": 8,
+      "smiles": "CC(C)C(Nc1ccc(C(F)(F)F)cc1Cl)C(=O)O",
+      "score": -6.3,
+      "reaction_class": "rxn_decac515",
+      "building_blocks": [
+        {
+          "bb_index": 0,
+          "smiles": "Nc1ccc(C(F)(F)F)cc1Cl"
+        },
+        {
+          "bb_index": 1,
+          "smiles": "BrC(C(=O)O)C(C)C"
+        }
+      ],
+      "cluster_signature": {
+        "reaction_class": "rxn_decac515",
+        "positions": [
+          {
+            "bb_index": 0,
+            "cluster_id": 1
+          },
+          {
+            "bb_index": 1,
+            "cluster_id": 1
+          }
+        ]
+      },
+      "diversity_score": 1.0,
+      "affinity_score": 0.1875,
+      "selection_score": 0.675,
+      "fallback": false
+    },
+    {
+      "rank": 9,
+      "smiles": "CN(CC(=O)O)c1ccc(C(F)(F)F)cc1C=O",
+      "score": -6.1,
+      "reaction_class": "rxn_decac515",
+      "building_blocks": [
+        {
+          "bb_index": 0,
+          "smiles": "O=Cc1cc(C(F)(F)F)ccc1NCC(=O)O"
+        },
+        {
+          "bb_index": 1,
+          "smiles": "BrC"
+        }
+      ],
+      "cluster_signature": {
+        "reaction_class": "rxn_decac515",
+        "positions": [
+          {
+            "bb_index": 0,
+            "cluster_id": 3
+          },
+          {
+            "bb_index": 1,
+            "cluster_id": 2
+          }
+        ]
+      },
+      "diversity_score": 1.0,
+      "affinity_score": 0.0625,
+      "selection_score": 0.625,
+      "fallback": false
+    },
+    {
+      "rank": 10,
+      "smiles": "FC(F)(F)c1ccc(-c2ccccc2)nc1",
+      "score": -6.9,
+      "reaction_class": "rxn_d222a18d",
+      "building_blocks": [
+        {
+          "bb_index": 0,
+          "smiles": "Brc1ccc(C(F)(F)F)cn1"
+        },
+        {
+          "bb_index": 1,
+          "smiles": "CC1(C)COB(c2ccccc2)OC1"
+        }
+      ],
+      "cluster_signature": {
+        "reaction_class": "rxn_d222a18d",
+        "positions": [
+          {
+            "bb_index": 0,
+            "cluster_id": 1
+          },
+          {
+            "bb_index": 1,
+            "cluster_id": 3
+          }
+        ]
+      },
+      "diversity_score": 0.5,
+      "affinity_score": 0.5625,
+      "selection_score": 0.525,
+      "fallback": false
+    }
+  ]
+}
