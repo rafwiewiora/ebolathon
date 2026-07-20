@@ -1,0 +1,889 @@
+{
+  "target": "5JQ7",
+  "query_or_seeds": [
+    "CN(C(=O)/C=C/c1cccc(OC(F)F)c1)c1cccnc1F",
+    "O=C(NCC1CCCOC1)N1CCCC(c2ccccc2)C1",
+    "Cc1ccc(CNc2cc(F)c3c(c2)C(=O)CCC3)cc1F"
+  ],
+  "backend": "muni",
+  "rounds": [
+    {
+      "round": 1,
+      "n_docks": 223,
+      "best_score": -8.9,
+      "topk_mean": -8.18,
+      "top_k": 20,
+      "scores": [
+        -8.9,
+        -8.7,
+        -8.5,
+        -8.5,
+        -8.4,
+        -8.3,
+        -8.3,
+        -8.3,
+        -8.3,
+        -8.1,
+        -8.1,
+        -8.1,
+        -8.0,
+        -7.9,
+        -7.9,
+        -7.9,
+        -7.9,
+        -7.9,
+        -7.8,
+        -7.8,
+        -7.7,
+        -7.7,
+        -7.7,
+        -7.7,
+        -7.6,
+        -7.6,
+        -7.6,
+        -7.6,
+        -7.6,
+        -7.6,
+        -7.5,
+        -7.5,
+        -7.5,
+        -7.5,
+        -7.5,
+        -7.5,
+        -7.4,
+        -7.4,
+        -7.4,
+        -7.3,
+        -7.3,
+        -7.3,
+        -7.3,
+        -7.2,
+        -7.2,
+        -7.2,
+        -7.2,
+        -7.2,
+        -7.2,
+        -7.2,
+        -7.1,
+        -7.1,
+        -7.1,
+        -7.1,
+        -7.1,
+        -7.0,
+        -7.0,
+        -7.0,
+        -7.0,
+        -7.0,
+        -7.0,
+        -7.0,
+        -6.9,
+        -6.9,
+        -6.9,
+        -6.8,
+        -6.8,
+        -6.8,
+        -6.8,
+        -6.8,
+        -6.8,
+        -6.8,
+        -6.8,
+        -6.8,
+        -6.8,
+        -6.7,
+        -6.7,
+        -6.7,
+        -6.7,
+        -6.7,
+        -6.7,
+        -6.7,
+        -6.6,
+        -6.6,
+        -6.6,
+        -6.6,
+        -6.6,
+        -6.5,
+        -6.5,
+        -6.5,
+        -6.5,
+        -6.5,
+        -6.5,
+        -6.5,
+        -6.4,
+        -6.4,
+        -6.4,
+        -6.4,
+        -6.4,
+        -6.4,
+        -6.3,
+        -6.3,
+        -6.3,
+        -6.3,
+        -6.3,
+        -6.3,
+        -6.3,
+        -6.3,
+        -6.3,
+        -6.2,
+        -6.2,
+        -6.2,
+        -6.2,
+        -6.2,
+        -6.2,
+        -6.2,
+        -6.2,
+        -6.2,
+        -6.2,
+        -6.1,
+        -6.1,
+        -6.1,
+        -6.1,
+        -6.1,
+        -6.1,
+        -6.0,
+        -6.0,
+        -6.0,
+        -6.0,
+        -6.0,
+        -6.0,
+        -6.0,
+        -5.9,
+        -5.9,
+        -5.9,
+        -5.9,
+        -5.9,
+        -5.9,
+        -5.9,
+        -5.9,
+        -5.9,
+        -5.9,
+        -5.9,
+        -5.9,
+        -5.9,
+        -5.9,
+        -5.9,
+        -5.9,
+        -5.9,
+        -5.8,
+        -5.8,
+        -5.8,
+        -5.8,
+        -5.8,
+        -5.8,
+        -5.8,
+        -5.8,
+        -5.8,
+        -5.8,
+        -5.8,
+        -5.8,
+        -5.8,
+        -5.7,
+        -5.7,
+        -5.7,
+        -5.7,
+        -5.7,
+        -5.7,
+        -5.7,
+        -5.7,
+        -5.7,
+        -5.7,
+        -5.7,
+        -5.7,
+        -5.7,
+        -5.6,
+        -5.6,
+        -5.6,
+        -5.6,
+        -5.6,
+        -5.6,
+        -5.6,
+        -5.6,
+        -5.6,
+        -5.6,
+        -5.6,
+        -5.6,
+        -5.6,
+        -5.6,
+        -5.6,
+        -5.6,
+        -5.6,
+        -5.5,
+        -5.5,
+        -5.5,
+        -5.5,
+        -5.5,
+        -5.5,
+        -5.5,
+        -5.5,
+        -5.5,
+        -5.5,
+        -5.4,
+        -5.4,
+        -5.4,
+        -5.4,
+        -5.4,
+        -5.4,
+        -5.4,
+        -5.4,
+        -5.4,
+        -5.3,
+        -5.2,
+        -5.2,
+        -5.2,
+        -5.1,
+        -5.1,
+        -5.1,
+        -5.1,
+        -5.1,
+        -5.0,
+        -5.0,
+        -4.8
+      ],
+      "positions": {
+        "rxn_d222a18d": {
+          "0": [
+            {
+              "bb": "Brc1ccc(CNc2cccc(C(N)=O)c2)cc1",
+              "mean_reward": 8.9,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "Brc1ccc(C(=O)N2CCCCC2)cc1",
+              "mean_reward": 7.9,
+              "count": 2,
+              "std": 0.0
+            },
+            {
+              "bb": "Brc1ccc(C)c(F)c1",
+              "mean_reward": 7.7,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "Brc1ccc(CNC)cc1",
+              "mean_reward": 7.6,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "Brc1ccccc1C(=O)O",
+              "mean_reward": 7.3,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "Brc1ccc(C(=O)O)cc1",
+              "mean_reward": 6.8,
+              "count": 1,
+              "std": 0.0
+            }
+          ],
+          "1": [
+            {
+              "bb": "OB(O)c1ccc(F)cc1",
+              "mean_reward": 8.9,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "CC1(C)OB(c2cccc([N+](=O)[O-])c2)OC1(C)C",
+              "mean_reward": 7.9,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "CC1(C)OB(c2ccc(CC(=O)O)cc2)OC1(C)C",
+              "mean_reward": 7.7,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "CC1(C)OB(c2[nH]c3cc(F)cc4c3c2CCNC4=O)OC1(C)C",
+              "mean_reward": 7.6,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "O=[N+]([O-])c1ccc(B(O)O)cc1",
+              "mean_reward": 7.35,
+              "count": 2,
+              "std": 0.7778
+            },
+            {
+              "bb": "CC1(C)OB(c2ccc([N+](=O)[O-])cc2)OC1(C)C",
+              "mean_reward": 7.3,
+              "count": 1,
+              "std": 0.0
+            }
+          ]
+        },
+        "rxn_a46303e0": {
+          "0": [
+            {
+              "bb": "O=C(O)c1ccc(-c2ccc([N+](=O)[O-])cc2)cc1",
+              "mean_reward": 8.4,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "O=C(O)c1ccc(C(=O)c2ccc([N+](=O)[O-])cc2)cc1",
+              "mean_reward": 8.3,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "O=C(O)Cc1ccc([N+](=O)[O-])cc1",
+              "mean_reward": 8.1,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "O=C(O)c1ccc(F)cc1",
+              "mean_reward": 7.8,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "O=C(O)/C=C/c1cccc(OC(F)F)c1",
+              "mean_reward": 7.4909,
+              "count": 11,
+              "std": 0.4826
+            },
+            {
+              "bb": "O=C(O)/C=C/c1cccc(OC(F)(F)F)c1",
+              "mean_reward": 7.4,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "O=C(O)C=Cc1cccc(OC(F)(F)F)c1",
+              "mean_reward": 7.4,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "O=C(O)c1ccc([N+](=O)[O-])cc1",
+              "mean_reward": 7.1727,
+              "count": 11,
+              "std": 0.8063
+            },
+            {
+              "bb": "COc1cccc(/C=C/C(=O)O)c1",
+              "mean_reward": 7.1,
+              "count": 3,
+              "std": 0.1
+            },
+            {
+              "bb": "CCOc1cccc(/C=C/C(=O)O)c1",
+              "mean_reward": 7.0,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "O=C(O)c1cccc(F)c1",
+              "mean_reward": 7.0,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "CC(=O)O",
+              "mean_reward": 6.575,
+              "count": 4,
+              "std": 0.2217
+            }
+          ],
+          "1": [
+            {
+              "bb": "Fc1ccc(C2CCCNC2)cc1",
+              "mean_reward": 8.7,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "Fc1ccccc1C1CCNC1",
+              "mean_reward": 8.1,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "c1ccc(N2CCNCC2)cc1",
+              "mean_reward": 8.1,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "Nc1cc(O)cc(O)c1",
+              "mean_reward": 8.0,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "C#CC1CCNCC1",
+              "mean_reward": 7.9333,
+              "count": 3,
+              "std": 0.7234
+            },
+            {
+              "bb": "Cc1ccc(CN)s1",
+              "mean_reward": 7.9,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "COc1ccc(C2CCNC2)cc1",
+              "mean_reward": 7.9,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "CC(=O)c1cccc(N)c1",
+              "mean_reward": 7.8,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "CNc1cccc(F)c1C#N",
+              "mean_reward": 7.6,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "NCc1sccc1Cl",
+              "mean_reward": 7.6,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "C[C@H](N)c1ccccn1",
+              "mean_reward": 7.55,
+              "count": 2,
+              "std": 0.495
+            },
+            {
+              "bb": "C[C@H]1CC(=O)CCN1",
+              "mean_reward": 7.5,
+              "count": 1,
+              "std": 0.0
+            }
+          ]
+        },
+        "rxn_933507b5": {
+          "0": [
+            {
+              "bb": "Brc1cc(F)c2c(c1)C(=O)CCC2",
+              "mean_reward": 8.5,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "Brc1cc(F)c2c(c1)C(=O)CC2",
+              "mean_reward": 8.4,
+              "count": 2,
+              "std": 0.1414
+            },
+            {
+              "bb": "Brc1cc(C)c2c(c1)C(=O)CC2",
+              "mean_reward": 8.3,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "Brc1ccc2c(c1)C(=O)CCC2",
+              "mean_reward": 8.3,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "Brc1cccc(C(=O)O)c1",
+              "mean_reward": 7.45,
+              "count": 2,
+              "std": 0.0707
+            },
+            {
+              "bb": "Brc1ccc(C(=O)O)cc1",
+              "mean_reward": 7.2,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "Brc1cccc(C(N)=O)c1",
+              "mean_reward": 7.075,
+              "count": 4,
+              "std": 0.1708
+            },
+            {
+              "bb": "Brc1cccc(C(C)=O)c1",
+              "mean_reward": 6.9,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "Brc1ccc(F)c(C)c1",
+              "mean_reward": 5.1,
+              "count": 1,
+              "std": 0.0
+            }
+          ],
+          "1": [
+            {
+              "bb": "Cc1ccc(CN)cc1F",
+              "mean_reward": 8.4,
+              "count": 4,
+              "std": 0.1155
+            },
+            {
+              "bb": "Cc1cc(CN)ccc1F",
+              "mean_reward": 8.3,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "Cc1ccc(CN)cc1",
+              "mean_reward": 7.5,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "NCc1cc(F)cc(F)c1",
+              "mean_reward": 7.3,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "NCc1ccc(F)cc1",
+              "mean_reward": 7.15,
+              "count": 4,
+              "std": 0.2082
+            },
+            {
+              "bb": "NCc1cccc(F)c1",
+              "mean_reward": 7.0,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "NCc1ccc(CBr)cc1",
+              "mean_reward": 6.9,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "CN",
+              "mean_reward": 5.1,
+              "count": 1,
+              "std": 0.0
+            }
+          ]
+        },
+        "rxn_33cc78ec": {
+          "0": [
+            {
+              "bb": "O=C(O)/C=C/c1cccc(O)c1",
+              "mean_reward": 7.0,
+              "count": 4,
+              "std": 0.7439
+            },
+            {
+              "bb": "O=C(O)C(=C/C=C/c1cccc(O)c1)C(=O)O",
+              "mean_reward": 6.8,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "CC(=O)c1ccc(O)cc1Cl",
+              "mean_reward": 6.1,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "COC(=O)/C=C/c1cccc(O)c1",
+              "mean_reward": 6.0,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "CC(=O)c1cccc(O)c1",
+              "mean_reward": 5.9,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "COC(=O)c1cccc(O)c1",
+              "mean_reward": 5.9,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "CCOC(=O)/C=C/c1cccc(O)c1",
+              "mean_reward": 5.9,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "Oc1cccc(OC(F)F)c1",
+              "mean_reward": 5.9,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "O=C/C=C/c1cccc(O)c1",
+              "mean_reward": 5.9,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "O=C(O)c1cccc(O)c1",
+              "mean_reward": 5.8,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "CC(=O)c1ccc(O)cc1",
+              "mean_reward": 5.8,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "OCc1cccc(O)c1",
+              "mean_reward": 5.8,
+              "count": 1,
+              "std": 0.0
+            }
+          ],
+          "1": [
+            {
+              "bb": "BrCc1ccccc1",
+              "mean_reward": 8.1,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "BrCC",
+              "mean_reward": 6.6,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "BrC",
+              "mean_reward": 6.05,
+              "count": 8,
+              "std": 0.3891
+            },
+            {
+              "bb": "BrC(F)F",
+              "mean_reward": 5.85,
+              "count": 12,
+              "std": 0.3555
+            },
+            {
+              "bb": "BrC(C)C",
+              "mean_reward": 5.3,
+              "count": 1,
+              "std": 0.0
+            }
+          ]
+        },
+        "rxn_47efa9f1": {
+          "0": [
+            {
+              "bb": "NCC1CCCOC1",
+              "mean_reward": 7.3833,
+              "count": 6,
+              "std": 0.5845
+            },
+            {
+              "bb": "NCC1CCOC1",
+              "mean_reward": 7.3,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "Nc1ccccc1F",
+              "mean_reward": 6.7,
+              "count": 1,
+              "std": 0.0
+            }
+          ],
+          "1": [
+            {
+              "bb": "c1ccc(C2CCCNC2)cc1",
+              "mean_reward": 7.7,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "c1ccc([C@H]2CCNC2)cc1",
+              "mean_reward": 7.7,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "c1ccc([C@H]2CCCNC2)cc1",
+              "mean_reward": 7.6,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "c1ccc([C@@H]2CCNC2)cc1",
+              "mean_reward": 7.6,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "c1ccc(C2CCNC2)cc1",
+              "mean_reward": 7.5,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "c1ccc([C@@H]2CCCNC2)cc1",
+              "mean_reward": 7.3,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "O=C(O)C1CCCNC1",
+              "mean_reward": 6.7,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "C#CC1CCNCC1",
+              "mean_reward": 6.2,
+              "count": 1,
+              "std": 0.0
+            }
+          ]
+        },
+        "rxn_decac515": {
+          "0": [
+            {
+              "bb": "COC(=O)[C@]12CNC[C@H]1CCCO2",
+              "mean_reward": 7.0,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "NC(=O)c1cccc(N)c1",
+              "mean_reward": 7.0,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "O=C(O)C1CCNCC1",
+              "mean_reward": 6.8,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "COC(=O)[C@@]12CNC[C@@H]1CCCO2",
+              "mean_reward": 6.5,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "COC(=O)C1CCCNC1",
+              "mean_reward": 6.5,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "O=C1C2CCCC1CNC2",
+              "mean_reward": 6.5,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "Nc1cccc(Br)c1",
+              "mean_reward": 6.4,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "O=C(O)C1CCCNC1",
+              "mean_reward": 6.35,
+              "count": 2,
+              "std": 0.0707
+            },
+            {
+              "bb": "OCC1CCCNC1",
+              "mean_reward": 6.2,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "O=C1[C@@H]2CNC[C@H]1COC2",
+              "mean_reward": 6.1,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "O=C1C2CNCC1COC2",
+              "mean_reward": 6.1,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "O=C(O)C1CCNC1",
+              "mean_reward": 6.0,
+              "count": 1,
+              "std": 0.0
+            }
+          ],
+          "1": [
+            {
+              "bb": "BrCc1ccc(I)cc1",
+              "mean_reward": 7.0,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "BrCc1ccc(F)cc1",
+              "mean_reward": 6.4,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "BrCc1ccccc1",
+              "mean_reward": 6.2846,
+              "count": 13,
+              "std": 0.4018
+            },
+            {
+              "bb": "BrCc1ccc(Br)c(F)c1",
+              "mean_reward": 5.6,
+              "count": 1,
+              "std": 0.0
+            },
+            {
+              "bb": "BrC",
+              "mean_reward": 5.0333,
+              "count": 3,
+              "std": 0.0577
+            }
+          ]
+        },
+        "rxn_45d00d3a": {
+          "0": [
+            {
+              "bb": "NC(=O)c1cccc(N)c1",
+              "mean_reward": 6.7,
+              "count": 1,
+              "std": 0.0
+            }
+          ],
+          "1": [
+            {
+              "bb": "NCc1ncccn1",
+              "mean_reward": 6.7,
+              "count": 1,
+              "std": 0.0
+            }
+          ]
+        }
+      },
+      "n_synthons_seen": 141,
+      "n_synthons_confident": 29
+    }
+  ]
+}
