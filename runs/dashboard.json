@@ -179,14 +179,14 @@
     }
   ],
   "totals": {
-    "docked": 9116,
-    "campaigns": 27,
+    "docked": 9356,
+    "campaigns": 28,
     "best": -11.0,
-    "unique": 412,
+    "unique": 421,
     "synthons_learned": 2803
   },
-  "n_unique": 412,
-  "n_runs": 27,
+  "n_unique": 421,
+  "n_runs": 28,
   "top10": [
     {
       "rank": 1,
