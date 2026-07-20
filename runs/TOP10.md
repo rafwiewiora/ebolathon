@@ -1,12 +1,12 @@
 # Top 10 molecules — Ebola glycoprotein (T0R site)
 
-Best docking score wins (lower = better). 356 unique molecules across 22 run(s). Auto-updated as the screen runs.
+Best docking score wins (lower = better). 363 unique molecules across 23 run(s). Auto-updated as the screen runs.
 
 | # | score | MMGBSA | PoseBusters | source run | SMILES |
 |---|------:|-------:|:-----------:|-----------|--------|
 | 1 | -11.00 |  |  | glycoprotein_screen45 | `Cc1ccc(F)c(-c2cccc(C(=O)Nc3nc4ncccc4cc3C#N)c2)c1` |
 | 2 | -10.90 |  |  | glycoprotein_screen43 | `Cc1cccc(-c2cc(C(=O)Nc3nc4ncccc4cc3C#N)ccc2F)c1` |
-| 3 | -10.80 |  |  | glycoprotein_screen47 | `CC(=O)c1cccc(-c2cc(C(=O)Nc3nc4ncccc4cc3C#N)ccc2F)c1` |
+| 3 | -10.90 |  |  | glycoprotein_screen49 | `CC(=O)c1cccc(-c2cc(C(=O)Nc3nc4ncccc4cc3C#N)ccc2F)c1` |
 | 4 | -10.60 |  |  | glycoprotein_screen41 | `N#Cc1cc2cccnc2nc1NC(=O)c1cccc(-c2cc(F)ccc2F)c1` |
 | 5 | -10.60 |  |  | glycoprotein_screen44 | `NC(=O)c1cc2ccccc2nc1NC(=O)c1cccc(-c2cc(F)ccc2F)c1` |
 | 6 | -10.50 |  |  | glycoprotein_screen47 | `NC(=O)c1cc2ccccc2nc1NC(=O)c1cccc(-c2cccc(F)c2)c1` |
