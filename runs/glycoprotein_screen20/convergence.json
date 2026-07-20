@@ -1,0 +1,21 @@
+{
+  "target": "5JQ7",
+  "query_or_seeds": [
+    "COC(=O)c1cc2ccc(NCC3CCCC(O)C3)cc2n1C",
+    "CCOC(=O)C(C)NC(=O)CCCN1C(=O)c2cccc3cccc(c23)C1=O"
+  ],
+  "backend": "muni",
+  "rounds": [
+    {
+      "round": 0,
+      "n_docks": 0,
+      "best_score": null,
+      "topk_mean": null,
+      "top_k": 20,
+      "scores": [],
+      "positions": {},
+      "n_synthons_seen": 0,
+      "n_synthons_confident": 0
+    }
+  ]
+}
