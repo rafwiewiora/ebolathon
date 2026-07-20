@@ -3,9 +3,9 @@ rank,score,mmgbsa,posebusters_valid,run,smiles
 2,-10.300,,,glycoprotein_screen7,O=C(Nc1nc2c(O)cccc2o1)c1cccc(-c2ccccc2F)c1
 3,-10.200,,,glycoprotein_screen41,O=C(Nc1nc2ccccc2o1)c1cccc(-c2ccccc2F)c1
 4,-10.200,,,glycoprotein_screen41,O=C(Nc1nc2cccnc2o1)c1cccc(-c2ccccc2F)c1
-5,-10.100,,,glycoprotein_screen41,Cc1ccc(C(=O)Nc2ccc(CN3CCN(C)CC3)c(C(F)(F)F)c2)cc1C#Cc1cnc2[nH]ncc2c1
-6,-10.100,,,glycoprotein_screen41,O=C(Nc1nc2ncccc2o1)c1cccc(-c2ccccc2F)c1
-7,-10.100,,,glycoprotein_screen41,O=C(Nc1nc2cnccc2o1)c1cccc(-c2ccccc2F)c1
-8,-10.100,,,glycoprotein_screen41,Cc1ccc(F)c(-c2cccc(C(=O)Nc3ncc(Cl)cc3C#N)c2)c1
-9,-10.100,,,glycoprotein_screen41,Cc1ccc(F)c(-c2cccc(C(=O)Nc3n[nH]c4cccc(C#N)c34)c2)c1
-10,-10.100,,,glycoprotein_screen41,Cc1ccc(F)c(-c2cccc(C(=O)Nc3nccc4ncccc34)c2)c1
+5,-10.200,,,glycoprotein_screen41,Cc1ccc(F)c(-c2cccc(C(=O)Nc3ncnc4ncncc34)c2)c1
+6,-10.100,,,glycoprotein_screen41,Cc1ccc(C(=O)Nc2ccc(CN3CCN(C)CC3)c(C(F)(F)F)c2)cc1C#Cc1cnc2[nH]ncc2c1
+7,-10.100,,,glycoprotein_screen41,O=C(Nc1nc2ncccc2o1)c1cccc(-c2ccccc2F)c1
+8,-10.100,,,glycoprotein_screen41,O=C(Nc1nc2cnccc2o1)c1cccc(-c2ccccc2F)c1
+9,-10.100,,,glycoprotein_screen41,Cc1ccc(F)c(-c2cccc(C(=O)Nc3ncc(Cl)cc3C#N)c2)c1
+10,-10.100,,,glycoprotein_screen41,Cc1ccc(F)c(-c2cccc(C(=O)Nc3n[nH]c4cccc(C#N)c34)c2)c1
