@@ -239,6 +239,12 @@ def _build_parser() -> argparse.ArgumentParser:
     ap.add_argument("--round-hits", type=int, default=30)
     ap.add_argument("--anchors", type=int, default=3)
     ap.add_argument("--coarse", action="store_true", help="coarse attribution (cheaper onepot)")
+    ap.add_argument("--belief-store", default=None,
+                    help="shared synthon-belief JSON: loaded as priors at start, updated "
+                         "at end, so campaigns COMPOUND across runs instead of restarting.")
+    ap.add_argument("--seed-from-best", type=int, default=0, metavar="N",
+                    help="also seed from the top-N global hits (runs/top10.csv) so new "
+                         "runs elaborate proven winners, not just random draws.")
     # output
     ap.add_argument("--out-dir", required=True)
     ap.add_argument("--top-k", type=int, default=10, help="# top hits to export as poses")
@@ -258,6 +264,26 @@ def _load_dotenv():
         load_dotenv()
     except Exception:
         pass
+
+
+def _seeds_from_leaderboard(n):
+    """Top-n accumulated global-best SMILES (runs/top10.csv) to seed a new run from
+    proven winners — the cross-run 'use everything we've learned' seeding."""
+    import csv
+    path = "runs/top10.csv"
+    if not os.path.exists(path):
+        return []
+    out = []
+    try:
+        for r in csv.DictReader(open(path)):
+            smi = r.get("smiles")
+            if smi:
+                out.append(smi)
+            if len(out) >= n:
+                break
+    except Exception:
+        pass
+    return out
 
 
 def main(argv=None):
@@ -297,6 +323,12 @@ def main(argv=None):
             args.mw_min, args.qed_min, args.sample_seed, args.max_price)
         if not seed_smiles:
             sys.exit("sample_space returned no seeds; relax the property window.")
+    # cross-run knowledge: also seed from the accumulated global-best hits
+    if args.seed_from_best:
+        best = _seeds_from_leaderboard(args.seed_from_best)
+        if best:
+            seed_smiles = best + [s for s in seed_smiles if s not in best]
+            print(f"[run] +{len(best)} seeds from accumulated best hits (top10.csv)")
 
     # 3) protein prep + docking oracle ------------------------------------
     if args.backend == "direct":
@@ -375,7 +407,8 @@ def main(argv=None):
                              pose_refs=getattr(oracle, "pose_cache", None))
 
     res = run_loop(oracle, dock_target, cfg, onepot_key=onepot_key,
-                   round_callback=round_callback, mol_filter=mol_filter)
+                   round_callback=round_callback, mol_filter=mol_filter,
+                   belief_store=args.belief_store)
 
     # final export --------------------------------------------------------
     if not conv_history:  # seed-only run (no elaboration rounds fired)

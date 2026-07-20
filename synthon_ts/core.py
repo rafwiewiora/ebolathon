@@ -52,7 +52,9 @@ building blocks we must decompose the analog itself. Two attribution modes:
 """
 from __future__ import annotations
 
+import json
 import math
+import os
 import random
 from collections import defaultdict
 from dataclasses import dataclass, field
@@ -236,6 +238,35 @@ class SynthonBandit:
                 if w > 0:
                     self.obs[(p.reaction_class, idx, bb)].append((p.reward, float(w)))
 
+    # -- cross-run persistence --------------------------------------------
+    def load(self, path: str):
+        """Seed this bandit with synthon posteriors accumulated by PRIOR runs, so
+        a new campaign starts already knowing which synthons dock well (priors),
+        instead of relearning from scratch. Safe if the file is missing/corrupt."""
+        if not path or not os.path.exists(path):
+            return 0
+        try:
+            data = json.load(open(path))
+        except Exception:
+            return 0
+        n = 0
+        for rxn, idx, bb, rows in data.get("obs", []):
+            self.obs[(rxn, int(idx), bb)].extend((float(r), float(w)) for r, w in rows)
+            n += 1
+        self._all_rewards.extend(float(r) for r in data.get("all_rewards", []))
+        return n
+
+    def save(self, path: str):
+        """Persist the accumulated synthon posteriors (this run's obs merged with
+        whatever was loaded) so the NEXT run compounds on them."""
+        data = {"obs": [[k[0], k[1], k[2], [[r, w] for r, w in rows]]
+                        for k, rows in self.obs.items()],
+                "all_rewards": self._all_rewards}
+        tmp = path + ".tmp"
+        with open(tmp, "w") as fh:
+            json.dump(data, fh)
+        os.replace(tmp, path)   # atomic-ish so a concurrent reader never sees half
+
     def _wstats(self, key):
         """(weighted_mean, effective_n) for a synthon arm, or None if unseen."""
         rows = self.obs.get(key)
@@ -349,7 +380,8 @@ def _attribute_precise(client, products, log):
 # --------------------------------------------------------------------------- #
 def run_loop(oracle, target: Target, cfg: LoopConfig, onepot_key: str | None = None,
              onepot_base_url: str = "https://api.onepot.ai", client=None,
-             log=print, round_callback=None, mol_filter=None) -> dict:
+             log=print, round_callback=None, mol_filter=None,
+             belief_store: str | None = None) -> dict:
     """Drive the synthon-TS screen. `oracle.score(smiles, template)` does the
     docking (lower better). Returns the scored pool + ranked hits.
 
@@ -372,6 +404,10 @@ def run_loop(oracle, target: Target, cfg: LoopConfig, onepot_key: str | None = N
     if client is None:
         client = Client(api_key=onepot_key, base_url=onepot_base_url)
     bandit = SynthonBandit(rng)
+    if belief_store:          # start smart: load synthon posteriors from prior runs
+        n = bandit.load(belief_store)
+        log(f"[belief-store] loaded {n} synthon arms + {len(bandit._all_rewards)} "
+            f"prior observations from {belief_store}")
     pool: dict = {}           # canonical smiles -> Product (scored)
     seen: set = set()         # canonical smiles ever retrieved
     n_docks = 0
@@ -511,6 +547,11 @@ def run_loop(oracle, target: Target, cfg: LoopConfig, onepot_key: str | None = N
             stale += 1
             if stale >= cfg.patience:
                 log(f"[round {rnd}] loop-until-dry: no improvement x{stale}; stop"); break
+
+    if belief_store:          # compound: persist this run's synthon learning
+        bandit.save(belief_store)
+        log(f"[belief-store] saved {len(bandit.obs)} synthon arms + "
+            f"{len(bandit._all_rewards)} observations to {belief_store}")
 
     ranked = sorted(pool.values(), key=lambda p: p.score)
     return {
