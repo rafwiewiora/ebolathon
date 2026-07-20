@@ -10,7 +10,7 @@ Best docking score wins (lower = better). 141 unique molecules across 8 run(s). 
 | 4 | -9.50 |  |  | glycoprotein_screen3 | `NC(=O)C1CCN(C(=O)c2cc(-c3ccc(-c4ccccc4)cc3)nc3ccccc23)CC1` |
 | 5 | -9.50 |  |  | glycoprotein_screen6 | `Cc1ccc(C(=O)Nc2ccc(CN3CCN(C)CC3)c(C(F)(F)F)c2)cc1C#Cc1cnc2[nH]ncc2c1` |
 | 6 | -9.50 |  |  | glycoprotein_screen6 | `Cc1ccc(C(=O)Nc2ccc(N(C)C)c(C(F)(F)F)c2)cc1C#Cc1cnc2cccnn12` |
-| 7 | -9.40 |  |  | glycoprotein_screen3 | `Cc1ccc(-c2cc(C(=O)N3CCC(C#N)CC3)c3ccccc3n2)cc1` |
-| 8 | -9.40 |  |  | glycoprotein_screen3 | `Cc1ccc2nc(-c3ccccc3)cc(C(=O)Nc3cc(O)cc(O)c3)c2c1` |
-| 9 | -9.40 |  |  | glycoprotein_screen6 | `Cc1ccc(C(=O)Nc2ccccc2CN2CCN(C)CC2)cc1C#Cc1cnc2cccnn12` |
-| 10 | -9.40 |  |  | glycoprotein_screen6 | `Cc1ccc(C(=O)NCc2ccc(CN3CCN(C)CC3)cc2)cc1C#Cc1cnc2cccnn12` |
+| 7 | -9.50 |  |  | glycoprotein_screen6 | `CN1CCN(C(=O)c2ccc(NC(=O)c3cnc4cccnn34)cc2C(F)(F)F)CC1` |
+| 8 | -9.40 |  |  | glycoprotein_screen3 | `Cc1ccc(-c2cc(C(=O)N3CCC(C#N)CC3)c3ccccc3n2)cc1` |
+| 9 | -9.40 |  |  | glycoprotein_screen3 | `Cc1ccc2nc(-c3ccccc3)cc(C(=O)Nc3cc(O)cc(O)c3)c2c1` |
+| 10 | -9.40 |  |  | glycoprotein_screen6 | `Cc1ccc(C(=O)Nc2ccccc2CN2CCN(C)CC2)cc1C#Cc1cnc2cccnn12` |
