@@ -1,0 +1,22 @@
+{
+  "target": "5JQ7",
+  "query_or_seeds": [
+    "COc1ccc(F)cc1/C=C/C(=O)Nc1cc(C)ccc1C(C)=O",
+    "Fc1ccc(OCCNC(=S)N[C@@H]2CCN(Cc3ccccc3)C2)cc1",
+    "OCC1CCCN(c2cc(Nc3cccc(-c4ccccc4)n3)ncn2)C1"
+  ],
+  "backend": "muni",
+  "rounds": [
+    {
+      "round": 0,
+      "n_docks": 0,
+      "best_score": null,
+      "topk_mean": null,
+      "top_k": 20,
+      "scores": [],
+      "positions": {},
+      "n_synthons_seen": 0,
+      "n_synthons_confident": 0
+    }
+  ]
+}
