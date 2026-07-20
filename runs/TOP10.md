@@ -1,6 +1,6 @@
 # Top 10 molecules — Ebola glycoprotein (T0R site)
 
-Best docking score wins (lower = better). 392 unique molecules across 25 run(s). Auto-updated as the screen runs.
+Best docking score wins (lower = better). 391 unique molecules across 25 run(s). Auto-updated as the screen runs.
 
 | # | score | MMGBSA | PoseBusters | source run | SMILES |
 |---|------:|-------:|:-----------:|-----------|--------|
