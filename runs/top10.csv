@@ -1,5 +1,5 @@
 rank,score,mmgbsa,posebusters_valid,run,smiles
-1,-10.900,,,glycoprotein_screen42,Cc1ccc(F)c(-c2cccc(C(=O)Nc3nc4ncccc4cc3C#N)c2)c1
+1,-11.000,,,glycoprotein_screen45,Cc1ccc(F)c(-c2cccc(C(=O)Nc3nc4ncccc4cc3C#N)c2)c1
 2,-10.900,,,glycoprotein_screen43,Cc1cccc(-c2cc(C(=O)Nc3nc4ncccc4cc3C#N)ccc2F)c1
 3,-10.600,,,glycoprotein_screen41,N#Cc1cc2cccnc2nc1NC(=O)c1cccc(-c2cc(F)ccc2F)c1
 4,-10.600,,,glycoprotein_screen44,NC(=O)c1cc2ccccc2nc1NC(=O)c1cccc(-c2cc(F)ccc2F)c1
