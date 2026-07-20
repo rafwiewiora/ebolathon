@@ -191,11 +191,33 @@ def main():
             total_docked += n
             n_campaigns += 1
 
+    # --- cumulative synthon knowledge: the belief store (learned across ALL runs) ---
+    cum_syn = []
+    n_arms = 0
+    try:
+        bs = json.load(open("runs/belief_store.json"))
+        n_arms = len(bs.get("obs", []))
+        for rxn, idx, bb, rows in bs.get("obs", []):
+            sw = sum(w for _, w in rows)
+            if sw <= 0:
+                continue
+            m = sum(r * w for r, w in rows) / sw
+            cum_syn.append({"reward": round(m, 2), "n": round(sw, 1), "rxn": rxn,
+                            "pos": int(idx), "bb": bb})
+        cum_syn.sort(key=lambda x: (x["reward"], x["n"]), reverse=True)
+        cum_syn = cum_syn[:8]
+        for s in cum_syn:
+            s["svg"] = _svg(s["bb"])
+    except Exception:
+        pass
+
     # --- dashboard.json (feed for the live GitHub Pages dashboard) ---
     dash = {
         "primary": _primary_run(),
+        "cumulative_synthons": cum_syn,
         "totals": {"docked": total_docked, "campaigns": n_campaigns,
-                   "best": (top[0]["score"] if top else None), "unique": n_unique},
+                   "best": (top[0]["score"] if top else None), "unique": n_unique,
+                   "synthons_learned": n_arms},
         "n_unique": n_unique,
         "n_runs": n_runs,
         "top10": [{"rank": i, "score": round(r["score"], 2), "smiles": r["smiles"],

@@ -115,6 +115,9 @@
     </div>
   </div>
 
+  <h2>Cumulative synthon knowledge — best building blocks across <b>all</b> campaigns</h2>
+  <div class="panel" id="cumsynthons"></div>
+
   <h2>Top 10 molecules</h2>
   <div id="leaderboard"></div>
 
@@ -131,6 +134,7 @@ function renderTotals(t){
   $("totals").innerHTML=
     item((t.docked||0).toLocaleString(),"molecules docked")+
     item(t.campaigns||0,"campaigns")+
+    item((t.synthons_learned||0).toLocaleString(),"synthons learned")+
     item((t.unique||0).toLocaleString(),"unique hits")+
     item(t.best!=null?t.best.toFixed(1):'—',"global best (kcal/mol)");
 }
@@ -181,6 +185,18 @@ function renderSynthons(syn){
   }).join("");
 }
 
+function renderCumSynthons(syn){
+  if(!syn||!syn.length){$("cumsynthons").innerHTML='<div class="empty">building the corpus…</div>';return;}
+  $("cumsynthons").innerHTML=syn.slice(0,8).map(s=>{
+    const np=s.n_pos||2; let slots='';
+    for(let i=0;i<np;i++) slots+=`<span class="slot${i===s.pos?' on':''}">${i}</span>`;
+    return `<div class="syncard"><div class="mol">${s.svg||''}</div>`+
+      `<div class="syninfo"><span class="r">${(s.reward>=0?'+':'')}${s.reward.toFixed(2)}</span> `+
+      `<span class="meta">mean reward · n=${s.n} (all campaigns)</span><br>`+
+      `<span class="slots">${slots}</span><span class="slotlab">position ${s.pos} · ${esc(s.rxn)}</span></div></div>`;
+  }).join("");
+}
+
 function renderLeaderboard(top){
   if(!top||!top.length){$("leaderboard").innerHTML='<div class="empty">no hits yet</div>';return;}
   $("leaderboard").innerHTML='<div class="hitgrid">'+top.map(r=>
@@ -206,6 +222,7 @@ async function refresh(){
     }else{
       $("tiles").innerHTML='<div class="empty">waiting for the first round to complete…</div>';
     }
+    renderCumSynthons(d.cumulative_synthons);
     renderLeaderboard(d.top10);
   }catch(e){
     $("dot").classList.add("stale");
