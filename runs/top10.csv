@@ -8,4 +8,4 @@ rank,score,mmgbsa,posebusters_valid,run,smiles
 7,-9.700,,,glycoprotein_screen21,Cc1ccc(C(=O)Nc2ccc(CN3CCN(C)CC3)c(C(F)(F)F)c2)cc1C#Cc1cnc2[nH]ncc2c1
 8,-9.700,,,glycoprotein_screen7,O=C(Nc1ccc2ccc(Cl)nc2n1)c1cccc(-c2ccccc2O)c1
 9,-9.600,,,glycoprotein_screen21,C#CC1CCN(C(=O)c2ccc(C)c(C#Cc3cnc4cccnn34)c2)CC1
-10,-9.600,,,glycoprotein_screen7,O=C(Nc1ccc2ccccc2n1)c1cccc(-c2cccc(O)c2)c1
+10,-9.600,,,glycoprotein_screen23,C#CC1CCN(C(=O)Cc2cccc(-c3cc(C)cc(C)c3)c2)CC1

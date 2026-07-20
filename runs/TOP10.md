@@ -13,4 +13,4 @@ Best docking score wins (lower = better). 233 unique molecules across 13 run(s).
 | 7 | -9.70 |  |  | glycoprotein_screen21 | `Cc1ccc(C(=O)Nc2ccc(CN3CCN(C)CC3)c(C(F)(F)F)c2)cc1C#Cc1cnc2[nH]ncc2c1` |
 | 8 | -9.70 |  |  | glycoprotein_screen7 | `O=C(Nc1ccc2ccc(Cl)nc2n1)c1cccc(-c2ccccc2O)c1` |
 | 9 | -9.60 |  |  | glycoprotein_screen21 | `C#CC1CCN(C(=O)c2ccc(C)c(C#Cc3cnc4cccnn34)c2)CC1` |
-| 10 | -9.60 |  |  | glycoprotein_screen7 | `O=C(Nc1ccc2ccccc2n1)c1cccc(-c2cccc(O)c2)c1` |
+| 10 | -9.60 |  |  | glycoprotein_screen23 | `C#CC1CCN(C(=O)Cc2cccc(-c3cc(C)cc(C)c3)c2)CC1` |
