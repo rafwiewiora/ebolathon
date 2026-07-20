@@ -58,6 +58,8 @@ def _load_hits():
     rows = []
     for f in sorted(glob.glob("runs/*/hits.csv")):
         run = os.path.basename(os.path.dirname(f))
+        if "baseline" in run:      # random-baseline control, not a strategy hit
+            continue
         try:
             with open(f) as fh:
                 for r in csv.DictReader(fh):
@@ -171,9 +173,29 @@ def main():
         for i, r in enumerate(top, 1):
             w.writerow([i, f"{r['score']:.3f}", r["mmgbsa"], r["pb"], r["run"], r["smiles"]])
 
+    # --- campaign totals across ALL runs (the whole campaign, not one run) ---
+    total_docked = 0
+    n_campaigns = 0
+    for f in glob.glob("runs/*/convergence.json"):
+        run = os.path.basename(os.path.dirname(f))
+        if "baseline" in run:
+            continue
+        try:
+            cd = json.load(open(f))
+        except Exception:
+            continue
+        if not cd.get("rounds"):
+            continue
+        n = cd["rounds"][-1].get("n_docks", 0)
+        if n > 0:
+            total_docked += n
+            n_campaigns += 1
+
     # --- dashboard.json (feed for the live GitHub Pages dashboard) ---
     dash = {
         "primary": _primary_run(),
+        "totals": {"docked": total_docked, "campaigns": n_campaigns,
+                   "best": (top[0]["score"] if top else None), "unique": n_unique},
         "n_unique": n_unique,
         "n_runs": n_runs,
         "top10": [{"rank": i, "score": round(r["score"], 2), "smiles": r["smiles"],

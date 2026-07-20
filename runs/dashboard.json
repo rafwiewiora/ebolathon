@@ -133,6 +133,12 @@
       }
     ]
   },
+  "totals": {
+    "docked": 4574,
+    "campaigns": 14,
+    "best": -10.3,
+    "unique": 253
+  },
   "n_unique": 253,
   "n_runs": 14,
   "top10": [

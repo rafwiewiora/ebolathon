@@ -51,6 +51,12 @@
   .lg{display:inline-flex;align-items:center;gap:6px;color:var(--muted)}
   .lg::before{content:"";width:16px;border-top:2px solid;display:inline-block}
   .lg-best::before{border-color:var(--ours)} .lg-tk::before{border-color:var(--ideal);border-top-style:dashed} .lg-bb::before{border-color:var(--good)}
+  .totals{display:flex;flex-wrap:wrap;gap:26px;align-items:baseline;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:16px 22px;margin-bottom:16px}
+  .totals .big{font-family:var(--mono);font-size:26px;font-weight:600;color:var(--ours);font-variant-numeric:tabular-nums}
+  .totals .u{font-size:12px;color:var(--muted);margin-left:6px}
+  .runlabel{font-size:13px;color:var(--muted);margin-bottom:8px}
+  .runlabel .fr{font-family:var(--mono);color:var(--ink)}
+  .runlabel b{color:var(--ink)}
   .foot{margin-top:34px;font-family:var(--mono);font-size:12px;color:var(--muted)}
   .foot a{color:var(--ours)}
   .empty{color:var(--muted);font-size:14px;padding:20px 0}
@@ -86,6 +92,9 @@
   </header>
   <p class="sub">Live synthon-aware Thompson-Sampling screen over onepot CORE, docked against the T0R (toremifene) site. Auto-refreshes every 30&nbsp;s from <code>runs/dashboard.json</code>. <span id="runname"></span></p>
 
+  <div class="totals" id="totals"></div>
+
+  <div class="runlabel">Featured run <span id="runname2" class="fr"></span> — its <b>own</b> trajectory &amp; synthons below (one campaign, not the whole sweep):</div>
   <div class="tiles" id="tiles"></div>
 
   <div class="cols">
@@ -115,6 +124,16 @@
 <script>
 const $ = id => document.getElementById(id);
 function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+
+function renderTotals(t){
+  if(!t){$("totals").innerHTML="";return;}
+  const item=(n,u)=>`<span><span class="big">${n}</span><span class="u">${u}</span></span>`;
+  $("totals").innerHTML=
+    item((t.docked||0).toLocaleString(),"molecules docked")+
+    item(t.campaigns||0,"campaigns")+
+    item((t.unique||0).toLocaleString(),"unique hits")+
+    item(t.best!=null?t.best.toFixed(1):'—',"global best (kcal/mol)");
+}
 
 function renderTiles(p){
   const t=[["seeds",p.seeds],["docked",p.docked],["synthons",p.synthons_seen],
@@ -179,8 +198,10 @@ async function refresh(){
     $("dot").classList.remove("stale");
     const now=new Date().toLocaleTimeString();
     $("statustext").textContent='live · updated '+now;
+    renderTotals(d.totals);
     if(p){
       $("runname").innerHTML='Featuring run <code>'+esc(p.run)+'</code>.';
+      $("runname2").textContent=p.run;
       renderTiles(p); renderChart(p.trajectory); renderSynthons(p.top_synthons);
     }else{
       $("tiles").innerHTML='<div class="empty">waiting for the first round to complete…</div>';
