@@ -109,13 +109,17 @@ def _primary_run():
         rounds = d.get("rounds") or []
         if not rounds:
             continue
+        best = rounds[-1].get("best_score")
+        if best is None:
+            continue
         docked = rounds[-1].get("n_docks", 0)
         live = any(k in run for k in ("screen", "batch"))
-        cands.append((live, docked, run, d, rounds))
+        cands.append((live, -best, docked, run, d, rounds))
     if not cands:
         return None
-    cands.sort(key=lambda c: (c[0], c[1]), reverse=True)  # live first, then most docked
-    _, _, run, d, rounds = cands[0]
+    # feature the live run with the BEST (most negative) score, then most docked
+    cands.sort(key=lambda c: (c[0], c[1], c[2]), reverse=True)
+    _, _, _, run, d, rounds = cands[0]
     last = rounds[-1]
     positions = last.get("positions", {})
     # positions per reaction (for the "which slot" indicator) = max bb_index + 1
