@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ebola GP · best docked poses (dev)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/molstar@4.9.0/build/viewer/molstar.css"/>
+<style>
+  html,body{margin:0;height:100%;background:#0c0f0d;color:#e7ede7;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  header{padding:14px 20px;border-bottom:1px solid #26302a}
+  h1{font-family:ui-serif,Georgia,serif;font-weight:600;font-size:19px;margin:0}
+  .sub{color:#98a29a;font-size:13px;margin-top:4px}
+  .sub b{color:#e7ede7}
+  .warn{color:#e28950;font-size:12px;margin-top:6px}
+  #app{position:relative;width:100%;height:calc(100vh - 92px)}
+</style>
+</head>
+<body>
+<header>
+  <h1>Ebola glycoprotein — best docked poses <span style="color:#98a29a;font-weight:400">(dev)</span></h1>
+  <div class="sub">Overlay of the top docked ligand poses in the T0R (toremifene) site — visualizing the <b>diversity of binding modes</b>. Toward a consensus 3D pharmacophore to bias future runs. Use the model slider (bottom) to step through poses; representations/superpose via the Mol* controls.</div>
+  <div class="warn">⚠ First pass: these are 25 poses from the earlier direct-Rowan run (`glycoprotein_t0r_100`, older frame) — placeholder pending 5JQ7-frame GNINA poses of the current −10.3 champions.</div>
+</header>
+<div id="app"></div>
+<script src="https://cdn.jsdelivr.net/npm/molstar@4.9.0/build/viewer/molstar.js"></script>
+<script>
+  molstar.Viewer.create('app', {
+    layoutIsExpanded: false,
+    layoutShowControls: true,
+    layoutShowSequence: false,
+    layoutShowLog: false,
+    viewportShowExpand: true,
+    pdbProvider: 'rcsb',
+  }).then(async viewer => {
+    // receptor: grey cartoon
+    await viewer.loadStructureFromUrl('poses/receptor.pdb', 'pdb', false);
+    // docked ligand poses: multi-model PDB (25 poses) — step with the model slider
+    await viewer.loadStructureFromUrl('poses/poses.pdb', 'pdb', false);
+  }).catch(e => {
+    document.getElementById('app').innerHTML =
+      '<p style="padding:24px;color:#e28950">Mol* failed to load: ' + e + '</p>';
+  });
+</script>
+</body>
+</html>
